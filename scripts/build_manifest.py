@@ -26,6 +26,28 @@ def fetch_season_schedule(season: int) -> list:
     return resp.json()["MRData"]["RaceTable"]["Races"]
 
 
+# Maps Jolpica's session field names to the camelCase keys we write out.
+SESSION_FIELDS = {
+    "FirstPractice": "firstPractice",
+    "SecondPractice": "secondPractice",
+    "ThirdPractice": "thirdPractice",
+    "SprintQualifying": "sprintQualifying",
+    "Sprint": "sprint",
+    "Qualifying": "qualifying",
+}
+
+
+def build_sessions(race: dict) -> dict:
+    """All of a round's session times (UTC), keyed by session name, plus
+    the race itself. Sprint weekends have Sprint/SprintQualifying, normal
+    weekends don't - only include sessions that are actually present."""
+    sessions = {"race": {"date": race["date"], "time": race.get("time")}}
+    for src_key, out_key in SESSION_FIELDS.items():
+        if src_key in race:
+            sessions[out_key] = race[src_key]
+    return sessions
+
+
 def build_manifest(season: int) -> dict:
     races = fetch_season_schedule(season)
     data_dir = REPO_ROOT / "data" / str(season)
@@ -43,6 +65,7 @@ def build_manifest(season: int) -> dict:
             "country": race["Circuit"]["Location"]["country"],
             "date": race["date"],
             "time": race.get("time"),
+            "sessions": build_sessions(race),
             "hasData": has_data,
         })
 

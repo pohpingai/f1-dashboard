@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pit Wall MY</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Pit Wall<span class="accent"> MY</span></h1>
+    <select id="race-selector" aria-label="Choose a race"></select>
+  </header>
+
+  <main>
+    <section id="winner-hero" class="card hero"></section>
+
+    <section class="card">
+      <h2>Standings</h2>
+      <div class="standings-grid">
+        <div>
+          <h2>Drivers</h2>
+          <div id="driver-standings"></div>
+        </div>
+        <div>
+          <h2>Constructors</h2>
+          <div id="constructor-standings"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Drama Log</h2>
+      <div id="drama-log"></div>
+    </section>
+
+    <section id="editors-take-section" class="card editors-take" hidden>
+      <h2>Editor's Take</h2>
+      <div id="editors-take"></div>
+    </section>
+
+    <section id="next-race-section" class="card" hidden>
+      <h2>Next Up</h2>
+      <div id="next-race"></div>
+    </section>
+  </main>
+
+  <footer>
+    Data from Jolpica-F1 &amp; OpenF1, refreshed a few hours after each session. Not affiliated with Formula 1.
+  </footer>
+
+  <script src="js/team-colors.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

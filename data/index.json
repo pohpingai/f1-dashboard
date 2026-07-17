@@ -1,0 +1,247 @@
+{
+  "season": 2026,
+  "rounds": [
+    {
+      "round": 1,
+      "raceName": "Australian Grand Prix",
+      "circuitName": "Albert Park Grand Prix Circuit",
+      "circuitTimezone": "Australia/Melbourne",
+      "locality": "Melbourne",
+      "country": "Australia",
+      "date": "2026-03-08",
+      "time": "04:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 2,
+      "raceName": "Chinese Grand Prix",
+      "circuitName": "Shanghai International Circuit",
+      "circuitTimezone": "Asia/Shanghai",
+      "locality": "Shanghai",
+      "country": "China",
+      "date": "2026-03-15",
+      "time": "07:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 3,
+      "raceName": "Japanese Grand Prix",
+      "circuitName": "Suzuka Circuit",
+      "circuitTimezone": "Asia/Tokyo",
+      "locality": "Suzuka",
+      "country": "Japan",
+      "date": "2026-03-29",
+      "time": "05:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 4,
+      "raceName": "Miami Grand Prix",
+      "circuitName": "Miami International Autodrome",
+      "circuitTimezone": "America/New_York",
+      "locality": "Miami",
+      "country": "USA",
+      "date": "2026-05-03",
+      "time": "20:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 5,
+      "raceName": "Canadian Grand Prix",
+      "circuitName": "Circuit Gilles Villeneuve",
+      "circuitTimezone": "America/Toronto",
+      "locality": "Montreal",
+      "country": "Canada",
+      "date": "2026-05-24",
+      "time": "20:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 6,
+      "raceName": "Monaco Grand Prix",
+      "circuitName": "Circuit de Monaco",
+      "circuitTimezone": "Europe/Monaco",
+      "locality": "Monte Carlo",
+      "country": "Monaco",
+      "date": "2026-06-07",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 7,
+      "raceName": "Barcelona Grand Prix",
+      "circuitName": "Circuit de Barcelona-Catalunya",
+      "circuitTimezone": "Europe/Madrid",
+      "locality": "Barcelona",
+      "country": "Spain",
+      "date": "2026-06-14",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 8,
+      "raceName": "Austrian Grand Prix",
+      "circuitName": "Red Bull Ring",
+      "circuitTimezone": "Europe/Vienna",
+      "locality": "Spielberg",
+      "country": "Austria",
+      "date": "2026-06-28",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 9,
+      "raceName": "British Grand Prix",
+      "circuitName": "Silverstone Circuit",
+      "circuitTimezone": "Europe/London",
+      "locality": "Silverstone",
+      "country": "UK",
+      "date": "2026-07-05",
+      "time": "14:00:00Z",
+      "hasData": true
+    },
+    {
+      "round": 10,
+      "raceName": "Belgian Grand Prix",
+      "circuitName": "Circuit de Spa-Francorchamps",
+      "circuitTimezone": "Europe/Brussels",
+      "locality": "Spa",
+      "country": "Belgium",
+      "date": "2026-07-19",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 11,
+      "raceName": "Hungarian Grand Prix",
+      "circuitName": "Hungaroring",
+      "circuitTimezone": "Europe/Budapest",
+      "locality": "Budapest",
+      "country": "Hungary",
+      "date": "2026-07-26",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 12,
+      "raceName": "Dutch Grand Prix",
+      "circuitName": "Circuit Park Zandvoort",
+      "circuitTimezone": "Europe/Amsterdam",
+      "locality": "Zandvoort",
+      "country": "Netherlands",
+      "date": "2026-08-23",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 13,
+      "raceName": "Italian Grand Prix",
+      "circuitName": "Autodromo Nazionale di Monza",
+      "circuitTimezone": "Europe/Rome",
+      "locality": "Monza",
+      "country": "Italy",
+      "date": "2026-09-06",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 14,
+      "raceName": "Spanish Grand Prix",
+      "circuitName": "Madring",
+      "circuitTimezone": "Europe/Madrid",
+      "locality": "Madrid",
+      "country": "Spain",
+      "date": "2026-09-13",
+      "time": "13:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 15,
+      "raceName": "Azerbaijan Grand Prix",
+      "circuitName": "Baku City Circuit",
+      "circuitTimezone": "Asia/Baku",
+      "locality": "Baku",
+      "country": "Azerbaijan",
+      "date": "2026-09-26",
+      "time": "11:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 16,
+      "raceName": "Singapore Grand Prix",
+      "circuitName": "Marina Bay Street Circuit",
+      "circuitTimezone": "Asia/Singapore",
+      "locality": "Marina Bay",
+      "country": "Singapore",
+      "date": "2026-10-11",
+      "time": "12:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 17,
+      "raceName": "United States Grand Prix",
+      "circuitName": "Circuit of the Americas",
+      "circuitTimezone": "America/Chicago",
+      "locality": "Austin",
+      "country": "USA",
+      "date": "2026-10-25",
+      "time": "20:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 18,
+      "raceName": "Mexico City Grand Prix",
+      "circuitName": "Autódromo Hermanos Rodríguez",
+      "circuitTimezone": "America/Mexico_City",
+      "locality": "Mexico City",
+      "country": "Mexico",
+      "date": "2026-11-01",
+      "time": "20:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 19,
+      "raceName": "Brazilian Grand Prix",
+      "circuitName": "Autódromo José Carlos Pace",
+      "circuitTimezone": "America/Sao_Paulo",
+      "locality": "São Paulo",
+      "country": "Brazil",
+      "date": "2026-11-08",
+      "time": "17:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 20,
+      "raceName": "Las Vegas Grand Prix",
+      "circuitName": "Las Vegas Strip Street Circuit",
+      "circuitTimezone": "America/Los_Angeles",
+      "locality": "Las Vegas",
+      "country": "USA",
+      "date": "2026-11-22",
+      "time": "04:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 21,
+      "raceName": "Qatar Grand Prix",
+      "circuitName": "Losail International Circuit",
+      "circuitTimezone": "Asia/Qatar",
+      "locality": "Lusail",
+      "country": "Qatar",
+      "date": "2026-11-29",
+      "time": "16:00:00Z",
+      "hasData": false
+    },
+    {
+      "round": 22,
+      "raceName": "Abu Dhabi Grand Prix",
+      "circuitName": "Yas Marina Circuit",
+      "circuitTimezone": "Asia/Dubai",
+      "locality": "Abu Dhabi",
+      "country": "UAE",
+      "date": "2026-12-06",
+      "time": "13:00:00Z",
+      "hasData": false
+    }
+  ]
+}

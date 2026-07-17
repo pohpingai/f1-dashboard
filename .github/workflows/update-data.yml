@@ -1,0 +1,44 @@
+name: Update race data
+
+on:
+  # The "cloud robot" checks every 4 hours on race weekends (Sat/Sun UTC)
+  # so results show up within a few hours of any session finishing,
+  # regardless of which timezone the race is in.
+  schedule:
+    - cron: "0 */4 * * 6,0"
+  # The manual "Run workflow" button (works from the GitHub app on a phone).
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch any newly completed races
+        working-directory: scripts
+        run: python update_data.py 2026
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No new data, nothing to commit."
+          else
+            git commit -m "Update race data (automated)"
+            git push
+          fi

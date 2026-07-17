@@ -100,10 +100,12 @@ def build_dnf_list(results: list) -> list:
 
 
 def build_standings_list(standings: list, key: str) -> list:
+    # Drivers/constructors with 0 points get positionText "-" and no
+    # numeric "position" field at all - unranked, not an error.
     out = []
     for s in standings:
         entry = {
-            "position": int(s["position"]),
+            "position": int(s["position"]) if "position" in s else None,
             "points": float(s["points"]),
             "wins": int(s["wins"]),
         }

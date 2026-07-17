@@ -10,7 +10,7 @@
       "country": "Australia",
       "date": "2026-03-08",
       "time": "04:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 2,
@@ -21,7 +21,7 @@
       "country": "China",
       "date": "2026-03-15",
       "time": "07:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 3,
@@ -32,7 +32,7 @@
       "country": "Japan",
       "date": "2026-03-29",
       "time": "05:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 4,
@@ -43,7 +43,7 @@
       "country": "USA",
       "date": "2026-05-03",
       "time": "20:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 5,
@@ -54,7 +54,7 @@
       "country": "Canada",
       "date": "2026-05-24",
       "time": "20:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 6,
@@ -65,7 +65,7 @@
       "country": "Monaco",
       "date": "2026-06-07",
       "time": "13:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 7,
@@ -76,7 +76,7 @@
       "country": "Spain",
       "date": "2026-06-14",
       "time": "13:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 8,
@@ -87,7 +87,7 @@
       "country": "Austria",
       "date": "2026-06-28",
       "time": "13:00:00Z",
-      "hasData": false
+      "hasData": true
     },
     {
       "round": 9,

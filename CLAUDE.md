@@ -33,12 +33,14 @@ A free, static F1 dashboard that updates ~3 hours after each session. It serves 
 | Race results, grid positions, points | **Jolpica-F1 API** (Ergast successor, free) | Primary results source |
 | Championship standings (drivers + constructors) | **Jolpica-F1** `/driverstandings`, `/constructorstandings` | OpenF1 does NOT have cumulative standings — do not try |
 | DNF reasons (mechanical vs collision) | **Jolpica-F1** results `status` field | e.g. "Engine", "Collision", "Gearbox" |
-| Lap-by-lap timestamps, lap times | **OpenF1** `/v1/laps` | Free for historical data (our 3-hour delay qualifies) |
+| Lap-by-lap timestamps, lap times | **OpenF1** `/v1/laps` | Free for historical data (our 3-hour delay qualifies). See the live-lock caveat below. |
 | Pit lane entries/durations | **OpenF1** `/v1/pit` | This is pit-LANE duration, not stationary time — label honestly |
 | Session schedule, track names | **OpenF1** `/v1/sessions` or Jolpica schedule | |
 | Telemetry (v2 only) | **FastF1** Python library inside the Action | It's a library, not an API — needs the Action's compute. Cache aggressively, downsample before writing JSON |
 
 Be polite to free APIs: cache raw responses in the workflow, retry gently, never hammer.
+
+**OpenF1 live-lock caveat (discovered in Milestone 3):** OpenF1's free tier locks the *entire* API — including historical data — whenever a session is live on track, returning HTTP 401 ("Live F1 session in progress") to push heavy users onto a paid key. Jolpica-F1 is unaffected. Our ~3-hours-after-a-session timing sidesteps this in normal operation, but two consequences: (1) if you tap "Run workflow" while a session is actually running, the timing modules (Gap Trace, Rejoin Strip) are skipped for that race and you re-run later — results/standings still populate fine; (2) the pipeline treats this as a soft failure by design, writing the race JSON with the timing blocks marked unavailable rather than erroring.
 
 ## Milestones
 

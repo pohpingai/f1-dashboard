@@ -281,6 +281,151 @@ select#race-selector {
   font-size: 0.9rem;
 }
 
+/* Milestone 3: shared disclosure + module notes */
+.disclosure > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+.disclosure > summary .hook {
+  font-size: 0.95rem;
+}
+.disclosure > summary .chev {
+  color: var(--text-dim);
+  transition: transform 0.15s ease;
+}
+.disclosure[open] > summary .chev {
+  transform: rotate(180deg);
+}
+.module-note {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  margin: 0.75rem 0;
+}
+
+/* Rejoin strip */
+.rejoin-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.rejoin-driver {
+  border-left: 4px solid var(--border);
+  padding-left: 0.6rem;
+}
+.rejoin-driver-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+.rejoin-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.rejoin-stop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  font-size: 0.9rem;
+}
+.rejoin-lap {
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  min-width: 3.2rem;
+}
+.rejoin-detail {
+  flex: 1 1 100%;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.rejoin-near {
+  font-size: 0.8rem;
+}
+.rejoin-pit {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  opacity: 0.8;
+}
+.flag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.35rem;
+  white-space: nowrap;
+}
+.flag-clash {
+  background: rgba(225, 6, 0, 0.18);
+  color: #ff6b63;
+}
+.flag-dirty {
+  background: rgba(230, 160, 30, 0.18);
+  color: #f0b64a;
+}
+.flag-clean {
+  background: rgba(80, 200, 120, 0.15);
+  color: #5fce8a;
+}
+
+/* Gap trace */
+.gap-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.gap-controls select {
+  flex: 1;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.95rem;
+}
+.gap-vs {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+.gap-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+.gap-legend .dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+.gap-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.gap-svg .ax-lbl {
+  fill: var(--text-dim);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
 /* Editor's take */
 .editors-take p {
   margin: 0;

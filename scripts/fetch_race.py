@@ -17,6 +17,7 @@ from pathlib import Path
 
 import requests
 
+import fetch_timing
 from circuit_timezones import CIRCUIT_TIMEZONES
 
 API_BASE = "https://api.jolpi.ca/ergast/f1"
@@ -213,6 +214,10 @@ def assemble_race_json(season: int, rnd: int) -> dict:
     results = build_results_list(race)
     circuit_id = race["Circuit"]["circuitId"]
 
+    # Milestone 3: lap-by-lap Gap Trace + Rejoin Strip from OpenF1. Degrades to
+    # "unavailable" blocks if OpenF1 is locked/down - never breaks the race JSON.
+    timing = fetch_timing.build_timing_blocks(season, race["date"], results)
+
     return {
         "season": season,
         "round": rnd,
@@ -229,6 +234,8 @@ def assemble_race_json(season: int, rnd: int) -> dict:
         "heroesZeroes": build_heroes_zeroes(results),
         "driverStandings": build_standings_list(driver_standings, "driver"),
         "constructorStandings": build_standings_list(constructor_standings, "constructor"),
+        "gapTrace": timing["gapTrace"],
+        "rejoinStrip": timing["rejoinStrip"],
         "editors_take": "",
     }
 

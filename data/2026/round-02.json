@@ -553,5 +553,27 @@
       "constructor": "Aston Martin"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "SAI",
+      "driverName": "Carlos Sainz",
+      "constructor": "Williams",
+      "grid": 17,
+      "finish": 9,
+      "delta": 8,
+      "giftedPlaces": 4,
+      "take": "P17 → P9, gained 8 places — 4 were gifts from retirements ahead, 4 earned on track."
+    },
+    "zero": {
+      "driverCode": "OCO",
+      "driverName": "Esteban Ocon",
+      "constructor": "Haas F1 Team",
+      "grid": 13,
+      "finish": 14,
+      "delta": -1,
+      "giftedPlaces": null,
+      "take": "P13 → P14, dropped 1 place."
+    }
+  }
 }

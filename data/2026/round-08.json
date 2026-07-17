@@ -535,5 +535,27 @@
       "constructor": "Cadillac F1 Team"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "VER",
+      "driverName": "Max Verstappen",
+      "constructor": "Red Bull",
+      "grid": 5,
+      "finish": 2,
+      "delta": 3,
+      "giftedPlaces": 0,
+      "take": "P5 → P2, gained 3 places, all earned on track."
+    },
+    "zero": {
+      "driverCode": "LEC",
+      "driverName": "Charles Leclerc",
+      "constructor": "Ferrari",
+      "grid": 2,
+      "finish": 8,
+      "delta": -6,
+      "giftedPlaces": null,
+      "take": "P2 → P8, dropped 6 places."
+    }
+  }
 }

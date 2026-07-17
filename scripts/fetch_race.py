@@ -99,6 +99,91 @@ def build_dnf_list(results: list) -> list:
     return dnfs
 
 
+def eligible_for_movement(r: dict) -> bool:
+    """Only classified finishers with a real grid slot can be a Hero or
+    Zero - DNFs are already the Drama Log's story, and grid 0 means a
+    pit-lane start (no meaningful starting position to compare against)."""
+    return (
+        not is_dnf(r["status"])
+        and r.get("grid") is not None
+        and r["grid"] > 0
+        and r.get("position") is not None
+    )
+
+
+def movement_delta(r: dict) -> int:
+    """Positive = gained places (grid number went down to a better finish)."""
+    return r["grid"] - r["position"]
+
+
+def count_gift_dnfs(results: list, ahead_of_grid: int) -> int:
+    """How many retirements/DNS happened among cars that started ahead of
+    this grid slot - each one is a place that opened up for free, not one
+    that had to be passed on track."""
+    return sum(
+        1
+        for r in results
+        if is_dnf(r["status"])
+        and r.get("grid") is not None
+        and 0 < r["grid"] < ahead_of_grid
+    )
+
+
+def format_take(grid: int, finish: int, delta: int, gift: int = None) -> str:
+    """Deterministic, template-based one-liner - no LLM, per project rules."""
+    if delta > 0:
+        take = f"P{grid} → P{finish}, gained {delta} place{'s' if delta != 1 else ''}"
+        if gift is not None and gift > 0:
+            earned = delta - gift
+            if earned > 0:
+                take += (
+                    f" — {gift} {'was' if gift == 1 else 'were'} gift{'s' if gift != 1 else ''}"
+                    f" from retirements ahead, {earned} earned on track."
+                )
+            else:
+                take += f" — all {gift} {'was' if gift == 1 else 'were'} gifts from retirements ahead."
+        else:
+            take += ", all earned on track."
+        return take
+    if delta < 0:
+        lost = -delta
+        return f"P{grid} → P{finish}, dropped {lost} place{'s' if lost != 1 else ''}."
+    return f"P{grid} → P{finish}, held their grid slot."
+
+
+def build_movement_entry(results: list, r: dict, is_hero: bool) -> dict:
+    delta = movement_delta(r)
+    gift = None
+    if is_hero and delta > 0:
+        gift = min(count_gift_dnfs(results, r["grid"]), delta)
+    return {
+        "driverCode": r["driverCode"],
+        "driverName": r["driverName"],
+        "constructor": r["constructor"],
+        "grid": r["grid"],
+        "finish": r["position"],
+        "delta": delta,
+        "giftedPlaces": gift,
+        "take": format_take(r["grid"], r["position"], delta, gift=gift),
+    }
+
+
+def build_heroes_zeroes(results: list) -> dict:
+    """Heroes & Zeroes: the biggest climber and biggest faller, grid vs
+    finish, among classified finishers only."""
+    eligible = [r for r in results if eligible_for_movement(r)]
+    if not eligible:
+        return {"hero": None, "zero": None}
+
+    hero_r = max(eligible, key=lambda r: (movement_delta(r), -r["position"], r["driverCode"]))
+    zero_r = min(eligible, key=lambda r: (movement_delta(r), -r["position"], r["driverCode"]))
+
+    return {
+        "hero": build_movement_entry(results, hero_r, is_hero=True),
+        "zero": build_movement_entry(results, zero_r, is_hero=False),
+    }
+
+
 def build_standings_list(standings: list, key: str) -> list:
     # Drivers/constructors with 0 points get positionText "-" and no
     # numeric "position" field at all - unranked, not an error.
@@ -141,6 +226,7 @@ def assemble_race_json(season: int, rnd: int) -> dict:
         "winner": results[0] if results else None,
         "results": results,
         "dnfs": build_dnf_list(results),
+        "heroesZeroes": build_heroes_zeroes(results),
         "driverStandings": build_standings_list(driver_standings, "driver"),
         "constructorStandings": build_standings_list(constructor_standings, "constructor"),
         "editors_take": "",

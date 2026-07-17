@@ -547,5 +547,27 @@
       "constructor": "Aston Martin"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "STR",
+      "driverName": "Lance Stroll",
+      "constructor": "Aston Martin",
+      "grid": 22,
+      "finish": 15,
+      "delta": 7,
+      "giftedPlaces": 6,
+      "take": "P22 → P15, gained 7 places — 6 were gifts from retirements ahead, 1 earned on track."
+    },
+    "zero": {
+      "driverCode": "PIA",
+      "driverName": "Oscar Piastri",
+      "constructor": "McLaren",
+      "grid": 4,
+      "finish": 11,
+      "delta": -7,
+      "giftedPlaces": null,
+      "take": "P4 → P11, dropped 7 places."
+    }
+  }
 }

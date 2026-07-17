@@ -535,5 +535,27 @@
       "constructor": "Aston Martin"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "BOR",
+      "driverName": "Gabriel Bortoleto",
+      "constructor": "Audi",
+      "grid": 21,
+      "finish": 12,
+      "delta": 9,
+      "giftedPlaces": 3,
+      "take": "P21 → P12, gained 9 places — 3 were gifts from retirements ahead, 6 earned on track."
+    },
+    "zero": {
+      "driverCode": "LEC",
+      "driverName": "Charles Leclerc",
+      "constructor": "Ferrari",
+      "grid": 3,
+      "finish": 8,
+      "delta": -5,
+      "giftedPlaces": null,
+      "take": "P3 → P8, dropped 5 places."
+    }
+  }
 }

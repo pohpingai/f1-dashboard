@@ -553,5 +553,27 @@
       "constructor": "Cadillac F1 Team"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "GAS",
+      "driverName": "Pierre Gasly",
+      "constructor": "Alpine F1 Team",
+      "grid": 14,
+      "finish": 7,
+      "delta": 7,
+      "giftedPlaces": 3,
+      "take": "P14 → P7, gained 7 places — 3 were gifts from retirements ahead, 4 earned on track."
+    },
+    "zero": {
+      "driverCode": "RUS",
+      "driverName": "George Russell",
+      "constructor": "Mercedes",
+      "grid": 1,
+      "finish": 2,
+      "delta": -1,
+      "giftedPlaces": null,
+      "take": "P1 → P2, dropped 1 place."
+    }
+  }
 }

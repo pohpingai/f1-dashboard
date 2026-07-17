@@ -104,6 +104,34 @@ function renderDramaLog(race) {
   `;
 }
 
+function renderMovementEntry(entry, kind) {
+  const arrow = kind === "hero" ? "▲" : "▼";
+  return `
+    <li class="movement-entry" style="border-left-color:${teamColor(entry.constructor)}">
+      <span class="movement-arrow movement-arrow-${kind}">${arrow}</span>
+      <div class="movement-body">
+        <div class="movement-name">${entry.driverName}</div>
+        <div class="movement-take">${entry.take}</div>
+      </div>
+    </li>
+  `;
+}
+
+function renderHeroesZeroes(race) {
+  const section = document.getElementById("heroes-zeroes-section");
+  const hz = race.heroesZeroes;
+  if (!hz || (!hz.hero && !hz.zero)) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  const items = [
+    hz.hero ? renderMovementEntry(hz.hero, "hero") : "",
+    hz.zero ? renderMovementEntry(hz.zero, "zero") : "",
+  ].join("");
+  document.getElementById("heroes-zeroes").innerHTML = `<ul class="movement-list">${items}</ul>`;
+}
+
 function renderEditorsTake(race) {
   const section = document.getElementById("editors-take-section");
   if (!race.editors_take || !race.editors_take.trim()) {
@@ -185,6 +213,7 @@ async function loadRound(round) {
   renderWinnerHero(race);
   renderStandings(race);
   renderDramaLog(race);
+  renderHeroesZeroes(race);
   renderEditorsTake(race);
 }
 

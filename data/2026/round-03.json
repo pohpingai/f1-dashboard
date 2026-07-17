@@ -523,5 +523,27 @@
       "constructor": "Aston Martin"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "LAW",
+      "driverName": "Liam Lawson",
+      "constructor": "RB F1 Team",
+      "grid": 14,
+      "finish": 9,
+      "delta": 5,
+      "giftedPlaces": 0,
+      "take": "P14 → P9, gained 5 places, all earned on track."
+    },
+    "zero": {
+      "driverCode": "LIN",
+      "driverName": "Arvid Lindblad",
+      "constructor": "RB F1 Team",
+      "grid": 10,
+      "finish": 14,
+      "delta": -4,
+      "giftedPlaces": null,
+      "take": "P10 → P14, dropped 4 places."
+    }
+  }
 }

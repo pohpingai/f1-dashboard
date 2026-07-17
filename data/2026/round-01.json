@@ -541,5 +541,27 @@
       "constructor": "Aston Martin"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "VER",
+      "driverName": "Max Verstappen",
+      "constructor": "Red Bull",
+      "grid": 20,
+      "finish": 6,
+      "delta": 14,
+      "giftedPlaces": 5,
+      "take": "P20 → P6, gained 14 places — 5 were gifts from retirements ahead, 9 earned on track."
+    },
+    "zero": {
+      "driverCode": "LAW",
+      "driverName": "Liam Lawson",
+      "constructor": "RB F1 Team",
+      "grid": 8,
+      "finish": 13,
+      "delta": -5,
+      "giftedPlaces": null,
+      "take": "P8 → P13, dropped 5 places."
+    }
+  }
 }

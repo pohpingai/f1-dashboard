@@ -239,6 +239,48 @@ select#race-selector {
   display: block;
 }
 
+/* Heroes & Zeroes */
+.movement-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.movement-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.7rem;
+  background: var(--bg);
+  border-radius: 0.5rem;
+  border-left: 4px solid transparent;
+}
+
+.movement-arrow {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.movement-arrow-hero {
+  color: var(--accent);
+}
+
+.movement-arrow-zero {
+  color: var(--text-dim);
+}
+
+.movement-name {
+  font-weight: 600;
+}
+
+.movement-take {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
 /* Editor's take */
 .editors-take p {
   margin: 0;

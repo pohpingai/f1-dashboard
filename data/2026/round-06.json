@@ -553,5 +553,27 @@
       "constructor": "Cadillac F1 Team"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructor": "Aston Martin",
+      "grid": 21,
+      "finish": 10,
+      "delta": 11,
+      "giftedPlaces": 6,
+      "take": "P21 → P10, gained 11 places — 6 were gifts from retirements ahead, 5 earned on track."
+    },
+    "zero": {
+      "driverCode": "RUS",
+      "driverName": "George Russell",
+      "constructor": "Mercedes",
+      "grid": 6,
+      "finish": 12,
+      "delta": -6,
+      "giftedPlaces": null,
+      "take": "P6 → P12, dropped 6 places."
+    }
+  }
 }

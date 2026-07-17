@@ -529,5 +529,27 @@
       "constructor": "Cadillac F1 Team"
     }
   ],
-  "editors_take": ""
+  "editors_take": "",
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "constructor": "Alpine F1 Team",
+      "grid": 19,
+      "finish": 9,
+      "delta": 10,
+      "giftedPlaces": 3,
+      "take": "P19 → P9, gained 10 places — 3 were gifts from retirements ahead, 7 earned on track."
+    },
+    "zero": {
+      "driverCode": "ANT",
+      "driverName": "Andrea Kimi Antonelli",
+      "constructor": "Mercedes",
+      "grid": 1,
+      "finish": 15,
+      "delta": -14,
+      "giftedPlaces": null,
+      "take": "P1 → P15, dropped 14 places."
+    }
+  }
 }

@@ -419,11 +419,81 @@ select#race-selector {
   width: 100%;
   height: auto;
   display: block;
+  touch-action: pan-y; /* let the page scroll vertically while tapping the chart */
 }
 .gap-svg .ax-lbl {
   fill: var(--text-dim);
   font-size: 9px;
   font-variant-numeric: tabular-nums;
+}
+.legend-note {
+  margin-left: auto;
+  font-style: italic;
+}
+
+/* Pace / Gap view toggle */
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.vt-btn {
+  background: var(--bg);
+  color: var(--text-dim);
+  border: none;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.vt-btn + .vt-btn {
+  border-left: 1px solid var(--border);
+}
+.vt-btn.active {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Chart tooltip */
+.chart-wrap {
+  position: relative;
+}
+.chart-tip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.78rem;
+  min-width: 8.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+.tip-lap {
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  margin-bottom: 0.2rem;
+}
+.tip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-variant-numeric: tabular-nums;
+}
+.tip-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tip-label {
+  flex: 1;
+}
+.tip-val {
+  font-weight: 600;
 }
 
 /* Editor's take */

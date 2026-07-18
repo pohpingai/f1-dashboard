@@ -204,7 +204,16 @@ function renderRejoinStrip(race) {
     </details>`;
 }
 
-// ---- Milestone 3: Gap Trace -------------------------------------------
+// ---- Milestone 3: Gap Trace (Pace + Gap views) ------------------------
+
+// Laps whose time exceeds a driver's median green-lap pace by this much are
+// treated as safety-car / VSC / slow (yellow-flag) laps and dropped from the
+// Pace view, so they don't flatten the scale for the ~90s racing laps. Real
+// green laps sit within a few percent of the median even with fuel/tyre/traffic
+// spread; SC and yellow laps are 10%+ slower, so 1.08 cleanly separates them.
+const SC_PACE_FACTOR = 1.08;
+
+const CHART = { W: 360, H: 220, padT: 16, padB: 26 };
 
 function driverIndex(gapTrace) {
   // code -> { constructor, pitLaps:Set, t: Map(lap -> seconds) }
@@ -226,60 +235,240 @@ function gapSeries(a, b) {
   return laps.map((lap) => ({ lap, gap: b.t.get(lap) - a.t.get(lap) }));
 }
 
+function median(arr) {
+  if (!arr.length) return 0;
+  const s = [...arr].sort((x, y) => x - y);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
+}
+
+// A single lap's time is the difference between consecutive cumulative crossing
+// times (a "first difference"). Only defined for consecutive laps we have.
+function computeLapTimes(t) {
+  const laps = [...t.keys()].sort((x, y) => x - y);
+  const out = new Map();
+  for (let i = 1; i < laps.length; i++) {
+    const L = laps[i], P = laps[i - 1];
+    if (L - P === 1) out.set(L, t.get(L) - t.get(P));
+  }
+  return out;
+}
+
+// Keep only green-flag racing laps: drop pit in-laps (in pitLaps), out-laps
+// (lap after a pit lap), and safety-car/VSC laps (well above median pace).
+function racingLapTimes(lapTimes, pitLaps) {
+  const nonPit = [...lapTimes.entries()].filter(([L]) => !pitLaps.has(L) && !pitLaps.has(L - 1));
+  const med = median(nonPit.map(([, v]) => v));
+  const cutoff = med > 0 ? med * SC_PACE_FACTOR : Infinity;
+  const racing = new Map();
+  let removed = 0;
+  for (const [L, v] of lapTimes) {
+    const isPit = pitLaps.has(L) || pitLaps.has(L - 1);
+    if (isPit || v > cutoff) removed++;
+    else racing.set(L, v);
+  }
+  return { racing, removed };
+}
+
+function scales(lapMin, lapMax, vMin, vMax, padL, padR) {
+  const { W, H, padT, padB } = CHART;
+  return {
+    x: (lap) => padL + ((lap - lapMin) / (lapMax - lapMin || 1)) * (W - padL - padR),
+    y: (v) => padT + (1 - (v - vMin) / (vMax - vMin || 1)) * (H - padT - padB),
+  };
+}
+
+function axisLabels(x, y, lapMin, lapMax, yVals, fmtY, padL) {
+  const { H, padB } = CHART;
+  const step = Math.max(1, Math.round((lapMax - lapMin) / 5));
+  let out = "";
+  for (let l = lapMin; l <= lapMax; l += step) {
+    out += `<text x="${x(l).toFixed(1)}" y="${H - padB + 14}" class="ax-lbl" text-anchor="middle">${l}</text>`;
+  }
+  for (const v of yVals) {
+    out += `<text x="${padL - 4}" y="${(y(v) + 3).toFixed(1)}" class="ax-lbl" text-anchor="end">${fmtY(v)}</text>`;
+  }
+  return out;
+}
+
+// "Gap" view: the single cumulative-gap line between two drivers.
 function buildGapChart(aCode, a, bCode, b) {
   const series = gapSeries(a, b);
   if (series.length < 2) {
-    return `<p class="module-note">Not enough shared laps to compare these two.</p>`;
+    return { html: `<p class="module-note">Not enough shared laps to compare these two.</p>`, model: null };
   }
-
-  const W = 360, H = 220;
-  const padL = 34, padR = 12, padT = 16, padB = 26;
+  const { W, H, padT, padB } = CHART;
+  const padL = 34, padR = 12;
   const laps = series.map((s) => s.lap);
   const gaps = series.map((s) => s.gap);
   const lapMin = Math.min(...laps), lapMax = Math.max(...laps);
   let gMin = Math.min(0, ...gaps), gMax = Math.max(0, ...gaps);
   const pad = Math.max((gMax - gMin) * 0.1, 0.5);
   gMin -= pad; gMax += pad;
-
-  const x = (lap) => padL + ((lap - lapMin) / (lapMax - lapMin || 1)) * (W - padL - padR);
-  const y = (g) => padT + (1 - (g - gMin) / (gMax - gMin || 1)) * (H - padT - padB);
-
-  const aColor = teamColor(a.constructor);
-  const bColor = teamColor(b.constructor);
+  const { x, y } = scales(lapMin, lapMax, gMin, gMax, padL, padR);
+  const aColor = teamColor(a.constructor), bColor = teamColor(b.constructor);
 
   const line = series.map((s, i) => `${i ? "L" : "M"}${x(s.lap).toFixed(1)},${y(s.gap).toFixed(1)}`).join(" ");
-
   const zeroY = y(0).toFixed(1);
-  const yTick = (g) => `<text x="${padL - 4}" y="${(y(g) + 3).toFixed(1)}" class="ax-lbl" text-anchor="end">${g > 0 ? "+" : ""}${g.toFixed(1)}</text>`;
-
-  // A few x-axis lap labels.
-  const step = Math.max(1, Math.round((lapMax - lapMin) / 5));
-  const xLabels = [];
-  for (let l = lapMin; l <= lapMax; l += step) {
-    xLabels.push(`<text x="${x(l).toFixed(1)}" y="${H - padB + 14}" class="ax-lbl" text-anchor="middle">${l}</text>`);
-  }
-
-  // Pit-lap markers for each driver, colored by team, only within lap range.
   const pitMarks = (pitLaps, color) =>
-    [...pitLaps]
-      .filter((l) => l >= lapMin && l <= lapMax)
+    [...pitLaps].filter((l) => l >= lapMin && l <= lapMax)
       .map((l) => `<line x1="${x(l).toFixed(1)}" y1="${padT}" x2="${x(l).toFixed(1)}" y2="${H - padB}" stroke="${color}" stroke-width="1" stroke-dasharray="3 3" opacity="0.7"/><circle cx="${x(l).toFixed(1)}" cy="${padT + 4}" r="3" fill="${color}"/>`)
       .join("");
 
-  return `
+  const lookup = new Map();
+  for (const s of series) {
+    const ahead = s.gap >= 0 ? aCode : bCode;
+    const color = s.gap >= 0 ? aColor : bColor;
+    lookup.set(s.lap, {
+      rows: [{ label: `${ahead} ahead`, color, value: `${Math.abs(s.gap).toFixed(1)}s` }],
+      points: [{ x: x(s.lap), y: y(s.gap), color }],
+    });
+  }
+
+  const html = `
     <div class="gap-legend">
       <span><span class="dot" style="background:${aColor}"></span>${aCode} ahead ▲</span>
       <span><span class="dot" style="background:${bColor}"></span>${bCode} ahead ▼</span>
     </div>
-    <svg viewBox="0 0 ${W} ${H}" class="gap-svg" role="img" aria-label="Gap between ${aCode} and ${bCode} per lap">
-      <line x1="${padL}" y1="${zeroY}" x2="${W - padR}" y2="${zeroY}" stroke="var(--border)" stroke-width="1"/>
-      ${yTick(gMax - pad / 2)}${yTick(0)}${yTick(gMin + pad / 2)}
-      ${xLabels.join("")}
-      ${pitMarks(a.pitLaps, aColor)}
-      ${pitMarks(b.pitLaps, bColor)}
-      <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
-    </svg>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 ${W} ${H}" class="gap-svg" role="img" aria-label="Gap between ${aCode} and ${bCode} per lap">
+        <line x1="${padL}" y1="${zeroY}" x2="${W - padR}" y2="${zeroY}" stroke="var(--border)" stroke-width="1"/>
+        ${axisLabels(x, y, lapMin, lapMax, [gMax - pad / 2, 0, gMin + pad / 2], (v) => `${v > 0 ? "+" : ""}${v.toFixed(1)}`, padL)}
+        ${pitMarks(a.pitLaps, aColor)}${pitMarks(b.pitLaps, bColor)}
+        <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+        <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
+        <circle class="tip-marker" r="3.5" style="display:none"/>
+      </svg>
+      <div class="chart-tip" style="display:none"></div>
+    </div>
     <p class="module-note">Dashed lines mark pit laps. When the trace crosses the centre after a stop, that's a completed undercut/overcut.</p>`;
+  return { html, model: { W, padL, padR, lapMin, lapMax, laps, xOf: x, lookup } };
+}
+
+// "Pace" view: each driver's per-lap lap time, with a ribbon between them
+// tinted by whoever leads on track that lap.
+function buildPaceChart(aCode, a, bCode, b) {
+  const aT = racingLapTimes(computeLapTimes(a.t), a.pitLaps);
+  const bT = racingLapTimes(computeLapTimes(b.t), b.pitLaps);
+  const aR = aT.racing, bR = bT.racing;
+  const allVals = [...aR.values(), ...bR.values()];
+  if (allVals.length < 2) {
+    return { html: `<p class="module-note">Not enough green-flag laps to compare pace.</p>`, model: null };
+  }
+  const { W, H, padT, padB } = CHART;
+  const padL = 40, padR = 12;
+  const allLaps = [...new Set([...aR.keys(), ...bR.keys()])].sort((x, y) => x - y);
+  const lapMin = allLaps[0], lapMax = allLaps[allLaps.length - 1];
+  let vMin = Math.min(...allVals), vMax = Math.max(...allVals);
+  const vpad = Math.max((vMax - vMin) * 0.08, 0.2);
+  vMin -= vpad; vMax += vpad;
+  const { x, y } = scales(lapMin, lapMax, vMin, vMax, padL, padR);
+  const aColor = teamColor(a.constructor), bColor = teamColor(b.constructor);
+
+  const toPts = (m) => [...m.entries()].sort((p, q) => p[0] - q[0]).map(([lap, v]) => ({ lap, x: x(lap), y: y(v) }));
+  const pathWithGaps = (pts) => {
+    let d = "", prev = null;
+    for (const p of pts) { d += `${prev === null || p.lap - prev !== 1 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)} `; prev = p.lap; }
+    return d.trim();
+  };
+
+  // Ribbon: one quad per lap interval where both drivers have a racing lap,
+  // filled with the team color of whoever is ahead on track (lower cumulative t).
+  let ribbon = "";
+  for (const L of allLaps) {
+    const L1 = L + 1;
+    if (aR.has(L) && aR.has(L1) && bR.has(L) && bR.has(L1)) {
+      const leaderColor = (a.t.get(L) ?? Infinity) < (b.t.get(L) ?? Infinity) ? aColor : bColor;
+      const pts = `${x(L).toFixed(1)},${y(aR.get(L)).toFixed(1)} ${x(L1).toFixed(1)},${y(aR.get(L1)).toFixed(1)} ${x(L1).toFixed(1)},${y(bR.get(L1)).toFixed(1)} ${x(L).toFixed(1)},${y(bR.get(L)).toFixed(1)}`;
+      ribbon += `<polygon points="${pts}" fill="${leaderColor}" opacity="0.16"/>`;
+    }
+  }
+
+  const pitTicks = (pitLaps, color) =>
+    [...pitLaps].filter((l) => l >= lapMin && l <= lapMax)
+      .map((l) => `<line x1="${x(l).toFixed(1)}" y1="${H - padB}" x2="${x(l).toFixed(1)}" y2="${H - padB - 5}" stroke="${color}" stroke-width="2"/>`).join("");
+
+  const lookup = new Map();
+  for (const L of allLaps) {
+    const rows = [], points = [];
+    if (aR.has(L)) { rows.push({ label: aCode, color: aColor, value: `${aR.get(L).toFixed(1)}s` }); points.push({ x: x(L), y: y(aR.get(L)), color: aColor }); }
+    if (bR.has(L)) { rows.push({ label: bCode, color: bColor, value: `${bR.get(L).toFixed(1)}s` }); points.push({ x: x(L), y: y(bR.get(L)), color: bColor }); }
+    if (aR.has(L) && bR.has(L)) {
+      const d = Math.abs(aR.get(L) - bR.get(L));
+      const faster = aR.get(L) < bR.get(L) ? aCode : bCode;
+      rows.push({ label: `${faster} faster by`, color: "var(--text-dim)", value: `${d.toFixed(1)}s` });
+    }
+    lookup.set(L, { rows, points });
+  }
+
+  const removed = aT.removed + bT.removed;
+  const midV = (vMin + vMax) / 2;
+  const html = `
+    <div class="gap-legend">
+      <span><span class="dot" style="background:${aColor}"></span>${aCode}</span>
+      <span><span class="dot" style="background:${bColor}"></span>${bCode}</span>
+      <span class="legend-note">lap time (s)</span>
+    </div>
+    <div class="chart-wrap">
+      <svg viewBox="0 0 ${W} ${H}" class="gap-svg" role="img" aria-label="Lap-time pace of ${aCode} and ${bCode}">
+        ${ribbon}
+        ${axisLabels(x, y, lapMin, lapMax, [vMax - vpad, midV, vMin + vpad], (v) => v.toFixed(1), padL)}
+        ${pitTicks(a.pitLaps, aColor)}${pitTicks(b.pitLaps, bColor)}
+        <path d="${pathWithGaps(toPts(aR))}" fill="none" stroke="${aColor}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="${pathWithGaps(toPts(bR))}" fill="none" stroke="${bColor}" stroke-width="2" stroke-linejoin="round"/>
+        <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
+        <circle class="tip-marker" r="3.5" style="display:none"/>
+        <circle class="tip-marker" r="3.5" style="display:none"/>
+      </svg>
+      <div class="chart-tip" style="display:none"></div>
+    </div>
+    <p class="module-note">Each line is a driver's lap time; the shaded band is the per-lap gap, tinted by whoever leads on track. ${removed} pit &amp; safety-car lap${removed === 1 ? "" : "s"} removed so the scale shows green-flag pace.</p>`;
+  return { html, model: { W, padL, padR, lapMin, lapMax, laps: allLaps, xOf: x, lookup } };
+}
+
+// Hover (desktop) / tap (mobile) tooltip shared by both views.
+function attachChartInteraction(wrap, model) {
+  if (!model) return;
+  const svg = wrap.querySelector("svg");
+  const tip = wrap.querySelector(".chart-tip");
+  const guide = svg.querySelector(".guide");
+  const markers = [...svg.querySelectorAll(".tip-marker")];
+
+  const nearestLap = (clientX) => {
+    const r = svg.getBoundingClientRect();
+    const vbX = ((clientX - r.left) / r.width) * model.W;
+    const raw = model.lapMin + ((vbX - model.padL) / (model.W - model.padL - model.padR)) * (model.lapMax - model.lapMin);
+    let best = null, bd = Infinity;
+    for (const l of model.laps) { const d = Math.abs(l - raw); if (d < bd) { bd = d; best = l; } }
+    return best;
+  };
+
+  const show = (clientX) => {
+    const lap = nearestLap(clientX);
+    const info = lap != null ? model.lookup.get(lap) : null;
+    if (!info) return;
+    const gx = model.xOf(lap);
+    guide.setAttribute("x1", gx); guide.setAttribute("x2", gx); guide.style.display = "";
+    markers.forEach((m, i) => {
+      const p = info.points[i];
+      if (p) { m.setAttribute("cx", p.x); m.setAttribute("cy", p.y); m.setAttribute("fill", p.color); m.style.display = ""; }
+      else m.style.display = "none";
+    });
+    tip.innerHTML = `<div class="tip-lap">Lap ${lap}</div>` + info.rows.map((row) =>
+      `<div class="tip-row"><span class="tip-dot" style="background:${row.color}"></span><span class="tip-label">${row.label}</span><span class="tip-val">${row.value}</span></div>`).join("");
+    tip.style.display = "block";
+    const svgRect = svg.getBoundingClientRect(), wrapRect = wrap.getBoundingClientRect();
+    const px = (svgRect.left - wrapRect.left) + (gx / model.W) * svgRect.width;
+    const left = Math.max(0, Math.min(px - tip.offsetWidth / 2, wrap.clientWidth - tip.offsetWidth));
+    tip.style.left = `${left}px`;
+    tip.style.top = "0px";
+  };
+  const hide = () => { tip.style.display = "none"; guide.style.display = "none"; markers.forEach((m) => (m.style.display = "none")); };
+
+  svg.addEventListener("mousemove", (e) => show(e.clientX));
+  svg.addEventListener("mouseleave", hide);
+  svg.addEventListener("touchstart", (e) => show(e.touches[0].clientX), { passive: true });
+  svg.addEventListener("touchmove", (e) => show(e.touches[0].clientX), { passive: true });
 }
 
 function renderGapTrace(race) {
@@ -295,13 +484,13 @@ function renderGapTrace(race) {
   const codes = [...idx.keys()];
   // Default to a natural battle: winner vs runner-up when both have timing.
   const order = race.results.map((r) => r.driverCode).filter((c) => idx.has(c));
-  let defA = order[0] ?? codes[0];
-  let defB = order[1] ?? codes.find((c) => c !== defA) ?? codes[1];
+  const defA = order[0] ?? codes[0];
+  const defB = order[1] ?? codes.find((c) => c !== defA) ?? codes[1];
 
   const opts = (sel) =>
     codes.map((c) => `<option value="${c}"${c === sel ? " selected" : ""}>${c}</option>`).join("");
 
-  const hook = `${defA} vs ${defB} — pick any two drivers to trace their gap lap by lap.`;
+  const hook = `${defA} vs ${defB} — compare their pace and race gap lap by lap.`;
 
   document.getElementById("gap-trace").innerHTML = `
     <details class="disclosure">
@@ -311,22 +500,42 @@ function renderGapTrace(race) {
         <span class="gap-vs">vs</span>
         <select id="gap-b" aria-label="Second driver">${opts(defB)}</select>
       </div>
+      <div class="view-toggle" role="tablist" aria-label="Chart view">
+        <button type="button" class="vt-btn" data-view="pace" role="tab">Pace</button>
+        <button type="button" class="vt-btn" data-view="gap" role="tab">Gap</button>
+      </div>
       <div id="gap-chart"></div>
     </details>`;
 
   const selA = document.getElementById("gap-a");
   const selB = document.getElementById("gap-b");
+  const toggle = document.querySelector("#gap-trace .view-toggle");
+  let view = "pace"; // default to Pace
+
   const draw = () => {
     const aCode = selA.value, bCode = selB.value;
     const chart = document.getElementById("gap-chart");
+    toggle.querySelectorAll(".vt-btn").forEach((btn) =>
+      btn.classList.toggle("active", btn.dataset.view === view));
     if (aCode === bCode) {
       chart.innerHTML = `<p class="module-note">Pick two different drivers.</p>`;
       return;
     }
-    chart.innerHTML = buildGapChart(aCode, idx.get(aCode), bCode, idx.get(bCode));
+    const a = idx.get(aCode), b = idx.get(bCode);
+    const built = view === "pace" ? buildPaceChart(aCode, a, bCode, b) : buildGapChart(aCode, a, bCode, b);
+    chart.innerHTML = built.html;
+    const wrap = chart.querySelector(".chart-wrap");
+    if (wrap) attachChartInteraction(wrap, built.model);
   };
+
   selA.addEventListener("change", draw);
   selB.addEventListener("change", draw);
+  toggle.addEventListener("click", (e) => {
+    const btn = e.target.closest(".vt-btn");
+    if (!btn || btn.dataset.view === view) return;
+    view = btn.dataset.view;
+    draw();
+  });
   draw();
 }
 

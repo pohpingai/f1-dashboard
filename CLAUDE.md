@@ -59,8 +59,11 @@ Be polite to free APIs: cache raw responses in the workflow, retry gently, never
 
 ### Milestone 3 — Rejoin Strip + Gap Trace (v1.1; they share `/v1/laps` data)
 - **Rejoin Strip:** for each pit stop, determine from *actual* post-pit lap data (not projections — we have hindsight) who the driver rejoined behind/ahead of and the real gaps. Flag: rival 0–2s ahead at rejoin → "Dirty air"; rival 0–1.5s behind → "Rejoin clash"; otherwise "Clean air". Render as a per-driver timeline with colored flags.
-- **Gap Trace:** two dropdowns to pick any two drivers; chart plots the cumulative time gap between them lap by lap. Annotate pit laps. This chart should make undercuts and tyre fade visually obvious.
-- Acceptance: pick any documented undercut from 2026 and the Gap Trace visibly shows the gap flip on the pit laps; the Rejoin Strip flags match what actually happened on track.
+- **Gap Trace:** two dropdowns to pick any two drivers, plus a **Pace/Gap view toggle** (defaults to Pace):
+  - *Gap view* plots the cumulative time gap between them lap by lap, with pit laps annotated — makes undercuts and tyre fade visually obvious.
+  - *Pace view* plots each driver's per-lap lap time as a line in team colours, with a ribbon between them tinted per-lap by whoever leads on track. Lap times are derived client-side as the first difference of the cumulative crossing times already in the JSON — no re-fetch. **Outlier handling (honest labels):** pit in/out-laps and safety-car/yellow laps (>1.08× a driver's median green pace) are dropped so a few 100s+ laps don't squash the ~90s scale, and the caption states how many were removed. This is *raw* lap-time comparison, NOT the fuel-corrected tyre-degradation model (that stays in v2 — do not conflate them, and never present raw pace as a degradation cliff).
+  - Both views have a hover (desktop) / tap (mobile) tooltip showing the lap and exact values.
+- Acceptance: pick any documented undercut from 2026 and the Gap view visibly shows the gap flip on the pit laps; the Pace view shows a readable green-flag scale with SC/pit laps removed; the Rejoin Strip flags match what actually happened on track.
 
 ### v2 backlog (do NOT build yet; architecture must not preclude them)
 - Telemetry micro-sector overlay (two drivers' speed/brake/throttle aligned by track distance; FastF1; heavy — downsample).

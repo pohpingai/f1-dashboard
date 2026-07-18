@@ -490,11 +490,11 @@ function renderGapTrace(race) {
   const opts = (sel) =>
     codes.map((c) => `<option value="${c}"${c === sel ? " selected" : ""}>${c}</option>`).join("");
 
-  const hook = `${defA} vs ${defB} — compare their pace and race gap lap by lap.`;
+  const hookText = (aCode, bCode) => `${aCode} vs ${bCode} — compare their pace and race gap lap by lap.`;
 
   document.getElementById("gap-trace").innerHTML = `
     <details class="disclosure">
-      <summary><span class="hook">${hook}</span><span class="chev">▾</span></summary>
+      <summary><span class="hook">${hookText(defA, defB)}</span><span class="chev">▾</span></summary>
       <div class="gap-controls">
         <select id="gap-a" aria-label="First driver">${opts(defA)}</select>
         <span class="gap-vs">vs</span>
@@ -512,9 +512,12 @@ function renderGapTrace(race) {
   const toggle = document.querySelector("#gap-trace .view-toggle");
   let view = "pace"; // default to Pace
 
+  const hookEl = document.querySelector("#gap-trace .hook");
+
   const draw = () => {
     const aCode = selA.value, bCode = selB.value;
     const chart = document.getElementById("gap-chart");
+    if (hookEl) hookEl.textContent = hookText(aCode, bCode);
     toggle.querySelectorAll(".vt-btn").forEach((btn) =>
       btn.classList.toggle("active", btn.dataset.view === view));
     if (aCode === bCode) {

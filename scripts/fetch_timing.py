@@ -35,6 +35,13 @@ CACHE_DIR = REPO_ROOT / ".cache" / "openf1"
 DIRTY_AIR_AHEAD = 2.0     # rival 0-2s ahead at rejoin -> stuck in dirty air
 REJOIN_CLASH_BEHIND = 1.5  # rival 0-1.5s behind at rejoin -> under immediate threat
 
+# OpenF1's /v1/pit logs every pit-LANE entry, including cars sitting in the pit
+# lane during a red-flag stoppage - which show up as absurd "durations" (e.g.
+# 2000+ seconds at a red-flagged Monaco). Those are not racing pit stops and
+# their rejoin gaps are meaningless (the field is bunched under the flag), so we
+# drop them. Green-flag pit-lane transit is ~15-35s even at the slowest circuit.
+MAX_PLAUSIBLE_PIT_SECONDS = 100.0
+
 
 class OpenF1Locked(Exception):
     """Raised when OpenF1 returns its 'live session in progress' 401 lock."""
@@ -117,6 +124,19 @@ def _driver_number_to_code(drivers: list) -> dict:
         if num is not None and code:
             mapping[num] = code
     return mapping
+
+
+def _clean_pits(pits: list) -> list:
+    """Drop red-flag / anomalous pit-lane entries (implausibly long durations)
+    so only real racing stops feed the Rejoin Strip and pit markers. Rows with
+    no duration are kept - we can't judge them, and hiding a real stop is worse."""
+    kept = []
+    for pit in pits:
+        dur = pit.get("pit_duration")
+        if dur is not None and dur > MAX_PLAUSIBLE_PIT_SECONDS:
+            continue
+        kept.append(pit)
+    return kept
 
 
 def _laps_by_driver(laps: list) -> dict:
@@ -319,6 +339,7 @@ def build_timing_blocks(season: int, race_date: str, results: list) -> dict:
     code_to_constructor = {r["driverCode"]: r["constructor"]
                            for r in results if r.get("driverCode")}
     laps_by_driver = _laps_by_driver(laps)
+    pits = _clean_pits(pits)
 
     pit_laps_by_code: dict = {}
     for pit in pits:

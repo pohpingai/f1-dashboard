@@ -19,7 +19,7 @@ A free, static F1 dashboard that updates ~3 hours after each session. It serves 
 
 - **Static site** (plain HTML/CSS/JS or a lightweight static framework — keep it simple, no heavy SPA framework unless justified) hosted on **GitHub Pages**.
 - **GitHub Actions** does all data work:
-  - `schedule` (cron) trigger: runs ~3 hours after each race/quali session during the season.
+  - `schedule` (cron) trigger: runs **every 4 hours, every day** (`0 */4 * * *`), publishing a race ~4h after its real UTC start (≈2h after the flag). It must run daily, not weekend-only: a late/delayed race can turn eligible after midnight UTC, and GitHub sometimes skips scheduled runs, so a weekend-only cron silently missed races (this delayed the Belgian GP by days until it was fixed). Eligibility is keyed off the race's actual UTC start time + a 4h buffer in `update_data.py` — not a whole-day buffer, which never hit the "~3 hours" target. Free on public repos (unlimited Actions minutes).
   - `workflow_dispatch` trigger: manual "Run workflow" button so the owner can refresh from their phone via the GitHub app or mobile browser. Both triggers must exist.
   - The workflow runs a **Python** pipeline that fetches raw data, computes everything, and writes one JSON file per race, then commits and redeploys the site.
 - **Data layout:** `data/2026/round-01.json`, `round-02.json`, … plus a small `data/index.json` (season manifest: rounds, names, dates, which rounds have data). The site's race selector reads the manifest.

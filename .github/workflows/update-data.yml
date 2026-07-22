@@ -1,11 +1,13 @@
 name: Update race data
 
 on:
-  # The "cloud robot" checks every 4 hours on race weekends (Sat/Sun UTC)
-  # so results show up within a few hours of any session finishing,
-  # regardless of which timezone the race is in.
+  # The "cloud robot" checks every 4 hours, every day. Running daily (not just
+  # weekends) matters: a Sunday race becomes eligible a few hours after it
+  # finishes, and this guarantees a run happens then - and again the next day -
+  # regardless of the race's timezone. Runs are ~15s and free on public repos,
+  # so the extra weekday checks (which just no-op) cost nothing.
   schedule:
-    - cron: "0 */4 * * 6,0"
+    - cron: "0 */4 * * *"
   # The manual "Run workflow" button (works from the GitHub app on a phone).
   workflow_dispatch:
 

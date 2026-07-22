@@ -13,23 +13,38 @@ Usage:
 """
 
 import sys
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import build_manifest
 import fetch_race
 
-# Give race results a day to be finalized (e.g. post-race penalties) before
-# we treat a round as "completed" and fetch it.
-COMPLETION_BUFFER = timedelta(days=1)
+# Wait this long after a race's scheduled start before fetching it: long enough
+# for official results (including post-race penalties) to be finalized, short
+# enough to still publish the same evening - matching the brief's "~3 hours
+# after each session". A typical race starts ~13:00 UTC and finishes ~15:00, so
+# 4h-after-start lands ~2h after the flag. Because we key off the real UTC start
+# time (not just the date) and the workflow runs daily, a Sunday race becomes
+# eligible on Sunday night - it no longer has to wait for the next weekend.
+COMPLETION_BUFFER = timedelta(hours=4)
+
+
+def race_start_utc(race: dict) -> datetime:
+    """A race's scheduled start as an aware UTC datetime. Jolpica gives a date
+    plus (usually) a UTC time like '13:00:00Z'; if the time is missing we assume
+    end-of-day so we never fetch before the race could have happened."""
+    time_str = (race.get("time") or "23:59:00Z").replace("Z", "+00:00")
+    dt = datetime.fromisoformat(f"{race['date']}T{time_str}")
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
 
 
 def completed_rounds(season: int) -> list:
     races = build_manifest.fetch_season_schedule(season)
-    today = date.today()
+    now = datetime.now(timezone.utc)
     completed = []
     for race in races:
-        race_date = datetime.strptime(race["date"], "%Y-%m-%d").date()
-        if race_date + COMPLETION_BUFFER <= today:
+        if race_start_utc(race) + COMPLETION_BUFFER <= now:
             completed.append(int(race["round"]))
     return completed
 

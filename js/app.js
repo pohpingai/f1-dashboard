@@ -649,7 +649,7 @@ function renderGlanceHeroesZeroes(race) {
   const quiet = hero && zero && hero.delta < 5 && zero.delta > -5;
   const hook = quiet
     ? "Not much shuffling up front today."
-    : `Best mover: ${hero ? `${hero.driverName} +${hero.delta}` : "—"}. Biggest faller: ${zero ? `${zero.driverName} ${zero.delta}` : "—"}.`;
+    : `Best mover: ${hero ? `${hero.driverName} +${hero.delta}` : "—"}.<br>Biggest faller: ${zero ? `${zero.driverName} ${zero.delta}` : "—"}.`;
   section.innerHTML = `
     <button type="button" class="glance-card-btn" data-target="deep-dive-heroes-zeroes">
       <h3>Heroes &amp; zeroes</h3>

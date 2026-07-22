@@ -565,13 +565,16 @@ function computeSpiciestFact(race) {
   const rs = race.rejoinStrip;
   const clashes = rs && rs.available && rs.stops ? rs.stops.filter((s) => s.flag === "Rejoin clash").length : 0;
 
+  // hero.take/zero.take are written for the Heroes & Zeroes module, where the
+  // driver's name is shown as a separate line above it - reused here under a
+  // different driver's (the winner's) name, so it must be attributed explicitly.
   if (dnfs >= 5) return `Chaos race: ${dnfs} cars didn't see the flag.`;
   if (race.winner && race.winner.grid >= 6) return `${race.winner.driverName} won from P${race.winner.grid} — the grid didn't matter today.`;
-  if (hero && hero.delta >= 12) return hero.take;
-  if (zero && zero.delta <= -8) return zero.take;
+  if (hero && hero.delta >= 12) return `${hero.driverName}: ${hero.take}`;
+  if (zero && zero.delta <= -8) return `${zero.driverName}: ${zero.take}`;
   if (clashes >= 2) return `${clashes} rejoin clashes after the stops — pit lane bit back.`;
   if (dnfs >= 3) return `${dnfs} retirements added late drama.`;
-  if (hero && hero.delta >= 8) return hero.take;
+  if (hero && hero.delta >= 8) return `${hero.driverName}: ${hero.take}`;
   return race.winner ? `${race.winner.driverName} led ${race.raceName} home for ${race.winner.constructor}.` : "";
 }
 

@@ -190,7 +190,7 @@ function renderRejoinStrip(race) {
     const stops = byDriver.get(code);
     const constructor = stops[0].constructor;
     return `
-      <div class="rejoin-driver" style="border-left-color:${teamColor(constructor)}">
+      <div class="rejoin-driver" id="rejoin-driver-${code}" style="border-left-color:${teamColor(constructor)}">
         <div class="rejoin-driver-name">${code}</div>
         <ul class="rejoin-stops">${stops.map(stopRow).join("")}</ul>
       </div>`;
@@ -542,6 +542,199 @@ function renderGapTrace(race) {
   draw();
 }
 
+// ---- Glance view: template-based hooks (deterministic, no LLM) ----------
+// Every hook here is computed from numbers already in the race JSON and
+// gated by an explicit threshold approved before this was built. If nothing
+// crosses the bar the honest mild version is shown - never a placeholder.
+
+function dnfCount(race) {
+  return (race.dnfs || []).length;
+}
+
+function collisionDnfCount(race) {
+  return (race.dnfs || []).filter((d) => /collision|accident/i.test(d.reason || "")).length;
+}
+
+// Priority-ordered candidates for the hero's one-line "spiciest fact".
+// First candidate whose threshold is met wins; falls through to a mild
+// default naming the winner if nothing crosses a bar.
+function computeSpiciestFact(race) {
+  const hz = race.heroesZeroes || {};
+  const hero = hz.hero, zero = hz.zero;
+  const dnfs = dnfCount(race);
+  const rs = race.rejoinStrip;
+  const clashes = rs && rs.available && rs.stops ? rs.stops.filter((s) => s.flag === "Rejoin clash").length : 0;
+
+  if (dnfs >= 5) return `Chaos race: ${dnfs} cars didn't see the flag.`;
+  if (race.winner && race.winner.grid >= 6) return `${race.winner.driverName} won from P${race.winner.grid} — the grid didn't matter today.`;
+  if (hero && hero.delta >= 12) return hero.take;
+  if (zero && zero.delta <= -8) return zero.take;
+  if (clashes >= 2) return `${clashes} rejoin clashes after the stops — pit lane bit back.`;
+  if (dnfs >= 3) return `${dnfs} retirements added late drama.`;
+  if (hero && hero.delta >= 8) return hero.take;
+  return race.winner ? `${race.winner.driverName} led ${race.raceName} home for ${race.winner.constructor}.` : "";
+}
+
+function renderGlanceHero(race) {
+  const el = document.getElementById("glance-hero");
+  if (!race.winner) {
+    el.innerHTML = "<p>No result data for this round yet.</p>";
+    return;
+  }
+  el.style.borderLeftColor = teamColor(race.winner.constructor);
+  el.innerHTML = `
+    <div class="winner-meta">${race.raceName}</div>
+    <div class="winner-name">🏆 ${race.winner.driverName}</div>
+    <div class="glance-fact">${computeSpiciestFact(race)}</div>
+  `;
+}
+
+// Title-fight threshold: 25 points is the value of a single race win, so a
+// lead that size or smaller is genuinely still "one bad weekend" territory.
+// Over 100 points is more than four wins clear - "running away with it".
+function computeTitleFightHook(race) {
+  const ds = race.driverStandings;
+  if (!ds || ds.length < 2) return "";
+  const [p1, p2] = ds;
+  const lead = Math.round((p1.points - p2.points) * 10) / 10;
+  if (lead <= 25) return `Title fight: ${lead} points cover P1 and P2.`;
+  if (lead > 100) return `${p1.driverName} is running away with it — a ${lead}-point lead.`;
+  return `${p1.driverName} leads the championship by ${lead} points.`;
+}
+
+function renderGlanceStandings(race) {
+  const el = document.getElementById("glance-standings");
+  el.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-standings">
+      <h3>Title race</h3>
+      <p class="glance-hook">${computeTitleFightHook(race)}</p>
+    </button>
+  `;
+}
+
+function computeDramaHook(race) {
+  const n = dnfCount(race);
+  if (n === 0) return "Clean race — everyone finished.";
+  const collisions = collisionDnfCount(race);
+  if (collisions >= 2) return `${n} retirement${n === 1 ? "" : "s"}, including a multi-car incident.`;
+  if (n <= 2) {
+    const names = race.dnfs.map((d) => d.driverName).join(", ");
+    return `${n} retirement${n === 1 ? "" : "s"}: ${names}.`;
+  }
+  return `${n} retirements — a rough day for reliability.`;
+}
+
+function renderGlanceDrama(race) {
+  const el = document.getElementById("glance-drama");
+  el.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-drama">
+      <h3>Drama log</h3>
+      <p class="glance-hook">${computeDramaHook(race)}</p>
+    </button>
+  `;
+}
+
+function renderGlanceHeroesZeroes(race) {
+  const section = document.getElementById("glance-heroes-zeroes");
+  const hz = race.heroesZeroes;
+  if (!hz || (!hz.hero && !hz.zero)) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  const hero = hz.hero, zero = hz.zero;
+  const quiet = hero && zero && hero.delta < 5 && zero.delta > -5;
+  const hook = quiet
+    ? "Not much shuffling up front today."
+    : `Best mover: ${hero ? `${hero.driverName} +${hero.delta}` : "—"}. Biggest faller: ${zero ? `${zero.driverName} ${zero.delta}` : "—"}.`;
+  section.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-heroes-zeroes">
+      <h3>Heroes &amp; zeroes</h3>
+      <p class="glance-hook">${hook}</p>
+    </button>
+  `;
+}
+
+function renderGlanceRejoinStrip(race) {
+  const section = document.getElementById("glance-rejoin-strip");
+  const rs = race.rejoinStrip;
+  if (!rs || !rs.available || !rs.stops || rs.stops.length === 0) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+
+  const stops = [...rs.stops].sort((a, b) => a.inLap - b.inLap);
+  const clashes = stops.filter((s) => s.flag === "Rejoin clash").length;
+  const dirty = stops.filter((s) => s.flag === "Dirty air").length;
+  const clean = stops.length - clashes - dirty;
+
+  let hook;
+  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} rejoin clashes — pit lane bit back.`;
+  else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 clash, ${dirty} into dirty air.`;
+  else if (clashes === 0 && dirty === 0) hook = `${stops.length} stops, all into clean air.`;
+  else hook = `${stops.length} stops: ${clashes} clash${clashes === 1 ? "" : "es"}, ${dirty} into dirty air.`;
+
+  // Option B: only notable (clash/dirty) stops get an individual dot; clean
+  // stops collapse into a single count so the strip stays scannable on mobile.
+  // Each dot jumps straight to its driver's block in the full Rejoin Strip.
+  const notable = stops.filter((s) => s.flag !== "Clean air");
+  const dots = notable
+    .map((s) => `<button type="button" class="rejoin-dot ${FLAG_CLASS[s.flag] || ""}" data-target="deep-dive-rejoin-strip" data-jump="rejoin-driver-${s.driverCode}" aria-label="${s.driverCode} · Lap ${s.inLap} · ${s.flag}"></button>`)
+    .join("");
+  const cleanPill = clean > 0 ? `<span class="rejoin-clean-pill">+${clean} clean</span>` : "";
+
+  section.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-rejoin-strip">
+      <h3>Rejoin strip</h3>
+      <p class="glance-hook">${hook}</p>
+    </button>
+    <div class="rejoin-dots">${dots}${cleanPill}</div>
+  `;
+}
+
+// Reuses driverIndex/gapSeries from the full Gap Trace module below - same
+// default pairing (winner vs runner-up), no re-fetch, no duplicated math.
+function computeGapTraceGlanceHook(race) {
+  const gt = race.gapTrace;
+  if (!gt || !gt.available || !gt.drivers || gt.drivers.length < 2) return null;
+  const idx = driverIndex(gt);
+  const order = race.results.map((r) => r.driverCode).filter((c) => idx.has(c));
+  const aCode = order[0], bCode = order[1];
+  if (!aCode || !bCode) return null;
+  const series = gapSeries(idx.get(aCode), idx.get(bCode));
+
+  let flipLap = null, prevSign = 0;
+  for (const s of series) {
+    if (s.gap === 0) continue;
+    const sign = Math.sign(s.gap);
+    if (prevSign !== 0 && sign !== prevSign && s.lap > 3) {
+      flipLap = s.lap;
+      break;
+    }
+    prevSign = sign;
+  }
+  return flipLap
+    ? `${aCode} and ${bCode} swapped on track around Lap ${flipLap}.`
+    : `Compare any two drivers' pace lap by lap.`;
+}
+
+function renderGlanceGapTrace(race) {
+  const section = document.getElementById("glance-gap-trace");
+  const hook = computeGapTraceGlanceHook(race);
+  if (!hook) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  section.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-gap-trace">
+      <h3>Gap trace</h3>
+      <p class="glance-hook">${hook}</p>
+    </button>
+  `;
+}
+
 function renderEditorsTake(race) {
   const section = document.getElementById("editors-take-section");
   if (!race.editors_take || !race.editors_take.trim()) {
@@ -620,6 +813,12 @@ function populateSelector() {
 async function loadRound(round) {
   const padded = String(round).padStart(2, "0");
   const race = await loadJSON(`data/${SEASON}/round-${padded}.json`);
+  renderGlanceHero(race);
+  renderGlanceStandings(race);
+  renderGlanceDrama(race);
+  renderGlanceHeroesZeroes(race);
+  renderGlanceRejoinStrip(race);
+  renderGlanceGapTrace(race);
   renderWinnerHero(race);
   renderStandings(race);
   renderDramaLog(race);
@@ -628,6 +827,56 @@ async function loadRound(round) {
   renderGapTrace(race);
   renderEditorsTake(race);
 }
+
+// ---- Glance <-> deep-dive navigation ------------------------------------
+// Delegated on document (not per-render) since glance card innerHTML is
+// rebuilt on every race switch, which would otherwise drop listeners.
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function scrollToEl(el) {
+  el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+}
+
+function openDeepDiveModule(moduleId) {
+  document.querySelectorAll(".deep-dive-module").forEach((m) => {
+    m.classList.toggle("collapsed", m.id !== moduleId);
+  });
+  const module = document.getElementById(moduleId);
+  // Rejoin Strip and Gap Trace are wrapped in a closed-by-default <details>;
+  // open it so the content being scrolled to is actually visible.
+  if (module) module.querySelectorAll("details.disclosure").forEach((d) => { d.open = true; });
+}
+
+document.addEventListener("click", (e) => {
+  const dot = e.target.closest(".rejoin-dot[data-jump]");
+  if (dot) {
+    openDeepDiveModule(dot.dataset.target);
+    const jumpTarget = document.getElementById(dot.dataset.jump);
+    if (jumpTarget) {
+      scrollToEl(jumpTarget);
+      jumpTarget.classList.add("jump-highlight");
+      setTimeout(() => jumpTarget.classList.remove("jump-highlight"), 2000);
+    }
+    return;
+  }
+
+  const cardBtn = e.target.closest(".glance-card-btn");
+  if (cardBtn) {
+    openDeepDiveModule(cardBtn.dataset.target);
+    const target = document.getElementById(cardBtn.dataset.target);
+    if (target) scrollToEl(target);
+    return;
+  }
+
+  const backBtn = e.target.closest(".back-to-glance");
+  if (backBtn) {
+    backBtn.closest(".deep-dive-module").classList.add("collapsed");
+    scrollToEl(document.getElementById("glance"));
+  }
+});
 
 async function init() {
   manifest = await loadJSON("data/index.json");

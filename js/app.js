@@ -678,11 +678,21 @@ function renderGlanceRejoinStrip(race) {
   // Option B: only notable (clash/dirty) stops get an individual dot; clean
   // stops collapse into a single count so the strip stays scannable on mobile.
   // Each dot jumps straight to its driver's block in the full Rejoin Strip.
+  // On chaotic races even the notable dots can overflow one row (e.g. Monaco's
+  // 42), so cap individual dots at 14 (one row) and fold the rest into count
+  // pills by type - the hook text above already states the true full counts.
+  const DOT_CAP = 14;
   const notable = stops.filter((s) => s.flag !== "Clean air");
-  const dots = notable
+  const shown = notable.slice(0, DOT_CAP);
+  const overflow = notable.slice(DOT_CAP);
+  const overflowClashes = overflow.filter((s) => s.flag === "Rejoin clash").length;
+  const overflowDirty = overflow.filter((s) => s.flag === "Dirty air").length;
+
+  const dots = shown
     .map((s) => `<button type="button" class="rejoin-dot ${FLAG_CLASS[s.flag] || ""}" data-target="deep-dive-rejoin-strip" data-jump="rejoin-driver-${s.driverCode}" aria-label="${s.driverCode} · Lap ${s.inLap} · ${s.flag}"></button>`)
     .join("");
-  const cleanPill = clean > 0 ? `<span class="rejoin-clean-pill">+${clean} clean</span>` : "";
+  const pill = (n, label) => (n > 0 ? `<span class="rejoin-clean-pill">+${n} ${label}</span>` : "");
+  const cleanPill = pill(clean, "clean") + pill(overflowClashes, "more clash") + pill(overflowDirty, "more dirty");
 
   section.innerHTML = `
     <button type="button" class="glance-card-btn" data-target="deep-dive-rejoin-strip">

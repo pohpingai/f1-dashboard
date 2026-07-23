@@ -152,7 +152,7 @@ function renderRejoinStrip(race) {
   const clashes = rs.stops.filter((s) => s.flag === "Rejoin clash").length;
   const dirty = rs.stops.filter((s) => s.flag === "Dirty air").length;
   const bits = [];
-  if (clashes) bits.push(`${clashes} into a rejoin clash`);
+  if (clashes) bits.push(`${clashes} rejoined right behind a rival`);
   if (dirty) bits.push(`${dirty} into dirty air`);
   const hook = bits.length
     ? `${rs.stops.length} stops — ${bits.join(", ")}.`
@@ -564,7 +564,7 @@ function computeSpiciestFact(race) {
 
   if (dnfs >= 5) return `Chaos race: ${dnfs} cars didn't see the flag.`;
   if (race.winner && race.winner.grid >= 6) return `${race.winner.driverName} won from P${race.winner.grid} — the grid didn't matter today.`;
-  if (clashes >= 2) return `${clashes} of today's pit stops ended in a rejoin clash.`;
+  if (clashes >= 2) return `${clashes} of today's pit stops rejoined right behind a rival — an instant re-pass risk.`;
   if (dnfs >= 3) return `${dnfs} retirements today.`;
   return race.winner ? `${race.winner.driverName} led ${race.raceName} home for ${race.winner.constructor}.` : "";
 }
@@ -680,10 +680,10 @@ function renderGlanceRejoinStrip(race) {
   const clean = stops.length - clashes - dirty;
 
   let hook;
-  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} ended in a rejoin clash.`;
-  else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 clash, ${dirty} into dirty air.`;
+  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} rejoined right behind a rival.`;
+  else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 rejoined right behind a rival, ${dirty} into dirty air.`;
   else if (clashes === 0 && dirty === 0) hook = `${stops.length} stops, all into clean air.`;
-  else hook = `${stops.length} stops: ${clashes} clash${clashes === 1 ? "" : "es"}, ${dirty} into dirty air.`;
+  else hook = `${stops.length} stops: ${clashes} rejoined right behind a rival, ${dirty} into dirty air.`;
 
   // Option B: only notable (clash/dirty) stops get an individual dot; clean
   // stops collapse into a single count so the strip stays scannable on mobile.

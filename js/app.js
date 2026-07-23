@@ -152,7 +152,7 @@ function renderRejoinStrip(race) {
   const clashes = rs.stops.filter((s) => s.flag === "Rejoin clash").length;
   const dirty = rs.stops.filter((s) => s.flag === "Dirty air").length;
   const bits = [];
-  if (clashes) bits.push(`${clashes} rejoined right behind a rival`);
+  if (clashes) bits.push(`${clashes} rejoined right ahead of a rival`);
   if (dirty) bits.push(`${dirty} into dirty air`);
   const hook = bits.length
     ? `${rs.stops.length} stops — ${bits.join(", ")}.`
@@ -551,22 +551,17 @@ function dnfCount(race) {
   return (race.dnfs || []).length;
 }
 
-// Priority-ordered candidates for the hero's one-line fact about the WINNER
-// or the race as a whole - never another driver's stat (that belongs to the
-// Heroes & Zeroes card only). Every line states only what the data proves:
-// no inferred cause, no claim about *how* a result happened, just what did.
-// First candidate whose threshold is met wins; falls through to a mild
-// default naming the winner if nothing crosses a bar.
+// The hero's one-line fact is always the WINNER'S OWN result - never a race-
+// wide stat (chaos/DNFs/clashes already have their own cards) and never
+// another driver's stat (that's the Heroes & Zeroes card's job). Jolpica
+// gives us grid and finish position for the winner but no finishing-margin
+// or laps-led field, so grid position is the only "own story" we can prove.
 function computeSpiciestFact(race) {
-  const dnfs = dnfCount(race);
-  const rs = race.rejoinStrip;
-  const clashes = rs && rs.available && rs.stops ? rs.stops.filter((s) => s.flag === "Rejoin clash").length : 0;
-
-  if (dnfs >= 5) return `Chaos race: ${dnfs} cars didn't see the flag.`;
-  if (race.winner && race.winner.grid >= 6) return `${race.winner.driverName} won from P${race.winner.grid} — the grid didn't matter today.`;
-  if (clashes >= 2) return `${clashes} of today's pit stops rejoined right behind a rival — an instant re-pass risk.`;
-  if (dnfs >= 3) return `${dnfs} retirements today.`;
-  return race.winner ? `${race.winner.driverName} led ${race.raceName} home for ${race.winner.constructor}.` : "";
+  const w = race.winner;
+  if (!w) return "";
+  if (!w.grid || w.grid <= 1) return "Started on pole and crossed the line first.";
+  const upset = w.grid >= 6 ? " — the grid didn't matter today" : "";
+  return `Started P${w.grid}, crossed the line first${upset}.`;
 }
 
 function renderGlanceHero(race) {
@@ -680,10 +675,10 @@ function renderGlanceRejoinStrip(race) {
   const clean = stops.length - clashes - dirty;
 
   let hook;
-  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} rejoined right behind a rival.`;
-  else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 rejoined right behind a rival, ${dirty} into dirty air.`;
+  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} rejoined right ahead of a rival.`;
+  else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 rejoined right ahead of a rival, ${dirty} into dirty air.`;
   else if (clashes === 0 && dirty === 0) hook = `${stops.length} stops, all into clean air.`;
-  else hook = `${stops.length} stops: ${clashes} rejoined right behind a rival, ${dirty} into dirty air.`;
+  else hook = `${stops.length} stops: ${clashes} rejoined right ahead of a rival, ${dirty} into dirty air.`;
 
   // Option B: only notable (clash/dirty) stops get an individual dot; clean
   // stops collapse into a single count so the strip stays scannable on mobile.

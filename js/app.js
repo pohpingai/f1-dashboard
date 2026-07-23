@@ -335,7 +335,7 @@ function buildGapChart(aCode, a, bCode, b) {
         <line x1="${padL}" y1="${zeroY}" x2="${W - padR}" y2="${zeroY}" stroke="var(--border)" stroke-width="1"/>
         ${axisLabels(x, y, lapMin, lapMax, [gMax - pad / 2, 0, gMin + pad / 2], (v) => `${v > 0 ? "+" : ""}${v.toFixed(1)}`, padL)}
         ${pitMarks(a.pitLaps, aColor)}${pitMarks(b.pitLaps, bColor)}
-        <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+        <path class="chart-line" d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
         <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
         <circle class="tip-marker" r="3.5" style="display:none"/>
       </svg>
@@ -414,8 +414,8 @@ function buildPaceChart(aCode, a, bCode, b) {
         ${ribbon}
         ${axisLabels(x, y, lapMin, lapMax, [vMax - vpad, midV, vMin + vpad], (v) => v.toFixed(1), padL)}
         ${pitTicks(a.pitLaps, aColor)}${pitTicks(b.pitLaps, bColor)}
-        <path d="${pathWithGaps(toPts(aR))}" fill="none" stroke="${aColor}" stroke-width="2" stroke-linejoin="round"/>
-        <path d="${pathWithGaps(toPts(bR))}" fill="none" stroke="${bColor}" stroke-width="2" stroke-linejoin="round"/>
+        <path class="chart-line" d="${pathWithGaps(toPts(aR))}" fill="none" stroke="${aColor}" stroke-width="2" stroke-linejoin="round"/>
+        <path class="chart-line" d="${pathWithGaps(toPts(bR))}" fill="none" stroke="${bColor}" stroke-width="2" stroke-linejoin="round"/>
         <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
         <circle class="tip-marker" r="3.5" style="display:none"/>
         <circle class="tip-marker" r="3.5" style="display:none"/>
@@ -469,6 +469,27 @@ function attachChartInteraction(wrap, model) {
   svg.addEventListener("mouseleave", hide);
   svg.addEventListener("touchstart", (e) => show(e.touches[0].clientX), { passive: true });
   svg.addEventListener("touchmove", (e) => show(e.touches[0].clientX), { passive: true });
+}
+
+// Draws the Gap Trace line(s) left-to-right, once: measure the path's real
+// length, hide it by offsetting its dash by that full length, then (after a
+// forced reflow so the "hidden" state actually commits) transition the
+// offset back to 0. Re-running this on an already-drawn path restarts the
+// reveal from scratch - used both on every redraw and again when the module
+// is opened, so it plays even if the chart was rendered while still hidden.
+function animateLineDraw(svg) {
+  if (!svg || prefersReducedMotion()) return;
+  svg.querySelectorAll("path.chart-line").forEach((path) => {
+    const length = path.getTotalLength();
+    path.style.transition = "none";
+    path.style.strokeDasharray = `${length}`;
+    path.style.strokeDashoffset = `${length}`;
+    path.getBoundingClientRect();
+    path.style.transition = "";
+    requestAnimationFrame(() => {
+      path.style.strokeDashoffset = "0";
+    });
+  });
 }
 
 function renderGapTrace(race) {
@@ -529,6 +550,8 @@ function renderGapTrace(race) {
     chart.innerHTML = built.html;
     const wrap = chart.querySelector(".chart-wrap");
     if (wrap) attachChartInteraction(wrap, built.model);
+    const svg = chart.querySelector("svg");
+    if (svg) animateLineDraw(svg);
   };
 
   selA.addEventListener("change", draw);
@@ -695,8 +718,11 @@ function renderGlanceRejoinStrip(race) {
   const overflowClashes = overflow.filter((s) => s.flag === "Rejoin clash").length;
   const overflowDirty = overflow.filter((s) => s.flag === "Dirty air").length;
 
+  // Staggered delay so the dots pop in one by one, in the same lap order
+  // they're drawn - capped so a 14-dot row still finishes in well under a
+  // second, not a slow drip.
   const dots = shown
-    .map((s) => `<button type="button" class="rejoin-dot ${FLAG_CLASS[s.flag] || ""}" data-target="deep-dive-rejoin-strip" data-jump="rejoin-driver-${s.driverCode}" aria-label="${s.driverCode} · Lap ${s.inLap} · ${s.flag}"></button>`)
+    .map((s, i) => `<button type="button" class="rejoin-dot ${FLAG_CLASS[s.flag] || ""}" style="animation-delay:${i * 45}ms" data-target="deep-dive-rejoin-strip" data-jump="rejoin-driver-${s.driverCode}" aria-label="${s.driverCode} · Lap ${s.inLap} · ${s.flag}"></button>`)
     .join("");
   const pill = (n, label) => (n > 0 ? `<span class="rejoin-clean-pill">+${n} ${label}</span>` : "");
   const cleanPill = pill(clean, "clean") + pill(overflowClashes, "more clash") + pill(overflowDirty, "more dirty");
@@ -830,7 +856,22 @@ function populateSelector() {
   }
 }
 
+// One-shot streak across the top while a race loads - restarts the CSS
+// animation by removing then re-adding the class (just re-adding an
+// already-applied class doesn't replay it), and never runs for
+// prefers-reduced-motion. It runs concurrently with the fetch below rather
+// than delaying it - purely decorative, not a progress indicator.
+function playLoadingCar() {
+  if (prefersReducedMotion()) return;
+  const track = document.getElementById("loading-car-track");
+  if (!track) return;
+  track.classList.remove("playing");
+  void track.offsetWidth;
+  track.classList.add("playing");
+}
+
 async function loadRound(round) {
+  playLoadingCar();
   const padded = String(round).padStart(2, "0");
   const race = await loadJSON(`data/${SEASON}/round-${padded}.json`);
   renderGlanceHero(race);
@@ -868,6 +909,13 @@ function openDeepDiveModule(moduleId) {
   // Rejoin Strip and Gap Trace are wrapped in a closed-by-default <details>;
   // open it so the content being scrolled to is actually visible.
   if (module) module.querySelectorAll("details.disclosure").forEach((d) => { d.open = true; });
+  // The Gap Trace chart is already rendered by the time the card is tapped
+  // (rendering happens on load, independent of the collapsed/open state), so
+  // without this it would appear fully-drawn instead of drawing itself now.
+  if (moduleId === "deep-dive-gap-trace") {
+    const svg = document.querySelector("#gap-chart svg");
+    if (svg) animateLineDraw(svg);
+  }
 }
 
 document.addEventListener("click", (e) => {

@@ -648,6 +648,47 @@ footer {
   padding: 1.5rem 1rem;
 }
 
+/* Loading car: a one-shot streak across the top while a race loads, then
+   gone - not a spinner, not a progress bar, never loops. */
+.loading-car-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 50;
+}
+.loading-car-track .loading-car {
+  position: absolute;
+  top: 0;
+  left: -15%;
+}
+.loading-car-track.playing .loading-car {
+  animation: car-streak 650ms linear forwards;
+}
+@keyframes car-streak {
+  from { left: -15%; }
+  to { left: 115%; }
+}
+
+/* Rejoin Strip dots: pop in one by one, in the same lap order they're drawn -
+   a one-shot entrance, not a loop. */
+@keyframes dot-pop {
+  from { opacity: 0; transform: scale(0.3); }
+  to { opacity: 1; transform: scale(1); }
+}
+.rejoin-dot {
+  animation: dot-pop 260ms ease-out both;
+}
+
+/* Gap Trace: the line transitions its stroke-dashoffset (set from JS) to
+   draw itself once when the module opens - see animateLineDraw(). */
+.chart-line {
+  transition: stroke-dashoffset 900ms ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

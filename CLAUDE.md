@@ -14,6 +14,7 @@ A free, static F1 dashboard that updates ~3 hours after each session. It serves 
 4. **No news scraping or republishing third-party content.** The Drama Log (computed from official data) is the news.
 5. **Mobile-first.** Most visitors arrive on phones. Every view must work at 375px width before desktop is considered.
 6. **Honest labels.** Example: pit data from OpenF1 is pit-lane transit time (~20s), NOT crew stationary time (~2.3s). Label it "total pit lane time" — never imply it's the stationary stop.
+7. **Hooks state only what the data proves, never infer cause.** Every template-generated headline/hook must be checkable against a specific field in the race JSON. If the data can't distinguish *why* something happened (e.g. Jolpica's DNF `status` is usually just "Retired", never a mechanical cause; a Gap Trace sign-flip proves the time gap crossed but not whether it was an on-track pass, a pit-stop cycle, or a penalty), the hook must not claim it. State the count or the measured fact, not the mechanism. Before shipping a new or changed hook template, run it against every backfilled race and read the resulting headlines in one pass — a phrasing that sounds fine for one race can misfire on another (an idiom that reads as sarcastic, a threshold that fires on a routine result, a stat attributed to the wrong driver).
 
 ## Architecture
 

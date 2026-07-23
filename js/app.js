@@ -551,30 +551,21 @@ function dnfCount(race) {
   return (race.dnfs || []).length;
 }
 
-function collisionDnfCount(race) {
-  return (race.dnfs || []).filter((d) => /collision|accident/i.test(d.reason || "")).length;
-}
-
-// Priority-ordered candidates for the hero's one-line "spiciest fact".
+// Priority-ordered candidates for the hero's one-line fact about the WINNER
+// or the race as a whole - never another driver's stat (that belongs to the
+// Heroes & Zeroes card only). Every line states only what the data proves:
+// no inferred cause, no claim about *how* a result happened, just what did.
 // First candidate whose threshold is met wins; falls through to a mild
 // default naming the winner if nothing crosses a bar.
 function computeSpiciestFact(race) {
-  const hz = race.heroesZeroes || {};
-  const hero = hz.hero, zero = hz.zero;
   const dnfs = dnfCount(race);
   const rs = race.rejoinStrip;
   const clashes = rs && rs.available && rs.stops ? rs.stops.filter((s) => s.flag === "Rejoin clash").length : 0;
 
-  // hero.take/zero.take are written for the Heroes & Zeroes module, where the
-  // driver's name is shown as a separate line above it - reused here under a
-  // different driver's (the winner's) name, so it must be attributed explicitly.
   if (dnfs >= 5) return `Chaos race: ${dnfs} cars didn't see the flag.`;
   if (race.winner && race.winner.grid >= 6) return `${race.winner.driverName} won from P${race.winner.grid} — the grid didn't matter today.`;
-  if (hero && hero.delta >= 12) return `${hero.driverName}: ${hero.take}`;
-  if (zero && zero.delta <= -8) return `${zero.driverName}: ${zero.take}`;
-  if (clashes >= 2) return `${clashes} rejoin clashes after the stops — pit lane bit back.`;
-  if (dnfs >= 3) return `${dnfs} retirements added late drama.`;
-  if (hero && hero.delta >= 8) return `${hero.driverName}: ${hero.take}`;
+  if (clashes >= 2) return `${clashes} of today's pit stops ended in a rejoin clash.`;
+  if (dnfs >= 3) return `${dnfs} retirements today.`;
   return race.winner ? `${race.winner.driverName} led ${race.raceName} home for ${race.winner.constructor}.` : "";
 }
 
@@ -615,16 +606,17 @@ function renderGlanceStandings(race) {
   `;
 }
 
+// Jolpica's status field for every backfilled race is just "Retired" or "Did
+// not start" - never a specific cause ("Collision", "Engine", etc.) - so we
+// can only ever state the count, never why. No cause is claimed here.
 function computeDramaHook(race) {
   const n = dnfCount(race);
   if (n === 0) return "Clean race — everyone finished.";
-  const collisions = collisionDnfCount(race);
-  if (collisions >= 2) return `${n} retirement${n === 1 ? "" : "s"}, including a multi-car incident.`;
   if (n <= 2) {
     const names = race.dnfs.map((d) => d.driverName).join(", ");
     return `${n} retirement${n === 1 ? "" : "s"}: ${names}.`;
   }
-  return `${n} retirements — a rough day for reliability.`;
+  return `${n} retirements.`;
 }
 
 function renderGlanceDrama(race) {
@@ -637,6 +629,13 @@ function renderGlanceDrama(race) {
   `;
 }
 
+// ±4 grid-to-finish places is the bar for "worth naming" - fewer than that is
+// ordinary race noise (traffic, one slow stop), not a story. Each side is
+// judged independently so a real climb isn't paired with a trivial drop.
+// DNFs never appear here - the data pipeline excludes retirees from Hero/Zero
+// eligibility entirely (they're already the Drama Log's story).
+const MOVEMENT_THRESHOLD = 4;
+
 function renderGlanceHeroesZeroes(race) {
   const section = document.getElementById("glance-heroes-zeroes");
   const hz = race.heroesZeroes;
@@ -646,10 +645,18 @@ function renderGlanceHeroesZeroes(race) {
   }
   section.hidden = false;
   const hero = hz.hero, zero = hz.zero;
-  const quiet = hero && zero && hero.delta < 5 && zero.delta > -5;
-  const hook = quiet
-    ? "Not much shuffling up front today."
-    : `Best mover: ${hero ? `${hero.driverName} +${hero.delta}` : "—"}.<br>Biggest faller: ${zero ? `${zero.driverName} ${zero.delta}` : "—"}.`;
+  const heroNotable = hero && hero.delta >= MOVEMENT_THRESHOLD;
+  const zeroNotable = zero && zero.delta <= -MOVEMENT_THRESHOLD;
+
+  let hook;
+  if (!heroNotable && !zeroNotable) {
+    hook = "Not much grid movement today.";
+  } else {
+    const parts = [];
+    if (heroNotable) parts.push(`Best mover: ${hero.driverName} +${hero.delta}.`);
+    if (zeroNotable) parts.push(`Biggest drop: ${zero.driverName} ${zero.delta}.`);
+    hook = parts.join("<br>");
+  }
   section.innerHTML = `
     <button type="button" class="glance-card-btn" data-target="deep-dive-heroes-zeroes">
       <h3>Heroes &amp; zeroes</h3>
@@ -673,7 +680,7 @@ function renderGlanceRejoinStrip(race) {
   const clean = stops.length - clashes - dirty;
 
   let hook;
-  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} rejoin clashes — pit lane bit back.`;
+  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} ended in a rejoin clash.`;
   else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 clash, ${dirty} into dirty air.`;
   else if (clashes === 0 && dirty === 0) hook = `${stops.length} stops, all into clean air.`;
   else hook = `${stops.length} stops: ${clashes} clash${clashes === 1 ? "" : "es"}, ${dirty} into dirty air.`;
@@ -727,8 +734,11 @@ function computeGapTraceGlanceHook(race) {
     }
     prevSign = sign;
   }
+  // The cumulative gap flipping sign only proves the two crossed in elapsed
+  // time - it can't distinguish an on-track pass from a pit-stop cycle, so
+  // this states the metric, not a claim about how it happened.
   return flipLap
-    ? `${aCode} and ${bCode} swapped on track around Lap ${flipLap}.`
+    ? `${aCode} and ${bCode}'s gap flipped around Lap ${flipLap}.`
     : `Compare any two drivers' pace lap by lap.`;
 }
 

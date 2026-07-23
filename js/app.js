@@ -626,7 +626,9 @@ function renderGlanceDrama(race) {
 
 // ±4 grid-to-finish places is the bar for "worth naming" - fewer than that is
 // ordinary race noise (traffic, one slow stop), not a story. Each side is
-// judged independently so a real climb isn't paired with a trivial drop.
+// judged independently, and both are always shown - the threshold governs
+// wording (dramatic vs. neutral), never visibility, so the card never omits
+// half of what its title promises.
 // DNFs never appear here - the data pipeline excludes retirees from Hero/Zero
 // eligibility entirely (they're already the Drama Log's story).
 const MOVEMENT_THRESHOLD = 4;
@@ -640,18 +642,18 @@ function renderGlanceHeroesZeroes(race) {
   }
   section.hidden = false;
   const hero = hz.hero, zero = hz.zero;
-  const heroNotable = hero && hero.delta >= MOVEMENT_THRESHOLD;
-  const zeroNotable = zero && zero.delta <= -MOVEMENT_THRESHOLD;
 
-  let hook;
-  if (!heroNotable && !zeroNotable) {
-    hook = "Not much grid movement today.";
-  } else {
-    const parts = [];
-    if (heroNotable) parts.push(`Best mover: ${hero.driverName} +${hero.delta}.`);
-    if (zeroNotable) parts.push(`Biggest drop: ${zero.driverName} ${zero.delta}.`);
-    hook = parts.join("<br>");
+  const parts = [];
+  if (hero) {
+    const quiet = hero.delta < MOVEMENT_THRESHOLD ? " (a quiet day up front)" : "";
+    parts.push(`Best mover: ${hero.driverName} +${hero.delta}${quiet}.`);
   }
+  if (zero) {
+    const quiet = zero.delta > -MOVEMENT_THRESHOLD ? " (nothing dramatic)" : "";
+    parts.push(`Biggest drop: ${zero.driverName} ${zero.delta}${quiet}.`);
+  }
+  const hook = parts.join("<br>");
+
   section.innerHTML = `
     <button type="button" class="glance-card-btn" data-target="deep-dive-heroes-zeroes">
       <h3>Heroes &amp; zeroes</h3>

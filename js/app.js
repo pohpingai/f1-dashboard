@@ -371,16 +371,31 @@ function buildPaceChart(aCode, a, bCode, b) {
     for (const p of pts) { d += `${prev === null || p.lap - prev !== 1 ? "M" : "L"}${p.x.toFixed(1)},${p.y.toFixed(1)} `; prev = p.lap; }
     return d.trim();
   };
+  // A thin dashed bridge across each removed-lap gap, so a skipped SC/pit
+  // stretch reads as a deliberate cut rather than missing data.
+  const gapConnectors = (pts, color) => {
+    let out = "", prev = null;
+    for (const p of pts) {
+      if (prev && p.lap - prev.lap !== 1) {
+        out += `<line x1="${prev.x.toFixed(1)}" y1="${prev.y.toFixed(1)}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}" stroke="${color}" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.45"/>`;
+      }
+      prev = p;
+    }
+    return out;
+  };
 
   // Ribbon: one quad per lap interval where both drivers have a racing lap,
-  // filled with the team color of whoever is ahead on track (lower cumulative t).
+  // filled with the team color of whoever was faster THAT lap (comparing the
+  // two plotted lap-time values directly) - not who leads the race overall,
+  // which is a different measure (cumulative time) that can disagree with
+  // the visibly plotted lines.
   let ribbon = "";
   for (const L of allLaps) {
     const L1 = L + 1;
     if (aR.has(L) && aR.has(L1) && bR.has(L) && bR.has(L1)) {
-      const leaderColor = (a.t.get(L) ?? Infinity) < (b.t.get(L) ?? Infinity) ? aColor : bColor;
+      const fasterColor = aR.get(L) < bR.get(L) ? aColor : bColor;
       const pts = `${x(L).toFixed(1)},${y(aR.get(L)).toFixed(1)} ${x(L1).toFixed(1)},${y(aR.get(L1)).toFixed(1)} ${x(L1).toFixed(1)},${y(bR.get(L1)).toFixed(1)} ${x(L).toFixed(1)},${y(bR.get(L)).toFixed(1)}`;
-      ribbon += `<polygon points="${pts}" fill="${leaderColor}" opacity="0.16"/>`;
+      ribbon += `<polygon points="${pts}" fill="${fasterColor}" opacity="0.16"/>`;
     }
   }
 
@@ -414,6 +429,7 @@ function buildPaceChart(aCode, a, bCode, b) {
         ${ribbon}
         ${axisLabels(x, y, lapMin, lapMax, [vMax - vpad, midV, vMin + vpad], (v) => v.toFixed(1), padL)}
         ${pitTicks(a.pitLaps, aColor)}${pitTicks(b.pitLaps, bColor)}
+        ${gapConnectors(toPts(aR), aColor)}${gapConnectors(toPts(bR), bColor)}
         <path class="chart-line" d="${pathWithGaps(toPts(aR))}" fill="none" stroke="${aColor}" stroke-width="2" stroke-linejoin="round"/>
         <path class="chart-line" d="${pathWithGaps(toPts(bR))}" fill="none" stroke="${bColor}" stroke-width="2" stroke-linejoin="round"/>
         <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
@@ -422,7 +438,7 @@ function buildPaceChart(aCode, a, bCode, b) {
       </svg>
       <div class="chart-tip" style="display:none"></div>
     </div>
-    <p class="module-note">Each line is a driver's lap time; the shaded band is the per-lap gap, tinted by whoever leads on track. ${removed} pit &amp; safety-car lap${removed === 1 ? "" : "s"} removed so the scale shows green-flag pace.</p>`;
+    <p class="module-note">Each line is a driver's lap time; the shaded band is the per-lap gap, tinted by whoever was quicker that lap. Dashed segments bridge ${removed} removed pit &amp; safety-car lap${removed === 1 ? "" : "s"} so the scale shows green-flag pace.</p>`;
   return { html, model: { W, padL, padR, lapMin, lapMax, laps: allLaps, xOf: x, lookup } };
 }
 

@@ -131,20 +131,25 @@ def count_gift_dnfs(results: list, ahead_of_grid: int) -> int:
 
 
 def format_take(grid: int, finish: int, delta: int, gift: int = None) -> str:
-    """Deterministic, template-based one-liner - no LLM, per project rules."""
+    """Deterministic, template-based one-liner - no LLM, per project rules.
+    States only what the data proves: a retirement ahead of this grid slot is
+    a real, countable fact, so those places are "from retirements ahead". The
+    remainder is stated as a plain count, never "earned on track" - Jolpica's
+    classification data can't distinguish an on-track pass from a pit-strategy
+    gain or a rival's time penalty, so we don't claim which one it was."""
     if delta > 0:
         take = f"P{grid} → P{finish}, gained {delta} place{'s' if delta != 1 else ''}"
         if gift is not None and gift > 0:
-            earned = delta - gift
-            if earned > 0:
+            other = delta - gift
+            if other > 0:
                 take += (
-                    f" — {gift} {'was' if gift == 1 else 'were'} gift{'s' if gift != 1 else ''}"
-                    f" from retirements ahead, {earned} earned on track."
+                    f" — {gift} from retirement{'s' if gift != 1 else ''} ahead,"
+                    f" {other} by other means."
                 )
             else:
-                take += f" — all {gift} {'was' if gift == 1 else 'were'} gifts from retirements ahead."
+                take += f" — all {gift} from retirements ahead."
         else:
-            take += ", all earned on track."
+            take += " — none from retirements ahead."
         return take
     if delta < 0:
         lost = -delta

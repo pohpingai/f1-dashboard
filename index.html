@@ -3,60 +3,119 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pit Wall MY</title>
+  <title>Pit Wall MY — F1 post-race dashboard</title>
+  <meta name="description" content="F1 results, standings, and drama - a few hours after every session. Free, no account, no ads." />
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Pit Wall MY" />
+  <meta property="og:title" content="Pit Wall MY — F1 post-race dashboard" />
+  <meta property="og:description" content="F1 results, standings, and drama - a few hours after every session. Free, no account, no ads." />
+  <meta property="og:url" content="https://pohpingai.github.io/f1-dashboard/" />
+  <meta property="og:image" content="https://pohpingai.github.io/f1-dashboard/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pit Wall MY — F1 post-race dashboard" />
+  <meta name="twitter:description" content="F1 results, standings, and drama - a few hours after every session." />
+  <meta name="twitter:image" content="https://pohpingai.github.io/f1-dashboard/og-image.png" />
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div id="loading-car-track" class="loading-car-track" aria-hidden="true">
+    <svg class="loading-car" viewBox="0 0 120 40" width="60" height="20">
+      <line x1="0" y1="20" x2="18" y2="20" stroke="#e10600" stroke-width="2" opacity="0.25"/>
+      <line x1="0" y1="13" x2="14" y2="13" stroke="#e10600" stroke-width="2" opacity="0.15"/>
+      <line x1="0" y1="27" x2="14" y2="27" stroke="#e10600" stroke-width="2" opacity="0.15"/>
+      <rect x="20" y="14" width="55" height="10" rx="4" fill="#e10600"/>
+      <rect x="30" y="7" width="22" height="9" rx="3" fill="#e10600"/>
+      <rect x="70" y="12" width="10" height="3" fill="#e10600"/>
+      <circle cx="32" cy="26" r="5" fill="#0a0a0d" stroke="#e10600" stroke-width="2"/>
+      <circle cx="63" cy="26" r="5" fill="#0a0a0d" stroke="#e10600" stroke-width="2"/>
+    </svg>
+  </div>
+
   <header>
     <h1>Pit Wall<span class="accent"> MY</span></h1>
     <select id="race-selector" aria-label="Choose a race"></select>
   </header>
 
   <main>
-    <section id="winner-hero" class="card hero"></section>
-
-    <section class="card">
-      <h2>Standings</h2>
-      <div class="standings-grid">
-        <div>
-          <h2>Drivers</h2>
-          <div id="driver-standings"></div>
-        </div>
-        <div>
-          <h2>Constructors</h2>
-          <div id="constructor-standings"></div>
-        </div>
+    <section id="glance" class="glance">
+      <div id="glance-hero" class="card hero glance-hero"></div>
+      <div class="glance-grid">
+        <div id="glance-standings" class="glance-card card"></div>
+        <div id="glance-drama" class="glance-card card"></div>
+        <div id="glance-heroes-zeroes" class="glance-card card" hidden></div>
+        <div id="glance-rejoin-strip" class="glance-card card" hidden></div>
+        <div id="glance-gap-trace" class="glance-card card" hidden></div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>Drama Log</h2>
-      <div id="drama-log"></div>
-    </section>
+    <section id="deep-dive">
+      <div id="deep-dive-standings" class="deep-dive-module collapsed">
+        <button type="button" class="back-to-glance">&uarr; Back to glance</button>
+        <section id="winner-hero" class="card hero"></section>
+        <section class="card">
+          <h2>Standings</h2>
+          <div class="standings-grid">
+            <div>
+              <h2>Drivers</h2>
+              <div id="driver-standings"></div>
+            </div>
+            <div>
+              <h2>Constructors</h2>
+              <div id="constructor-standings"></div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-    <section id="heroes-zeroes-section" class="card" hidden>
-      <h2>Heroes &amp; Zeroes</h2>
-      <div id="heroes-zeroes"></div>
-    </section>
+      <div id="deep-dive-drama" class="deep-dive-module collapsed">
+        <button type="button" class="back-to-glance">&uarr; Back to glance</button>
+        <section class="card">
+          <h2>Drama Log</h2>
+          <div id="drama-log"></div>
+        </section>
+      </div>
 
-    <section id="rejoin-strip-section" class="card" hidden>
-      <h2>Rejoin Strip</h2>
-      <div id="rejoin-strip"></div>
-    </section>
+      <div id="deep-dive-heroes-zeroes" class="deep-dive-module collapsed">
+        <button type="button" class="back-to-glance">&uarr; Back to glance</button>
+        <section id="heroes-zeroes-section" class="card" hidden>
+          <h2>Heroes &amp; Zeroes</h2>
+          <div id="heroes-zeroes"></div>
+        </section>
+      </div>
 
-    <section id="gap-trace-section" class="card" hidden>
-      <h2>Gap Trace</h2>
-      <div id="gap-trace"></div>
-    </section>
+      <div id="deep-dive-rejoin-strip" class="deep-dive-module collapsed">
+        <button type="button" class="back-to-glance">&uarr; Back to glance</button>
+        <section id="rejoin-strip-section" class="card" hidden>
+          <h2>Rejoin Strip</h2>
+          <div id="rejoin-strip"></div>
+        </section>
+      </div>
 
-    <section id="editors-take-section" class="card editors-take" hidden>
-      <h2>Editor's Take</h2>
-      <div id="editors-take"></div>
-    </section>
+      <div id="deep-dive-gap-trace" class="deep-dive-module collapsed">
+        <button type="button" class="back-to-glance">&uarr; Back to glance</button>
+        <section id="gap-trace-section" class="card" hidden>
+          <h2>Gap Trace</h2>
+          <div id="gap-trace"></div>
+        </section>
+      </div>
 
-    <section id="next-race-section" class="card" hidden>
-      <h2>Next Up</h2>
-      <div id="next-race"></div>
+      <section id="editors-take-section" class="card editors-take" hidden>
+        <h2>Editor's Take</h2>
+        <div id="editors-take"></div>
+      </section>
+
+      <section id="next-race-section" class="card" hidden>
+        <h2>Next Up</h2>
+        <div id="next-race"></div>
+      </section>
     </section>
   </main>
 

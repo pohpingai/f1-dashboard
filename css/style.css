@@ -71,6 +71,138 @@ select#race-selector {
   color: var(--text-dim);
 }
 
+/* Glance view */
+.glance {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.glance-hero {
+  padding: 1rem 1.25rem;
+}
+
+.glance-hero .glance-fact {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  margin-top: 0.25rem;
+}
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .glance-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.glance-card {
+  padding: 0.85rem 1rem;
+}
+
+.glance-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.glance-hook {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.glance-card-btn {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.glance-card-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Deep-dive: hidden until its glance card is tapped */
+.deep-dive-module.collapsed {
+  display: none;
+}
+
+.deep-dive-module {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.back-to-glance {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.back-to-glance:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+.rejoin-dots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.rejoin-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.rejoin-dot:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.rejoin-dot.flag-clash {
+  background: #ff6b63;
+}
+
+.rejoin-dot.flag-dirty {
+  background: #f0b64a;
+}
+
+.rejoin-dot.flag-clean {
+  background: #5fce8a;
+}
+
+.rejoin-clean-pill {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  margin-left: 0.2rem;
+  white-space: nowrap;
+}
+
 /* Winner hero */
 .hero {
   border-left: 6px solid var(--accent);
@@ -319,6 +451,13 @@ select#race-selector {
   border-left: 4px solid var(--border);
   padding-left: 0.6rem;
 }
+
+.rejoin-driver.jump-highlight {
+  background: var(--bg);
+  border-radius: 0.5rem;
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 .rejoin-driver-name {
   font-weight: 700;
   font-size: 0.95rem;
@@ -507,4 +646,53 @@ footer {
   color: var(--text-dim);
   font-size: 0.8rem;
   padding: 1.5rem 1rem;
+}
+
+/* Loading car: a one-shot streak across the top while a race loads, then
+   gone - not a spinner, not a progress bar, never loops. */
+.loading-car-track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 50;
+}
+.loading-car-track .loading-car {
+  position: absolute;
+  top: 0;
+  left: -15%;
+}
+.loading-car-track.playing .loading-car {
+  animation: car-streak 650ms linear forwards;
+}
+@keyframes car-streak {
+  from { left: -15%; }
+  to { left: 115%; }
+}
+
+/* Rejoin Strip dots: pop in one by one, in the same lap order they're drawn -
+   a one-shot entrance, not a loop. */
+@keyframes dot-pop {
+  from { opacity: 0; transform: scale(0.3); }
+  to { opacity: 1; transform: scale(1); }
+}
+.rejoin-dot {
+  animation: dot-pop 260ms ease-out both;
+}
+
+/* Gap Trace: the line transitions its stroke-dashoffset (set from JS) to
+   draw itself once when the module opens - see animateLineDraw(). */
+.chart-line {
+  transition: stroke-dashoffset 900ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -152,7 +152,7 @@ function renderRejoinStrip(race) {
   const clashes = rs.stops.filter((s) => s.flag === "Rejoin clash").length;
   const dirty = rs.stops.filter((s) => s.flag === "Dirty air").length;
   const bits = [];
-  if (clashes) bits.push(`${clashes} into a rejoin clash`);
+  if (clashes) bits.push(`${clashes} rejoined right ahead of a rival`);
   if (dirty) bits.push(`${dirty} into dirty air`);
   const hook = bits.length
     ? `${rs.stops.length} stops — ${bits.join(", ")}.`
@@ -190,7 +190,7 @@ function renderRejoinStrip(race) {
     const stops = byDriver.get(code);
     const constructor = stops[0].constructor;
     return `
-      <div class="rejoin-driver" style="border-left-color:${teamColor(constructor)}">
+      <div class="rejoin-driver" id="rejoin-driver-${code}" style="border-left-color:${teamColor(constructor)}">
         <div class="rejoin-driver-name">${code}</div>
         <ul class="rejoin-stops">${stops.map(stopRow).join("")}</ul>
       </div>`;
@@ -335,7 +335,7 @@ function buildGapChart(aCode, a, bCode, b) {
         <line x1="${padL}" y1="${zeroY}" x2="${W - padR}" y2="${zeroY}" stroke="var(--border)" stroke-width="1"/>
         ${axisLabels(x, y, lapMin, lapMax, [gMax - pad / 2, 0, gMin + pad / 2], (v) => `${v > 0 ? "+" : ""}${v.toFixed(1)}`, padL)}
         ${pitMarks(a.pitLaps, aColor)}${pitMarks(b.pitLaps, bColor)}
-        <path d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+        <path class="chart-line" d="${line}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
         <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
         <circle class="tip-marker" r="3.5" style="display:none"/>
       </svg>
@@ -414,8 +414,8 @@ function buildPaceChart(aCode, a, bCode, b) {
         ${ribbon}
         ${axisLabels(x, y, lapMin, lapMax, [vMax - vpad, midV, vMin + vpad], (v) => v.toFixed(1), padL)}
         ${pitTicks(a.pitLaps, aColor)}${pitTicks(b.pitLaps, bColor)}
-        <path d="${pathWithGaps(toPts(aR))}" fill="none" stroke="${aColor}" stroke-width="2" stroke-linejoin="round"/>
-        <path d="${pathWithGaps(toPts(bR))}" fill="none" stroke="${bColor}" stroke-width="2" stroke-linejoin="round"/>
+        <path class="chart-line" d="${pathWithGaps(toPts(aR))}" fill="none" stroke="${aColor}" stroke-width="2" stroke-linejoin="round"/>
+        <path class="chart-line" d="${pathWithGaps(toPts(bR))}" fill="none" stroke="${bColor}" stroke-width="2" stroke-linejoin="round"/>
         <line class="guide" y1="${padT}" y2="${H - padB}" stroke="var(--text-dim)" stroke-width="1" stroke-dasharray="2 2" style="display:none"/>
         <circle class="tip-marker" r="3.5" style="display:none"/>
         <circle class="tip-marker" r="3.5" style="display:none"/>
@@ -469,6 +469,27 @@ function attachChartInteraction(wrap, model) {
   svg.addEventListener("mouseleave", hide);
   svg.addEventListener("touchstart", (e) => show(e.touches[0].clientX), { passive: true });
   svg.addEventListener("touchmove", (e) => show(e.touches[0].clientX), { passive: true });
+}
+
+// Draws the Gap Trace line(s) left-to-right, once: measure the path's real
+// length, hide it by offsetting its dash by that full length, then (after a
+// forced reflow so the "hidden" state actually commits) transition the
+// offset back to 0. Re-running this on an already-drawn path restarts the
+// reveal from scratch - used both on every redraw and again when the module
+// is opened, so it plays even if the chart was rendered while still hidden.
+function animateLineDraw(svg) {
+  if (!svg || prefersReducedMotion()) return;
+  svg.querySelectorAll("path.chart-line").forEach((path) => {
+    const length = path.getTotalLength();
+    path.style.transition = "none";
+    path.style.strokeDasharray = `${length}`;
+    path.style.strokeDashoffset = `${length}`;
+    path.getBoundingClientRect();
+    path.style.transition = "";
+    requestAnimationFrame(() => {
+      path.style.strokeDashoffset = "0";
+    });
+  });
 }
 
 function renderGapTrace(race) {
@@ -529,6 +550,8 @@ function renderGapTrace(race) {
     chart.innerHTML = built.html;
     const wrap = chart.querySelector(".chart-wrap");
     if (wrap) attachChartInteraction(wrap, built.model);
+    const svg = chart.querySelector("svg");
+    if (svg) animateLineDraw(svg);
   };
 
   selA.addEventListener("change", draw);
@@ -540,6 +563,222 @@ function renderGapTrace(race) {
     draw();
   });
   draw();
+}
+
+// ---- Glance view: template-based hooks (deterministic, no LLM) ----------
+// Every hook here is computed from numbers already in the race JSON and
+// gated by an explicit threshold approved before this was built. If nothing
+// crosses the bar the honest mild version is shown - never a placeholder.
+
+function dnfCount(race) {
+  return (race.dnfs || []).length;
+}
+
+// The hero's one-line fact is always the WINNER'S OWN result - never a race-
+// wide stat (chaos/DNFs/clashes already have their own cards) and never
+// another driver's stat (that's the Heroes & Zeroes card's job). Jolpica
+// gives us grid and finish position for the winner but no finishing-margin
+// or laps-led field, so grid position is the only "own story" we can prove.
+function computeSpiciestFact(race) {
+  const w = race.winner;
+  if (!w) return "";
+  if (!w.grid || w.grid <= 1) return "Started on pole and crossed the line first.";
+  const upset = w.grid >= 6 ? " — the grid didn't matter today" : "";
+  return `Started P${w.grid}, crossed the line first${upset}.`;
+}
+
+function renderGlanceHero(race) {
+  const el = document.getElementById("glance-hero");
+  if (!race.winner) {
+    el.innerHTML = "<p>No result data for this round yet.</p>";
+    return;
+  }
+  el.style.borderLeftColor = teamColor(race.winner.constructor);
+  el.innerHTML = `
+    <div class="winner-meta">${race.raceName}</div>
+    <div class="winner-name">🏆 ${race.winner.driverName}</div>
+    <div class="glance-fact">${computeSpiciestFact(race)}</div>
+  `;
+}
+
+// Title-fight threshold: 25 points is the value of a single race win, so a
+// lead that size or smaller is genuinely still "one bad weekend" territory.
+// Over 100 points is more than four wins clear - "running away with it".
+function computeTitleFightHook(race) {
+  const ds = race.driverStandings;
+  if (!ds || ds.length < 2) return "";
+  const [p1, p2] = ds;
+  const lead = Math.round((p1.points - p2.points) * 10) / 10;
+  if (lead <= 25) return `Title fight: ${lead} points cover P1 and P2.`;
+  if (lead > 100) return `${p1.driverName} is running away with it — a ${lead}-point lead.`;
+  return `${p1.driverName} leads the championship by ${lead} points.`;
+}
+
+function renderGlanceStandings(race) {
+  const el = document.getElementById("glance-standings");
+  el.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-standings">
+      <h3>Title race</h3>
+      <p class="glance-hook">${computeTitleFightHook(race)}</p>
+    </button>
+  `;
+}
+
+// Jolpica's status field for every backfilled race is just "Retired" or "Did
+// not start" - never a specific cause ("Collision", "Engine", etc.) - so we
+// can only ever state the count, never why. No cause is claimed here.
+function computeDramaHook(race) {
+  const n = dnfCount(race);
+  if (n === 0) return "Clean race — everyone finished.";
+  if (n <= 2) {
+    const names = race.dnfs.map((d) => d.driverName).join(", ");
+    return `${n} retirement${n === 1 ? "" : "s"}: ${names}.`;
+  }
+  return `${n} retirements.`;
+}
+
+function renderGlanceDrama(race) {
+  const el = document.getElementById("glance-drama");
+  el.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-drama">
+      <h3>Drama log</h3>
+      <p class="glance-hook">${computeDramaHook(race)}</p>
+    </button>
+  `;
+}
+
+// ±4 grid-to-finish places is the bar for "worth naming" - fewer than that is
+// ordinary race noise (traffic, one slow stop), not a story. Each side is
+// judged independently, and both are always shown - the threshold governs
+// wording (dramatic vs. neutral), never visibility, so the card never omits
+// half of what its title promises.
+// DNFs never appear here - the data pipeline excludes retirees from Hero/Zero
+// eligibility entirely (they're already the Drama Log's story).
+const MOVEMENT_THRESHOLD = 4;
+
+function renderGlanceHeroesZeroes(race) {
+  const section = document.getElementById("glance-heroes-zeroes");
+  const hz = race.heroesZeroes;
+  if (!hz || (!hz.hero && !hz.zero)) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  const hero = hz.hero, zero = hz.zero;
+
+  const parts = [];
+  if (hero) {
+    const quiet = hero.delta < MOVEMENT_THRESHOLD ? " (a quiet day up front)" : "";
+    parts.push(`Best mover: ${hero.driverName} +${hero.delta}${quiet}.`);
+  }
+  if (zero) {
+    const quiet = zero.delta > -MOVEMENT_THRESHOLD ? " (nothing dramatic)" : "";
+    parts.push(`Biggest drop: ${zero.driverName} ${zero.delta}${quiet}.`);
+  }
+  const hook = parts.join("<br>");
+
+  section.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-heroes-zeroes">
+      <h3>Heroes &amp; zeroes</h3>
+      <p class="glance-hook">${hook}</p>
+    </button>
+  `;
+}
+
+function renderGlanceRejoinStrip(race) {
+  const section = document.getElementById("glance-rejoin-strip");
+  const rs = race.rejoinStrip;
+  if (!rs || !rs.available || !rs.stops || rs.stops.length === 0) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+
+  const stops = [...rs.stops].sort((a, b) => a.inLap - b.inLap);
+  const clashes = stops.filter((s) => s.flag === "Rejoin clash").length;
+  const dirty = stops.filter((s) => s.flag === "Dirty air").length;
+  const clean = stops.length - clashes - dirty;
+
+  let hook;
+  if (clashes >= 2) hook = `${stops.length} stops, ${clashes} rejoined right ahead of a rival.`;
+  else if (clashes === 1 && dirty >= 1) hook = `${stops.length} stops: 1 rejoined right ahead of a rival, ${dirty} into dirty air.`;
+  else if (clashes === 0 && dirty === 0) hook = `${stops.length} stops, all into clean air.`;
+  else hook = `${stops.length} stops: ${clashes} rejoined right ahead of a rival, ${dirty} into dirty air.`;
+
+  // Option B: only notable (clash/dirty) stops get an individual dot; clean
+  // stops collapse into a single count so the strip stays scannable on mobile.
+  // Each dot jumps straight to its driver's block in the full Rejoin Strip.
+  // On chaotic races even the notable dots can overflow one row (e.g. Monaco's
+  // 42), so cap individual dots at 14 (one row) and fold the rest into count
+  // pills by type - the hook text above already states the true full counts.
+  const DOT_CAP = 14;
+  const notable = stops.filter((s) => s.flag !== "Clean air");
+  const shown = notable.slice(0, DOT_CAP);
+  const overflow = notable.slice(DOT_CAP);
+  const overflowClashes = overflow.filter((s) => s.flag === "Rejoin clash").length;
+  const overflowDirty = overflow.filter((s) => s.flag === "Dirty air").length;
+
+  // Staggered delay so the dots pop in one by one, in the same lap order
+  // they're drawn - capped so a 14-dot row still finishes in well under a
+  // second, not a slow drip.
+  const dots = shown
+    .map((s, i) => `<button type="button" class="rejoin-dot ${FLAG_CLASS[s.flag] || ""}" style="animation-delay:${i * 45}ms" data-target="deep-dive-rejoin-strip" data-jump="rejoin-driver-${s.driverCode}" aria-label="${s.driverCode} · Lap ${s.inLap} · ${s.flag}"></button>`)
+    .join("");
+  const pill = (n, label) => (n > 0 ? `<span class="rejoin-clean-pill">+${n} ${label}</span>` : "");
+  const cleanPill = pill(clean, "clean") + pill(overflowClashes, "more clash") + pill(overflowDirty, "more dirty");
+
+  section.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-rejoin-strip">
+      <h3>Rejoin strip</h3>
+      <p class="glance-hook">${hook}</p>
+    </button>
+    <div class="rejoin-dots">${dots}${cleanPill}</div>
+  `;
+}
+
+// Reuses driverIndex/gapSeries from the full Gap Trace module below - same
+// default pairing (winner vs runner-up), no re-fetch, no duplicated math.
+function computeGapTraceGlanceHook(race) {
+  const gt = race.gapTrace;
+  if (!gt || !gt.available || !gt.drivers || gt.drivers.length < 2) return null;
+  const idx = driverIndex(gt);
+  const order = race.results.map((r) => r.driverCode).filter((c) => idx.has(c));
+  const aCode = order[0], bCode = order[1];
+  if (!aCode || !bCode) return null;
+  const series = gapSeries(idx.get(aCode), idx.get(bCode));
+
+  let flipLap = null, prevSign = 0;
+  for (const s of series) {
+    if (s.gap === 0) continue;
+    const sign = Math.sign(s.gap);
+    if (prevSign !== 0 && sign !== prevSign && s.lap > 3) {
+      flipLap = s.lap;
+      break;
+    }
+    prevSign = sign;
+  }
+  // The cumulative gap flipping sign only proves the two crossed in elapsed
+  // time - it can't distinguish an on-track pass from a pit-stop cycle, so
+  // this states the metric, not a claim about how it happened.
+  return flipLap
+    ? `${aCode} and ${bCode}'s gap flipped around Lap ${flipLap}.`
+    : `Compare any two drivers' pace lap by lap.`;
+}
+
+function renderGlanceGapTrace(race) {
+  const section = document.getElementById("glance-gap-trace");
+  const hook = computeGapTraceGlanceHook(race);
+  if (!hook) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  section.innerHTML = `
+    <button type="button" class="glance-card-btn" data-target="deep-dive-gap-trace">
+      <h3>Gap trace</h3>
+      <p class="glance-hook">${hook}</p>
+    </button>
+  `;
 }
 
 function renderEditorsTake(race) {
@@ -617,9 +856,30 @@ function populateSelector() {
   }
 }
 
+// One-shot streak across the top while a race loads - restarts the CSS
+// animation by removing then re-adding the class (just re-adding an
+// already-applied class doesn't replay it), and never runs for
+// prefers-reduced-motion. It runs concurrently with the fetch below rather
+// than delaying it - purely decorative, not a progress indicator.
+function playLoadingCar() {
+  if (prefersReducedMotion()) return;
+  const track = document.getElementById("loading-car-track");
+  if (!track) return;
+  track.classList.remove("playing");
+  void track.offsetWidth;
+  track.classList.add("playing");
+}
+
 async function loadRound(round) {
+  playLoadingCar();
   const padded = String(round).padStart(2, "0");
   const race = await loadJSON(`data/${SEASON}/round-${padded}.json`);
+  renderGlanceHero(race);
+  renderGlanceStandings(race);
+  renderGlanceDrama(race);
+  renderGlanceHeroesZeroes(race);
+  renderGlanceRejoinStrip(race);
+  renderGlanceGapTrace(race);
   renderWinnerHero(race);
   renderStandings(race);
   renderDramaLog(race);
@@ -628,6 +888,63 @@ async function loadRound(round) {
   renderGapTrace(race);
   renderEditorsTake(race);
 }
+
+// ---- Glance <-> deep-dive navigation ------------------------------------
+// Delegated on document (not per-render) since glance card innerHTML is
+// rebuilt on every race switch, which would otherwise drop listeners.
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function scrollToEl(el) {
+  el.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start" });
+}
+
+function openDeepDiveModule(moduleId) {
+  document.querySelectorAll(".deep-dive-module").forEach((m) => {
+    m.classList.toggle("collapsed", m.id !== moduleId);
+  });
+  const module = document.getElementById(moduleId);
+  // Rejoin Strip and Gap Trace are wrapped in a closed-by-default <details>;
+  // open it so the content being scrolled to is actually visible.
+  if (module) module.querySelectorAll("details.disclosure").forEach((d) => { d.open = true; });
+  // The Gap Trace chart is already rendered by the time the card is tapped
+  // (rendering happens on load, independent of the collapsed/open state), so
+  // without this it would appear fully-drawn instead of drawing itself now.
+  if (moduleId === "deep-dive-gap-trace") {
+    const svg = document.querySelector("#gap-chart svg");
+    if (svg) animateLineDraw(svg);
+  }
+}
+
+document.addEventListener("click", (e) => {
+  const dot = e.target.closest(".rejoin-dot[data-jump]");
+  if (dot) {
+    openDeepDiveModule(dot.dataset.target);
+    const jumpTarget = document.getElementById(dot.dataset.jump);
+    if (jumpTarget) {
+      scrollToEl(jumpTarget);
+      jumpTarget.classList.add("jump-highlight");
+      setTimeout(() => jumpTarget.classList.remove("jump-highlight"), 2000);
+    }
+    return;
+  }
+
+  const cardBtn = e.target.closest(".glance-card-btn");
+  if (cardBtn) {
+    openDeepDiveModule(cardBtn.dataset.target);
+    const target = document.getElementById(cardBtn.dataset.target);
+    if (target) scrollToEl(target);
+    return;
+  }
+
+  const backBtn = e.target.closest(".back-to-glance");
+  if (backBtn) {
+    backBtn.closest(".deep-dive-module").classList.add("collapsed");
+    scrollToEl(document.getElementById("glance"));
+  }
+});
 
 async function init() {
   manifest = await loadJSON("data/index.json");

@@ -498,6 +498,39 @@
     },
     {
       "round": 16,
+      "raceName": "Bahrain Grand Prix in Malaysia",
+      "circuitName": "Sepang International Circuit",
+      "circuitTimezone": "UTC",
+      "locality": "Kuala Lumpur",
+      "country": "Malaysia",
+      "date": "2026-10-04",
+      "time": "07:00:00Z",
+      "sessions": {
+        "race": {
+          "date": "2026-10-04",
+          "time": "07:00:00Z"
+        },
+        "firstPractice": {
+          "date": "2026-10-02",
+          "time": "02:00:00Z"
+        },
+        "secondPractice": {
+          "date": "2026-10-02",
+          "time": "06:00:00Z"
+        },
+        "thirdPractice": {
+          "date": "2026-10-03",
+          "time": "06:00:00Z"
+        },
+        "qualifying": {
+          "date": "2026-10-03",
+          "time": "09:00:00Z"
+        }
+      },
+      "hasData": false
+    },
+    {
+      "round": 17,
       "raceName": "Singapore Grand Prix",
       "circuitName": "Marina Bay Street Circuit",
       "circuitTimezone": "Asia/Singapore",
@@ -530,7 +563,7 @@
       "hasData": false
     },
     {
-      "round": 17,
+      "round": 18,
       "raceName": "United States Grand Prix",
       "circuitName": "Circuit of the Americas",
       "circuitTimezone": "America/Chicago",
@@ -563,7 +596,7 @@
       "hasData": false
     },
     {
-      "round": 18,
+      "round": 19,
       "raceName": "Mexico City Grand Prix",
       "circuitName": "Autódromo Hermanos Rodríguez",
       "circuitTimezone": "America/Mexico_City",
@@ -596,7 +629,7 @@
       "hasData": false
     },
     {
-      "round": 19,
+      "round": 20,
       "raceName": "Brazilian Grand Prix",
       "circuitName": "Autódromo José Carlos Pace",
       "circuitTimezone": "America/Sao_Paulo",
@@ -629,7 +662,7 @@
       "hasData": false
     },
     {
-      "round": 20,
+      "round": 21,
       "raceName": "Las Vegas Grand Prix",
       "circuitName": "Las Vegas Strip Street Circuit",
       "circuitTimezone": "America/Los_Angeles",
@@ -662,7 +695,7 @@
       "hasData": false
     },
     {
-      "round": 21,
+      "round": 22,
       "raceName": "Qatar Grand Prix",
       "circuitName": "Losail International Circuit",
       "circuitTimezone": "Asia/Qatar",
@@ -695,7 +728,7 @@
       "hasData": false
     },
     {
-      "round": 22,
+      "round": 23,
       "raceName": "Abu Dhabi Grand Prix",
       "circuitName": "Yas Marina Circuit",
       "circuitTimezone": "Asia/Dubai",

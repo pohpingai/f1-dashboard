@@ -512,19 +512,19 @@
         },
         "firstPractice": {
           "date": "2026-10-02",
-          "time": "02:00:00Z"
+          "time": "04:30:00Z"
         },
         "secondPractice": {
           "date": "2026-10-02",
-          "time": "06:00:00Z"
+          "time": "08:00:00Z"
         },
         "thirdPractice": {
           "date": "2026-10-03",
-          "time": "06:00:00Z"
+          "time": "04:30:00Z"
         },
         "qualifying": {
           "date": "2026-10-03",
-          "time": "09:00:00Z"
+          "time": "08:00:00Z"
         }
       },
       "hasData": false

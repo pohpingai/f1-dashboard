@@ -1,0 +1,5977 @@
+{
+  "season": 2026,
+  "round": 18,
+  "raceName": "United States Grand Prix",
+  "circuitName": "Circuit of the Americas",
+  "circuitTimezone": "America/Chicago",
+  "locality": "Austin",
+  "country": "USA",
+  "date": "2026-10-25",
+  "time": "20:00:00Z",
+  "winner": {
+    "position": 1,
+    "positionText": "1",
+    "driverCode": "ANT",
+    "driverName": "Andrea Kimi Antonelli",
+    "constructor": "Mercedes",
+    "grid": 1,
+    "laps": 56,
+    "status": "Finished",
+    "points": 25.0
+  },
+  "results": [
+    {
+      "position": 1,
+      "positionText": "1",
+      "driverCode": "ANT",
+      "driverName": "Andrea Kimi Antonelli",
+      "constructor": "Mercedes",
+      "grid": 1,
+      "laps": 56,
+      "status": "Finished",
+      "points": 25.0
+    },
+    {
+      "position": 2,
+      "positionText": "2",
+      "driverCode": "LEC",
+      "driverName": "Charles Leclerc",
+      "constructor": "Ferrari",
+      "grid": 4,
+      "laps": 56,
+      "status": "Finished",
+      "points": 18.0
+    },
+    {
+      "position": 3,
+      "positionText": "3",
+      "driverCode": "VER",
+      "driverName": "Max Verstappen",
+      "constructor": "Red Bull",
+      "grid": 2,
+      "laps": 56,
+      "status": "Finished",
+      "points": 15.0
+    },
+    {
+      "position": 4,
+      "positionText": "4",
+      "driverCode": "HAM",
+      "driverName": "Lewis Hamilton",
+      "constructor": "Ferrari",
+      "grid": 5,
+      "laps": 56,
+      "status": "Finished",
+      "points": 12.0
+    },
+    {
+      "position": 5,
+      "positionText": "5",
+      "driverCode": "NOR",
+      "driverName": "Lando Norris",
+      "constructor": "McLaren",
+      "grid": 8,
+      "laps": 56,
+      "status": "Finished",
+      "points": 10.0
+    },
+    {
+      "position": 6,
+      "positionText": "6",
+      "driverCode": "HAD",
+      "driverName": "Isack Hadjar",
+      "constructor": "Red Bull",
+      "grid": 3,
+      "laps": 56,
+      "status": "Finished",
+      "points": 8.0
+    },
+    {
+      "position": 7,
+      "positionText": "7",
+      "driverCode": "PIA",
+      "driverName": "Oscar Piastri",
+      "constructor": "McLaren",
+      "grid": 7,
+      "laps": 56,
+      "status": "Finished",
+      "points": 6.0
+    },
+    {
+      "position": 8,
+      "positionText": "8",
+      "driverCode": "RUS",
+      "driverName": "George Russell",
+      "constructor": "Mercedes",
+      "grid": 6,
+      "laps": 56,
+      "status": "Finished",
+      "points": 4.0
+    },
+    {
+      "position": 9,
+      "positionText": "9",
+      "driverCode": "LAW",
+      "driverName": "Liam Lawson",
+      "constructor": "RB F1 Team",
+      "grid": 9,
+      "laps": 56,
+      "status": "Finished",
+      "points": 2.0
+    },
+    {
+      "position": 10,
+      "positionText": "10",
+      "driverCode": "GAS",
+      "driverName": "Pierre Gasly",
+      "constructor": "Alpine F1 Team",
+      "grid": 10,
+      "laps": 56,
+      "status": "Finished",
+      "points": 1.0
+    },
+    {
+      "position": 11,
+      "positionText": "11",
+      "driverCode": "HUL",
+      "driverName": "Nico Hülkenberg",
+      "constructor": "Audi",
+      "grid": 11,
+      "laps": 56,
+      "status": "Finished",
+      "points": 0.0
+    },
+    {
+      "position": 12,
+      "positionText": "12",
+      "driverCode": "LIN",
+      "driverName": "Arvid Lindblad",
+      "constructor": "RB F1 Team",
+      "grid": 14,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 13,
+      "positionText": "13",
+      "driverCode": "BOR",
+      "driverName": "Gabriel Bortoleto",
+      "constructor": "Audi",
+      "grid": 21,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 14,
+      "positionText": "14",
+      "driverCode": "OCO",
+      "driverName": "Esteban Ocon",
+      "constructor": "Haas F1 Team",
+      "grid": 15,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 15,
+      "positionText": "15",
+      "driverCode": "STR",
+      "driverName": "Lance Stroll",
+      "constructor": "Aston Martin",
+      "grid": 22,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 16,
+      "positionText": "16",
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructor": "Aston Martin",
+      "grid": 12,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 17,
+      "positionText": "17",
+      "driverCode": "ALB",
+      "driverName": "Alexander Albon",
+      "constructor": "Williams",
+      "grid": 17,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 18,
+      "positionText": "18",
+      "driverCode": "SAI",
+      "driverName": "Carlos Sainz",
+      "constructor": "Williams",
+      "grid": 16,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 19,
+      "positionText": "19",
+      "driverCode": "PER",
+      "driverName": "Sergio Pérez",
+      "constructor": "Cadillac F1 Team",
+      "grid": 18,
+      "laps": 55,
+      "status": "Lapped",
+      "points": 0.0
+    },
+    {
+      "position": 20,
+      "positionText": "R",
+      "driverCode": "BOT",
+      "driverName": "Valtteri Bottas",
+      "constructor": "Cadillac F1 Team",
+      "grid": 19,
+      "laps": 48,
+      "status": "Retired",
+      "points": 0.0
+    },
+    {
+      "position": 21,
+      "positionText": "R",
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "constructor": "Alpine F1 Team",
+      "grid": 20,
+      "laps": 35,
+      "status": "Retired",
+      "points": 0.0
+    },
+    {
+      "position": 22,
+      "positionText": "R",
+      "driverCode": "BEA",
+      "driverName": "Oliver Bearman",
+      "constructor": "Haas F1 Team",
+      "grid": 13,
+      "laps": 24,
+      "status": "Retired",
+      "points": 0.0
+    }
+  ],
+  "dnfs": [
+    {
+      "driverCode": "BOT",
+      "driverName": "Valtteri Bottas",
+      "lap": 48,
+      "reason": "Retired"
+    },
+    {
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "lap": 35,
+      "reason": "Retired"
+    },
+    {
+      "driverCode": "BEA",
+      "driverName": "Oliver Bearman",
+      "lap": 24,
+      "reason": "Retired"
+    }
+  ],
+  "heroesZeroes": {
+    "hero": {
+      "driverCode": "BOR",
+      "driverName": "Gabriel Bortoleto",
+      "constructor": "Audi",
+      "grid": 21,
+      "finish": 13,
+      "delta": 8,
+      "giftedPlaces": 3,
+      "take": "P21 → P13, gained 8 places — 3 from retirements ahead, 5 by other means."
+    },
+    "zero": {
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructor": "Aston Martin",
+      "grid": 12,
+      "finish": 16,
+      "delta": -4,
+      "giftedPlaces": null,
+      "take": "P12 → P16, dropped 4 places."
+    }
+  },
+  "driverStandings": [
+    {
+      "position": 1,
+      "points": 365.0,
+      "wins": 9,
+      "driverCode": "ANT",
+      "driverName": "Andrea Kimi Antonelli",
+      "constructor": "Mercedes"
+    },
+    {
+      "position": 2,
+      "points": 242.0,
+      "wins": 3,
+      "driverCode": "RUS",
+      "driverName": "George Russell",
+      "constructor": "Mercedes"
+    },
+    {
+      "position": 3,
+      "points": 241.0,
+      "wins": 1,
+      "driverCode": "HAM",
+      "driverName": "Lewis Hamilton",
+      "constructor": "Ferrari"
+    },
+    {
+      "position": 4,
+      "points": 236.0,
+      "wins": 2,
+      "driverCode": "VER",
+      "driverName": "Max Verstappen",
+      "constructor": "Red Bull"
+    },
+    {
+      "position": 5,
+      "points": 233.0,
+      "wins": 1,
+      "driverCode": "LEC",
+      "driverName": "Charles Leclerc",
+      "constructor": "Ferrari"
+    },
+    {
+      "position": 6,
+      "points": 211.0,
+      "wins": 2,
+      "driverCode": "NOR",
+      "driverName": "Lando Norris",
+      "constructor": "McLaren"
+    },
+    {
+      "position": 7,
+      "points": 144.0,
+      "wins": 0,
+      "driverCode": "PIA",
+      "driverName": "Oscar Piastri",
+      "constructor": "McLaren"
+    },
+    {
+      "position": 8,
+      "points": 105.0,
+      "wins": 0,
+      "driverCode": "HAD",
+      "driverName": "Isack Hadjar",
+      "constructor": "Red Bull"
+    },
+    {
+      "position": 9,
+      "points": 77.0,
+      "wins": 0,
+      "driverCode": "LAW",
+      "driverName": "Liam Lawson",
+      "constructor": "RB F1 Team"
+    },
+    {
+      "position": 10,
+      "points": 42.0,
+      "wins": 0,
+      "driverCode": "GAS",
+      "driverName": "Pierre Gasly",
+      "constructor": "Alpine F1 Team"
+    },
+    {
+      "position": 11,
+      "points": 38.0,
+      "wins": 0,
+      "driverCode": "LIN",
+      "driverName": "Arvid Lindblad",
+      "constructor": "RB F1 Team"
+    },
+    {
+      "position": 12,
+      "points": 27.0,
+      "wins": 0,
+      "driverCode": "COL",
+      "driverName": "Franco Colapinto",
+      "constructor": "Alpine F1 Team"
+    },
+    {
+      "position": 13,
+      "points": 23.0,
+      "wins": 0,
+      "driverCode": "BEA",
+      "driverName": "Oliver Bearman",
+      "constructor": "Haas F1 Team"
+    },
+    {
+      "position": 14,
+      "points": 13.0,
+      "wins": 0,
+      "driverCode": "HUL",
+      "driverName": "Nico Hülkenberg",
+      "constructor": "Audi"
+    },
+    {
+      "position": 15,
+      "points": 10.0,
+      "wins": 0,
+      "driverCode": "BOR",
+      "driverName": "Gabriel Bortoleto",
+      "constructor": "Audi"
+    },
+    {
+      "position": 16,
+      "points": 7.0,
+      "wins": 0,
+      "driverCode": "OCO",
+      "driverName": "Esteban Ocon",
+      "constructor": "Haas F1 Team"
+    },
+    {
+      "position": 17,
+      "points": 7.0,
+      "wins": 0,
+      "driverCode": "ALO",
+      "driverName": "Fernando Alonso",
+      "constructor": "Aston Martin"
+    },
+    {
+      "position": 18,
+      "points": 7.0,
+      "wins": 0,
+      "driverCode": "SAI",
+      "driverName": "Carlos Sainz",
+      "constructor": "Williams"
+    },
+    {
+      "position": 19,
+      "points": 5.0,
+      "wins": 0,
+      "driverCode": "ALB",
+      "driverName": "Alexander Albon",
+      "constructor": "Williams"
+    },
+    {
+      "position": 20,
+      "points": 1.0,
+      "wins": 0,
+      "driverCode": "TSU",
+      "driverName": "Yuki Tsunoda",
+      "constructor": "RB F1 Team"
+    },
+    {
+      "position": 21,
+      "points": 0.0,
+      "wins": 0,
+      "driverCode": "STR",
+      "driverName": "Lance Stroll",
+      "constructor": "Aston Martin"
+    },
+    {
+      "position": 22,
+      "points": 0.0,
+      "wins": 0,
+      "driverCode": "BOT",
+      "driverName": "Valtteri Bottas",
+      "constructor": "Cadillac F1 Team"
+    },
+    {
+      "position": 23,
+      "points": 0.0,
+      "wins": 0,
+      "driverCode": "PER",
+      "driverName": "Sergio Pérez",
+      "constructor": "Cadillac F1 Team"
+    }
+  ],
+  "constructorStandings": [
+    {
+      "position": 1,
+      "points": 607.0,
+      "wins": 12,
+      "constructor": "Mercedes"
+    },
+    {
+      "position": 2,
+      "points": 474.0,
+      "wins": 2,
+      "constructor": "Ferrari"
+    },
+    {
+      "position": 3,
+      "points": 355.0,
+      "wins": 2,
+      "constructor": "Red Bull"
+    },
+    {
+      "position": 4,
+      "points": 355.0,
+      "wins": 2,
+      "constructor": "McLaren"
+    },
+    {
+      "position": 5,
+      "points": 102.0,
+      "wins": 0,
+      "constructor": "RB F1 Team"
+    },
+    {
+      "position": 6,
+      "points": 69.0,
+      "wins": 0,
+      "constructor": "Alpine F1 Team"
+    },
+    {
+      "position": 7,
+      "points": 30.0,
+      "wins": 0,
+      "constructor": "Haas F1 Team"
+    },
+    {
+      "position": 8,
+      "points": 23.0,
+      "wins": 0,
+      "constructor": "Audi"
+    },
+    {
+      "position": 9,
+      "points": 12.0,
+      "wins": 0,
+      "constructor": "Williams"
+    },
+    {
+      "position": 10,
+      "points": 7.0,
+      "wins": 0,
+      "constructor": "Aston Martin"
+    },
+    {
+      "position": 11,
+      "points": 0.0,
+      "wins": 0,
+      "constructor": "Cadillac F1 Team"
+    }
+  ],
+  "gapTrace": {
+    "available": true,
+    "drivers": [
+      {
+        "code": "ALB",
+        "constructor": "Williams",
+        "pitLaps": [
+          16,
+          31
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 9.687
+          },
+          {
+            "lap": 2,
+            "t": 122.806
+          },
+          {
+            "lap": 3,
+            "t": 226.411
+          },
+          {
+            "lap": 4,
+            "t": 330.237
+          },
+          {
+            "lap": 5,
+            "t": 433.581
+          },
+          {
+            "lap": 6,
+            "t": 536.941
+          },
+          {
+            "lap": 7,
+            "t": 641.207
+          },
+          {
+            "lap": 8,
+            "t": 745.568
+          },
+          {
+            "lap": 9,
+            "t": 849.49
+          },
+          {
+            "lap": 10,
+            "t": 952.918
+          },
+          {
+            "lap": 11,
+            "t": 1057.501
+          },
+          {
+            "lap": 12,
+            "t": 1161.602
+          },
+          {
+            "lap": 13,
+            "t": 1265.759
+          },
+          {
+            "lap": 14,
+            "t": 1370.518
+          },
+          {
+            "lap": 15,
+            "t": 1475.019
+          },
+          {
+            "lap": 16,
+            "t": 1579.479
+          },
+          {
+            "lap": 17,
+            "t": 1701.985
+          },
+          {
+            "lap": 18,
+            "t": 1804.132
+          },
+          {
+            "lap": 19,
+            "t": 1906.196
+          },
+          {
+            "lap": 20,
+            "t": 2009.448
+          },
+          {
+            "lap": 21,
+            "t": 2110.688
+          },
+          {
+            "lap": 22,
+            "t": 2213.621
+          },
+          {
+            "lap": 23,
+            "t": 2316.262
+          },
+          {
+            "lap": 24,
+            "t": 2418.456
+          },
+          {
+            "lap": 25,
+            "t": 2520.583
+          },
+          {
+            "lap": 26,
+            "t": 2623.129
+          },
+          {
+            "lap": 27,
+            "t": 2725.516
+          },
+          {
+            "lap": 28,
+            "t": 2829.473
+          },
+          {
+            "lap": 29,
+            "t": 2933.142
+          },
+          {
+            "lap": 30,
+            "t": 3036.446
+          },
+          {
+            "lap": 31,
+            "t": 3139.196
+          },
+          {
+            "lap": 32,
+            "t": 3262.432
+          },
+          {
+            "lap": 33,
+            "t": 3363.605
+          },
+          {
+            "lap": 34,
+            "t": 3464.731
+          },
+          {
+            "lap": 35,
+            "t": 3566.176
+          },
+          {
+            "lap": 36,
+            "t": 3669.536
+          },
+          {
+            "lap": 37,
+            "t": 3772.624
+          },
+          {
+            "lap": 38,
+            "t": 3874.343
+          },
+          {
+            "lap": 39,
+            "t": 3976.058
+          },
+          {
+            "lap": 40,
+            "t": 4078.672
+          },
+          {
+            "lap": 41,
+            "t": 4180.549
+          },
+          {
+            "lap": 42,
+            "t": 4283.178
+          },
+          {
+            "lap": 43,
+            "t": 4386.55
+          },
+          {
+            "lap": 44,
+            "t": 4488.322
+          },
+          {
+            "lap": 45,
+            "t": 4590.851
+          },
+          {
+            "lap": 46,
+            "t": 4693.743
+          },
+          {
+            "lap": 47,
+            "t": 4798.76
+          },
+          {
+            "lap": 48,
+            "t": 4900.825
+          },
+          {
+            "lap": 49,
+            "t": 5004.805
+          },
+          {
+            "lap": 50,
+            "t": 5129.299
+          },
+          {
+            "lap": 51,
+            "t": 5266.229
+          },
+          {
+            "lap": 52,
+            "t": 5373.915
+          },
+          {
+            "lap": 53,
+            "t": 5475.632
+          },
+          {
+            "lap": 54,
+            "t": 5577.197
+          },
+          {
+            "lap": 55,
+            "t": 5678.872
+          }
+        ]
+      },
+      {
+        "code": "ALO",
+        "constructor": "Aston Martin",
+        "pitLaps": [
+          28,
+          42
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 11.031
+          },
+          {
+            "lap": 2,
+            "t": 124.619
+          },
+          {
+            "lap": 3,
+            "t": 228.379
+          },
+          {
+            "lap": 4,
+            "t": 332.049
+          },
+          {
+            "lap": 5,
+            "t": 434.846
+          },
+          {
+            "lap": 6,
+            "t": 538.035
+          },
+          {
+            "lap": 7,
+            "t": 642.004
+          },
+          {
+            "lap": 8,
+            "t": 746.036
+          },
+          {
+            "lap": 9,
+            "t": 850.13
+          },
+          {
+            "lap": 10,
+            "t": 953.48
+          },
+          {
+            "lap": 11,
+            "t": 1056.564
+          },
+          {
+            "lap": 12,
+            "t": 1160.009
+          },
+          {
+            "lap": 13,
+            "t": 1263.4
+          },
+          {
+            "lap": 14,
+            "t": 1366.767
+          },
+          {
+            "lap": 15,
+            "t": 1469.842
+          },
+          {
+            "lap": 16,
+            "t": 1572.807
+          },
+          {
+            "lap": 17,
+            "t": 1675.413
+          },
+          {
+            "lap": 18,
+            "t": 1778.021
+          },
+          {
+            "lap": 19,
+            "t": 1880.365
+          },
+          {
+            "lap": 20,
+            "t": 1983.066
+          },
+          {
+            "lap": 21,
+            "t": 2085.579
+          },
+          {
+            "lap": 22,
+            "t": 2187.986
+          },
+          {
+            "lap": 23,
+            "t": 2290.544
+          },
+          {
+            "lap": 24,
+            "t": 2393.175
+          },
+          {
+            "lap": 25,
+            "t": 2495.401
+          },
+          {
+            "lap": 26,
+            "t": 2598.115
+          },
+          {
+            "lap": 27,
+            "t": 2700.816
+          },
+          {
+            "lap": 28,
+            "t": 2804.163
+          },
+          {
+            "lap": 29,
+            "t": 2926.056
+          },
+          {
+            "lap": 30,
+            "t": 3027.132
+          },
+          {
+            "lap": 31,
+            "t": 3128.396
+          },
+          {
+            "lap": 32,
+            "t": 3229.443
+          },
+          {
+            "lap": 33,
+            "t": 3330.907
+          },
+          {
+            "lap": 34,
+            "t": 3431.983
+          },
+          {
+            "lap": 35,
+            "t": 3533.231
+          },
+          {
+            "lap": 36,
+            "t": 3634.598
+          },
+          {
+            "lap": 37,
+            "t": 3735.736
+          },
+          {
+            "lap": 38,
+            "t": 3836.734
+          },
+          {
+            "lap": 39,
+            "t": 3938.307
+          },
+          {
+            "lap": 40,
+            "t": 4039.788
+          },
+          {
+            "lap": 41,
+            "t": 4141.44
+          },
+          {
+            "lap": 42,
+            "t": 4254.412
+          },
+          {
+            "lap": 43,
+            "t": 4394.31
+          },
+          {
+            "lap": 44,
+            "t": 4495.072
+          },
+          {
+            "lap": 45,
+            "t": 4595.809
+          },
+          {
+            "lap": 46,
+            "t": 4696.495
+          },
+          {
+            "lap": 47,
+            "t": 4798.217
+          },
+          {
+            "lap": 48,
+            "t": 4901.169
+          },
+          {
+            "lap": 49,
+            "t": 5001.383
+          },
+          {
+            "lap": 50,
+            "t": 5124.724
+          },
+          {
+            "lap": 51,
+            "t": 5262.339
+          },
+          {
+            "lap": 52,
+            "t": 5370.049
+          },
+          {
+            "lap": 53,
+            "t": 5469.991
+          },
+          {
+            "lap": 54,
+            "t": 5570.838
+          },
+          {
+            "lap": 55,
+            "t": 5677.384
+          }
+        ]
+      },
+      {
+        "code": "ANT",
+        "constructor": "Mercedes",
+        "pitLaps": [
+          24
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 0.0
+          },
+          {
+            "lap": 2,
+            "t": 108.494
+          },
+          {
+            "lap": 3,
+            "t": 209.079
+          },
+          {
+            "lap": 4,
+            "t": 309.455
+          },
+          {
+            "lap": 5,
+            "t": 410.409
+          },
+          {
+            "lap": 6,
+            "t": 511.482
+          },
+          {
+            "lap": 7,
+            "t": 612.442
+          },
+          {
+            "lap": 8,
+            "t": 713.302
+          },
+          {
+            "lap": 9,
+            "t": 814.068
+          },
+          {
+            "lap": 10,
+            "t": 915.113
+          },
+          {
+            "lap": 11,
+            "t": 1016.479
+          },
+          {
+            "lap": 12,
+            "t": 1117.732
+          },
+          {
+            "lap": 13,
+            "t": 1219.556
+          },
+          {
+            "lap": 14,
+            "t": 1321.102
+          },
+          {
+            "lap": 15,
+            "t": 1422.531
+          },
+          {
+            "lap": 16,
+            "t": 1524.004
+          },
+          {
+            "lap": 17,
+            "t": 1625.319
+          },
+          {
+            "lap": 18,
+            "t": 1726.506
+          },
+          {
+            "lap": 19,
+            "t": 1827.989
+          },
+          {
+            "lap": 20,
+            "t": 1929.146
+          },
+          {
+            "lap": 21,
+            "t": 2030.271
+          },
+          {
+            "lap": 22,
+            "t": 2131.434
+          },
+          {
+            "lap": 23,
+            "t": 2232.534
+          },
+          {
+            "lap": 24,
+            "t": 2333.902
+          },
+          {
+            "lap": 25,
+            "t": 2454.545
+          },
+          {
+            "lap": 26,
+            "t": 2554.022
+          },
+          {
+            "lap": 27,
+            "t": 2653.818
+          },
+          {
+            "lap": 28,
+            "t": 2753.836
+          },
+          {
+            "lap": 29,
+            "t": 2853.73
+          },
+          {
+            "lap": 30,
+            "t": 2954.231
+          },
+          {
+            "lap": 31,
+            "t": 3054.165
+          },
+          {
+            "lap": 32,
+            "t": 3153.731
+          },
+          {
+            "lap": 33,
+            "t": 3253.851
+          },
+          {
+            "lap": 34,
+            "t": 3353.574
+          },
+          {
+            "lap": 35,
+            "t": 3453.731
+          },
+          {
+            "lap": 36,
+            "t": 3553.644
+          },
+          {
+            "lap": 37,
+            "t": 3653.442
+          },
+          {
+            "lap": 38,
+            "t": 3753.295
+          },
+          {
+            "lap": 39,
+            "t": 3853.109
+          },
+          {
+            "lap": 40,
+            "t": 3952.838
+          },
+          {
+            "lap": 41,
+            "t": 4052.685
+          },
+          {
+            "lap": 42,
+            "t": 4152.474
+          },
+          {
+            "lap": 43,
+            "t": 4252.256
+          },
+          {
+            "lap": 44,
+            "t": 4351.753
+          },
+          {
+            "lap": 45,
+            "t": 4451.478
+          },
+          {
+            "lap": 46,
+            "t": 4551.432
+          },
+          {
+            "lap": 47,
+            "t": 4651.492
+          },
+          {
+            "lap": 48,
+            "t": 4751.262
+          },
+          {
+            "lap": 49,
+            "t": 4850.431
+          },
+          {
+            "lap": 50,
+            "t": 4950.024
+          },
+          {
+            "lap": 51,
+            "t": 5052.149
+          },
+          {
+            "lap": 52,
+            "t": 5190.072
+          },
+          {
+            "lap": 53,
+            "t": 5317.805
+          },
+          {
+            "lap": 54,
+            "t": 5417.041
+          },
+          {
+            "lap": 55,
+            "t": 5516.137
+          },
+          {
+            "lap": 56,
+            "t": 5616.703
+          }
+        ]
+      },
+      {
+        "code": "BEA",
+        "constructor": "Haas F1 Team",
+        "pitLaps": [
+          13,
+          22
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 7.609
+          },
+          {
+            "lap": 2,
+            "t": 119.681
+          },
+          {
+            "lap": 3,
+            "t": 222.68
+          },
+          {
+            "lap": 4,
+            "t": 324.643
+          },
+          {
+            "lap": 5,
+            "t": 427.026
+          },
+          {
+            "lap": 6,
+            "t": 529.238
+          },
+          {
+            "lap": 7,
+            "t": 632.285
+          },
+          {
+            "lap": 8,
+            "t": 736.505
+          },
+          {
+            "lap": 9,
+            "t": 839.679
+          },
+          {
+            "lap": 10,
+            "t": 943.379
+          },
+          {
+            "lap": 11,
+            "t": 1048.892
+          },
+          {
+            "lap": 12,
+            "t": 1154.93
+          },
+          {
+            "lap": 13,
+            "t": 1260.072
+          },
+          {
+            "lap": 14,
+            "t": 1384.052
+          },
+          {
+            "lap": 15,
+            "t": 1487.167
+          },
+          {
+            "lap": 16,
+            "t": 1590.417
+          },
+          {
+            "lap": 17,
+            "t": 1695.41
+          },
+          {
+            "lap": 18,
+            "t": 1799.007
+          },
+          {
+            "lap": 19,
+            "t": 1902.349
+          },
+          {
+            "lap": 20,
+            "t": 2005.972
+          },
+          {
+            "lap": 21,
+            "t": 2109.372
+          },
+          {
+            "lap": 22,
+            "t": 2213.355
+          },
+          {
+            "lap": 23,
+            "t": 2350.975
+          },
+          {
+            "lap": 24,
+            "t": 2463.05
+          }
+        ]
+      },
+      {
+        "code": "BOR",
+        "constructor": "Audi",
+        "pitLaps": [
+          26,
+          50
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 12.312
+          },
+          {
+            "lap": 2,
+            "t": 126.291
+          },
+          {
+            "lap": 3,
+            "t": 230.004
+          },
+          {
+            "lap": 4,
+            "t": 333.205
+          },
+          {
+            "lap": 5,
+            "t": 436.784
+          },
+          {
+            "lap": 6,
+            "t": 539.628
+          },
+          {
+            "lap": 7,
+            "t": 642.848
+          },
+          {
+            "lap": 8,
+            "t": 746.583
+          },
+          {
+            "lap": 9,
+            "t": 850.619
+          },
+          {
+            "lap": 10,
+            "t": 954.121
+          },
+          {
+            "lap": 11,
+            "t": 1057.923
+          },
+          {
+            "lap": 12,
+            "t": 1162.055
+          },
+          {
+            "lap": 13,
+            "t": 1266.228
+          },
+          {
+            "lap": 14,
+            "t": 1369.527
+          },
+          {
+            "lap": 15,
+            "t": 1473.395
+          },
+          {
+            "lap": 16,
+            "t": 1576.479
+          },
+          {
+            "lap": 17,
+            "t": 1679.163
+          },
+          {
+            "lap": 18,
+            "t": 1781.707
+          },
+          {
+            "lap": 19,
+            "t": 1884.287
+          },
+          {
+            "lap": 20,
+            "t": 1987.144
+          },
+          {
+            "lap": 21,
+            "t": 2089.501
+          },
+          {
+            "lap": 22,
+            "t": 2191.96
+          },
+          {
+            "lap": 23,
+            "t": 2294.776
+          },
+          {
+            "lap": 24,
+            "t": 2397.096
+          },
+          {
+            "lap": 25,
+            "t": 2499.745
+          },
+          {
+            "lap": 26,
+            "t": 2604.1
+          },
+          {
+            "lap": 27,
+            "t": 2725.967
+          },
+          {
+            "lap": 28,
+            "t": 2827.472
+          },
+          {
+            "lap": 29,
+            "t": 2928.979
+          },
+          {
+            "lap": 30,
+            "t": 3030.847
+          },
+          {
+            "lap": 31,
+            "t": 3132.131
+          },
+          {
+            "lap": 32,
+            "t": 3232.957
+          },
+          {
+            "lap": 33,
+            "t": 3333.714
+          },
+          {
+            "lap": 34,
+            "t": 3434.456
+          },
+          {
+            "lap": 35,
+            "t": 3534.997
+          },
+          {
+            "lap": 36,
+            "t": 3635.926
+          },
+          {
+            "lap": 37,
+            "t": 3736.854
+          },
+          {
+            "lap": 38,
+            "t": 3838.062
+          },
+          {
+            "lap": 39,
+            "t": 3939.651
+          },
+          {
+            "lap": 40,
+            "t": 4041.104
+          },
+          {
+            "lap": 41,
+            "t": 4142.574
+          },
+          {
+            "lap": 42,
+            "t": 4244.267
+          },
+          {
+            "lap": 43,
+            "t": 4345.519
+          },
+          {
+            "lap": 44,
+            "t": 4447.009
+          },
+          {
+            "lap": 45,
+            "t": 4547.932
+          },
+          {
+            "lap": 46,
+            "t": 4649.321
+          },
+          {
+            "lap": 47,
+            "t": 4751.794
+          },
+          {
+            "lap": 48,
+            "t": 4852.61
+          },
+          {
+            "lap": 49,
+            "t": 4953.194
+          },
+          {
+            "lap": 50,
+            "t": 5055.524
+          },
+          {
+            "lap": 51,
+            "t": 5210.01
+          },
+          {
+            "lap": 52,
+            "t": 5332.355
+          },
+          {
+            "lap": 53,
+            "t": 5430.79
+          },
+          {
+            "lap": 54,
+            "t": 5529.809
+          },
+          {
+            "lap": 55,
+            "t": 5630.871
+          }
+        ]
+      },
+      {
+        "code": "BOT",
+        "constructor": "Cadillac F1 Team",
+        "pitLaps": [
+          29
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 12.968
+          },
+          {
+            "lap": 2,
+            "t": 129.431
+          },
+          {
+            "lap": 3,
+            "t": 233.77
+          },
+          {
+            "lap": 4,
+            "t": 338.002
+          },
+          {
+            "lap": 5,
+            "t": 442.206
+          },
+          {
+            "lap": 6,
+            "t": 546.425
+          },
+          {
+            "lap": 7,
+            "t": 650.848
+          },
+          {
+            "lap": 8,
+            "t": 755.052
+          },
+          {
+            "lap": 9,
+            "t": 859.19
+          },
+          {
+            "lap": 10,
+            "t": 963.36
+          },
+          {
+            "lap": 11,
+            "t": 1067.923
+          },
+          {
+            "lap": 12,
+            "t": 1171.993
+          },
+          {
+            "lap": 13,
+            "t": 1276.526
+          },
+          {
+            "lap": 14,
+            "t": 1380.984
+          },
+          {
+            "lap": 15,
+            "t": 1485.654
+          },
+          {
+            "lap": 16,
+            "t": 1589.979
+          },
+          {
+            "lap": 17,
+            "t": 1694.848
+          },
+          {
+            "lap": 18,
+            "t": 1800.07
+          },
+          {
+            "lap": 19,
+            "t": 1904.662
+          },
+          {
+            "lap": 20,
+            "t": 2009.122
+          },
+          {
+            "lap": 21,
+            "t": 2114.595
+          },
+          {
+            "lap": 22,
+            "t": 2218.949
+          },
+          {
+            "lap": 23,
+            "t": 2322.668
+          },
+          {
+            "lap": 24,
+            "t": 2426.7
+          },
+          {
+            "lap": 25,
+            "t": 2530.861
+          },
+          {
+            "lap": 26,
+            "t": 2636.262
+          },
+          {
+            "lap": 27,
+            "t": 2740.377
+          },
+          {
+            "lap": 28,
+            "t": 2845.016
+          },
+          {
+            "lap": 29,
+            "t": 2950.18
+          },
+          {
+            "lap": 30,
+            "t": 3074.13
+          },
+          {
+            "lap": 31,
+            "t": 3176.69
+          },
+          {
+            "lap": 32,
+            "t": 3278.785
+          },
+          {
+            "lap": 33,
+            "t": 3385.482
+          },
+          {
+            "lap": 34,
+            "t": 3487.841
+          },
+          {
+            "lap": 35,
+            "t": 3590.332
+          },
+          {
+            "lap": 36,
+            "t": 3692.961
+          },
+          {
+            "lap": 37,
+            "t": 3795.952
+          },
+          {
+            "lap": 38,
+            "t": 3898.749
+          },
+          {
+            "lap": 39,
+            "t": 4001.526
+          },
+          {
+            "lap": 40,
+            "t": 4104.311
+          },
+          {
+            "lap": 41,
+            "t": 4206.833
+          },
+          {
+            "lap": 42,
+            "t": 4309.537
+          },
+          {
+            "lap": 43,
+            "t": 4411.718
+          },
+          {
+            "lap": 44,
+            "t": 4513.854
+          },
+          {
+            "lap": 45,
+            "t": 4616.58
+          },
+          {
+            "lap": 46,
+            "t": 4719.28
+          },
+          {
+            "lap": 47,
+            "t": 4822.119
+          },
+          {
+            "lap": 48,
+            "t": 4925.023
+          }
+        ]
+      },
+      {
+        "code": "COL",
+        "constructor": "Alpine F1 Team",
+        "pitLaps": [
+          30
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 12.218
+          },
+          {
+            "lap": 2,
+            "t": 128.134
+          },
+          {
+            "lap": 3,
+            "t": 231.895
+          },
+          {
+            "lap": 4,
+            "t": 335.33
+          },
+          {
+            "lap": 5,
+            "t": 438.862
+          },
+          {
+            "lap": 6,
+            "t": 541.55
+          },
+          {
+            "lap": 7,
+            "t": 645.051
+          },
+          {
+            "lap": 8,
+            "t": 748.552
+          },
+          {
+            "lap": 9,
+            "t": 853.3
+          },
+          {
+            "lap": 10,
+            "t": 957.839
+          },
+          {
+            "lap": 11,
+            "t": 1062.455
+          },
+          {
+            "lap": 12,
+            "t": 1166.149
+          },
+          {
+            "lap": 13,
+            "t": 1269.994
+          },
+          {
+            "lap": 14,
+            "t": 1373.526
+          },
+          {
+            "lap": 15,
+            "t": 1478.104
+          },
+          {
+            "lap": 16,
+            "t": 1581.573
+          },
+          {
+            "lap": 17,
+            "t": 1686.757
+          },
+          {
+            "lap": 18,
+            "t": 1788.878
+          },
+          {
+            "lap": 19,
+            "t": 1891.474
+          },
+          {
+            "lap": 20,
+            "t": 1994.128
+          },
+          {
+            "lap": 21,
+            "t": 2096.86
+          },
+          {
+            "lap": 22,
+            "t": 2199.152
+          },
+          {
+            "lap": 23,
+            "t": 2302.042
+          },
+          {
+            "lap": 24,
+            "t": 2405.456
+          },
+          {
+            "lap": 25,
+            "t": 2514.713
+          },
+          {
+            "lap": 26,
+            "t": 2619.446
+          },
+          {
+            "lap": 27,
+            "t": 2723.976
+          },
+          {
+            "lap": 28,
+            "t": 2828.722
+          },
+          {
+            "lap": 29,
+            "t": 2932.765
+          },
+          {
+            "lap": 30,
+            "t": 3038.751
+          },
+          {
+            "lap": 31,
+            "t": 3163.432
+          },
+          {
+            "lap": 32,
+            "t": 3264.64
+          },
+          {
+            "lap": 33,
+            "t": 3365.723
+          },
+          {
+            "lap": 34,
+            "t": 3472.044
+          },
+          {
+            "lap": 35,
+            "t": 3575.164
+          }
+        ]
+      },
+      {
+        "code": "GAS",
+        "constructor": "Alpine F1 Team",
+        "pitLaps": [
+          24
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 7.265
+          },
+          {
+            "lap": 2,
+            "t": 120.447
+          },
+          {
+            "lap": 3,
+            "t": 223.256
+          },
+          {
+            "lap": 4,
+            "t": 325.518
+          },
+          {
+            "lap": 5,
+            "t": 427.596
+          },
+          {
+            "lap": 6,
+            "t": 529.816
+          },
+          {
+            "lap": 7,
+            "t": 632.676
+          },
+          {
+            "lap": 8,
+            "t": 735.458
+          },
+          {
+            "lap": 9,
+            "t": 838.084
+          },
+          {
+            "lap": 10,
+            "t": 940.933
+          },
+          {
+            "lap": 11,
+            "t": 1043.97
+          },
+          {
+            "lap": 12,
+            "t": 1146.712
+          },
+          {
+            "lap": 13,
+            "t": 1249.603
+          },
+          {
+            "lap": 14,
+            "t": 1352.594
+          },
+          {
+            "lap": 15,
+            "t": 1455.503
+          },
+          {
+            "lap": 16,
+            "t": 1558.479
+          },
+          {
+            "lap": 17,
+            "t": 1661.147
+          },
+          {
+            "lap": 18,
+            "t": 1763.985
+          },
+          {
+            "lap": 19,
+            "t": 1867.458
+          },
+          {
+            "lap": 20,
+            "t": 1970.925
+          },
+          {
+            "lap": 21,
+            "t": 2073.794
+          },
+          {
+            "lap": 22,
+            "t": 2176.502
+          },
+          {
+            "lap": 23,
+            "t": 2278.638
+          },
+          {
+            "lap": 24,
+            "t": 2382.206
+          },
+          {
+            "lap": 25,
+            "t": 2507.473
+          },
+          {
+            "lap": 26,
+            "t": 2609.327
+          },
+          {
+            "lap": 27,
+            "t": 2710.606
+          },
+          {
+            "lap": 28,
+            "t": 2811.877
+          },
+          {
+            "lap": 29,
+            "t": 2913.242
+          },
+          {
+            "lap": 30,
+            "t": 3014.458
+          },
+          {
+            "lap": 31,
+            "t": 3115.405
+          },
+          {
+            "lap": 32,
+            "t": 3216.257
+          },
+          {
+            "lap": 33,
+            "t": 3317.036
+          },
+          {
+            "lap": 34,
+            "t": 3417.882
+          },
+          {
+            "lap": 35,
+            "t": 3518.998
+          },
+          {
+            "lap": 36,
+            "t": 3619.77
+          },
+          {
+            "lap": 37,
+            "t": 3721.142
+          },
+          {
+            "lap": 38,
+            "t": 3822.343
+          },
+          {
+            "lap": 39,
+            "t": 3923.463
+          },
+          {
+            "lap": 40,
+            "t": 4024.542
+          },
+          {
+            "lap": 41,
+            "t": 4125.314
+          },
+          {
+            "lap": 42,
+            "t": 4226.241
+          },
+          {
+            "lap": 43,
+            "t": 4327.109
+          },
+          {
+            "lap": 44,
+            "t": 4427.998
+          },
+          {
+            "lap": 45,
+            "t": 4528.994
+          },
+          {
+            "lap": 46,
+            "t": 4630.004
+          },
+          {
+            "lap": 47,
+            "t": 4730.824
+          },
+          {
+            "lap": 48,
+            "t": 4831.635
+          },
+          {
+            "lap": 49,
+            "t": 4932.723
+          },
+          {
+            "lap": 50,
+            "t": 5033.931
+          },
+          {
+            "lap": 51,
+            "t": 5167.196
+          },
+          {
+            "lap": 52,
+            "t": 5301.075
+          },
+          {
+            "lap": 53,
+            "t": 5402.871
+          },
+          {
+            "lap": 54,
+            "t": 5503.46
+          },
+          {
+            "lap": 55,
+            "t": 5603.658
+          },
+          {
+            "lap": 56,
+            "t": 5704.292
+          }
+        ]
+      },
+      {
+        "code": "HAD",
+        "constructor": "Red Bull",
+        "pitLaps": [
+          25
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 4.062
+          },
+          {
+            "lap": 2,
+            "t": 113.947
+          },
+          {
+            "lap": 3,
+            "t": 215.172
+          },
+          {
+            "lap": 4,
+            "t": 316.315
+          },
+          {
+            "lap": 5,
+            "t": 417.545
+          },
+          {
+            "lap": 6,
+            "t": 518.787
+          },
+          {
+            "lap": 7,
+            "t": 620.614
+          },
+          {
+            "lap": 8,
+            "t": 722.333
+          },
+          {
+            "lap": 9,
+            "t": 824.053
+          },
+          {
+            "lap": 10,
+            "t": 925.677
+          },
+          {
+            "lap": 11,
+            "t": 1027.401
+          },
+          {
+            "lap": 12,
+            "t": 1128.861
+          },
+          {
+            "lap": 13,
+            "t": 1230.634
+          },
+          {
+            "lap": 14,
+            "t": 1332.169
+          },
+          {
+            "lap": 15,
+            "t": 1433.891
+          },
+          {
+            "lap": 16,
+            "t": 1535.553
+          },
+          {
+            "lap": 17,
+            "t": 1636.803
+          },
+          {
+            "lap": 18,
+            "t": 1738.263
+          },
+          {
+            "lap": 19,
+            "t": 1839.646
+          },
+          {
+            "lap": 20,
+            "t": 1940.98
+          },
+          {
+            "lap": 21,
+            "t": 2042.348
+          },
+          {
+            "lap": 22,
+            "t": 2143.758
+          },
+          {
+            "lap": 23,
+            "t": 2246.294
+          },
+          {
+            "lap": 24,
+            "t": 2347.889
+          },
+          {
+            "lap": 25,
+            "t": 2450.217
+          },
+          {
+            "lap": 26,
+            "t": 2574.613
+          },
+          {
+            "lap": 27,
+            "t": 2675.879
+          },
+          {
+            "lap": 28,
+            "t": 2777.24
+          },
+          {
+            "lap": 29,
+            "t": 2878.14
+          },
+          {
+            "lap": 30,
+            "t": 2978.866
+          },
+          {
+            "lap": 31,
+            "t": 3079.353
+          },
+          {
+            "lap": 32,
+            "t": 3179.476
+          },
+          {
+            "lap": 33,
+            "t": 3280.035
+          },
+          {
+            "lap": 34,
+            "t": 3380.458
+          },
+          {
+            "lap": 35,
+            "t": 3480.544
+          },
+          {
+            "lap": 36,
+            "t": 3581.738
+          },
+          {
+            "lap": 37,
+            "t": 3682.846
+          },
+          {
+            "lap": 38,
+            "t": 3783.202
+          },
+          {
+            "lap": 39,
+            "t": 3882.999
+          },
+          {
+            "lap": 40,
+            "t": 3983.323
+          },
+          {
+            "lap": 41,
+            "t": 4083.162
+          },
+          {
+            "lap": 42,
+            "t": 4184.039
+          },
+          {
+            "lap": 43,
+            "t": 4284.225
+          },
+          {
+            "lap": 44,
+            "t": 4383.676
+          },
+          {
+            "lap": 45,
+            "t": 4483.963
+          },
+          {
+            "lap": 46,
+            "t": 4584.12
+          },
+          {
+            "lap": 47,
+            "t": 4684.225
+          },
+          {
+            "lap": 48,
+            "t": 4783.997
+          },
+          {
+            "lap": 49,
+            "t": 4883.833
+          },
+          {
+            "lap": 50,
+            "t": 4983.54
+          },
+          {
+            "lap": 51,
+            "t": 5098.426
+          },
+          {
+            "lap": 52,
+            "t": 5235.588
+          },
+          {
+            "lap": 53,
+            "t": 5350.87
+          },
+          {
+            "lap": 54,
+            "t": 5451.731
+          },
+          {
+            "lap": 55,
+            "t": 5551.51
+          },
+          {
+            "lap": 56,
+            "t": 5651.073
+          }
+        ]
+      },
+      {
+        "code": "HAM",
+        "constructor": "Ferrari",
+        "pitLaps": [
+          14,
+          38
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 3.328
+          },
+          {
+            "lap": 2,
+            "t": 112.837
+          },
+          {
+            "lap": 3,
+            "t": 213.946
+          },
+          {
+            "lap": 4,
+            "t": 315.08
+          },
+          {
+            "lap": 5,
+            "t": 416.158
+          },
+          {
+            "lap": 6,
+            "t": 517.327
+          },
+          {
+            "lap": 7,
+            "t": 618.738
+          },
+          {
+            "lap": 8,
+            "t": 720.114
+          },
+          {
+            "lap": 9,
+            "t": 821.568
+          },
+          {
+            "lap": 10,
+            "t": 923.066
+          },
+          {
+            "lap": 11,
+            "t": 1024.729
+          },
+          {
+            "lap": 12,
+            "t": 1126.114
+          },
+          {
+            "lap": 13,
+            "t": 1227.728
+          },
+          {
+            "lap": 14,
+            "t": 1329.833
+          },
+          {
+            "lap": 15,
+            "t": 1450.582
+          },
+          {
+            "lap": 16,
+            "t": 1551.604
+          },
+          {
+            "lap": 17,
+            "t": 1652.162
+          },
+          {
+            "lap": 18,
+            "t": 1752.652
+          },
+          {
+            "lap": 19,
+            "t": 1852.802
+          },
+          {
+            "lap": 20,
+            "t": 1953.307
+          },
+          {
+            "lap": 21,
+            "t": 2053.563
+          },
+          {
+            "lap": 22,
+            "t": 2154.4
+          },
+          {
+            "lap": 23,
+            "t": 2254.528
+          },
+          {
+            "lap": 24,
+            "t": 2355.102
+          },
+          {
+            "lap": 25,
+            "t": 2455.727
+          },
+          {
+            "lap": 26,
+            "t": 2556.399
+          },
+          {
+            "lap": 27,
+            "t": 2657.145
+          },
+          {
+            "lap": 28,
+            "t": 2757.865
+          },
+          {
+            "lap": 29,
+            "t": 2858.478
+          },
+          {
+            "lap": 30,
+            "t": 2958.865
+          },
+          {
+            "lap": 31,
+            "t": 3059.967
+          },
+          {
+            "lap": 32,
+            "t": 3160.291
+          },
+          {
+            "lap": 33,
+            "t": 3261.085
+          },
+          {
+            "lap": 34,
+            "t": 3361.496
+          },
+          {
+            "lap": 35,
+            "t": 3461.544
+          },
+          {
+            "lap": 36,
+            "t": 3562.144
+          },
+          {
+            "lap": 37,
+            "t": 3663.101
+          },
+          {
+            "lap": 38,
+            "t": 3764.858
+          },
+          {
+            "lap": 39,
+            "t": 3884.781
+          },
+          {
+            "lap": 40,
+            "t": 3983.698
+          },
+          {
+            "lap": 41,
+            "t": 4083.474
+          },
+          {
+            "lap": 42,
+            "t": 4181.851
+          },
+          {
+            "lap": 43,
+            "t": 4281.271
+          },
+          {
+            "lap": 44,
+            "t": 4380.235
+          },
+          {
+            "lap": 45,
+            "t": 4479.228
+          },
+          {
+            "lap": 46,
+            "t": 4577.999
+          },
+          {
+            "lap": 47,
+            "t": 4676.668
+          },
+          {
+            "lap": 48,
+            "t": 4775.07
+          },
+          {
+            "lap": 49,
+            "t": 4873.937
+          },
+          {
+            "lap": 50,
+            "t": 4973.039
+          },
+          {
+            "lap": 51,
+            "t": 5082.473
+          },
+          {
+            "lap": 52,
+            "t": 5220.776
+          },
+          {
+            "lap": 53,
+            "t": 5339.688
+          },
+          {
+            "lap": 54,
+            "t": 5438.15
+          },
+          {
+            "lap": 55,
+            "t": 5536.775
+          },
+          {
+            "lap": 56,
+            "t": 5635.305
+          }
+        ]
+      },
+      {
+        "code": "HUL",
+        "constructor": "Audi",
+        "pitLaps": [
+          29
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 10.828
+          },
+          {
+            "lap": 2,
+            "t": 124.088
+          },
+          {
+            "lap": 3,
+            "t": 227.129
+          },
+          {
+            "lap": 4,
+            "t": 330.752
+          },
+          {
+            "lap": 5,
+            "t": 434.255
+          },
+          {
+            "lap": 6,
+            "t": 537.269
+          },
+          {
+            "lap": 7,
+            "t": 639.286
+          },
+          {
+            "lap": 8,
+            "t": 741.771
+          },
+          {
+            "lap": 9,
+            "t": 844.506
+          },
+          {
+            "lap": 10,
+            "t": 947.162
+          },
+          {
+            "lap": 11,
+            "t": 1050.22
+          },
+          {
+            "lap": 12,
+            "t": 1154.227
+          },
+          {
+            "lap": 13,
+            "t": 1257.572
+          },
+          {
+            "lap": 14,
+            "t": 1360.982
+          },
+          {
+            "lap": 15,
+            "t": 1463.904
+          },
+          {
+            "lap": 16,
+            "t": 1567.635
+          },
+          {
+            "lap": 17,
+            "t": 1670.991
+          },
+          {
+            "lap": 18,
+            "t": 1774.02
+          },
+          {
+            "lap": 19,
+            "t": 1876.474
+          },
+          {
+            "lap": 20,
+            "t": 1979.253
+          },
+          {
+            "lap": 21,
+            "t": 2081.958
+          },
+          {
+            "lap": 22,
+            "t": 2184.252
+          },
+          {
+            "lap": 23,
+            "t": 2286.857
+          },
+          {
+            "lap": 24,
+            "t": 2389.159
+          },
+          {
+            "lap": 25,
+            "t": 2491.446
+          },
+          {
+            "lap": 26,
+            "t": 2594.231
+          },
+          {
+            "lap": 27,
+            "t": 2696.766
+          },
+          {
+            "lap": 28,
+            "t": 2799.216
+          },
+          {
+            "lap": 29,
+            "t": 2902.17
+          },
+          {
+            "lap": 30,
+            "t": 3023.903
+          },
+          {
+            "lap": 31,
+            "t": 3125.046
+          },
+          {
+            "lap": 32,
+            "t": 3225.733
+          },
+          {
+            "lap": 33,
+            "t": 3327.459
+          },
+          {
+            "lap": 34,
+            "t": 3428.133
+          },
+          {
+            "lap": 35,
+            "t": 3529.169
+          },
+          {
+            "lap": 36,
+            "t": 3630.02
+          },
+          {
+            "lap": 37,
+            "t": 3731.213
+          },
+          {
+            "lap": 38,
+            "t": 3831.921
+          },
+          {
+            "lap": 39,
+            "t": 3933.026
+          },
+          {
+            "lap": 40,
+            "t": 4033.276
+          },
+          {
+            "lap": 41,
+            "t": 4134.616
+          },
+          {
+            "lap": 42,
+            "t": 4235.107
+          },
+          {
+            "lap": 43,
+            "t": 4336.097
+          },
+          {
+            "lap": 44,
+            "t": 4436.47
+          },
+          {
+            "lap": 45,
+            "t": 4537.338
+          },
+          {
+            "lap": 46,
+            "t": 4638.33
+          },
+          {
+            "lap": 47,
+            "t": 4738.746
+          },
+          {
+            "lap": 48,
+            "t": 4839.611
+          },
+          {
+            "lap": 49,
+            "t": 4940.873
+          },
+          {
+            "lap": 50,
+            "t": 5041.634
+          },
+          {
+            "lap": 51,
+            "t": 5179.083
+          },
+          {
+            "lap": 52,
+            "t": 5309.798
+          },
+          {
+            "lap": 53,
+            "t": 5410.237
+          },
+          {
+            "lap": 54,
+            "t": 5510.775
+          },
+          {
+            "lap": 55,
+            "t": 5611.028
+          },
+          {
+            "lap": 56,
+            "t": 5711.644
+          }
+        ]
+      },
+      {
+        "code": "LAW",
+        "constructor": "RB F1 Team",
+        "pitLaps": [
+          25
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 6.781
+          },
+          {
+            "lap": 2,
+            "t": 118.494
+          },
+          {
+            "lap": 3,
+            "t": 220.807
+          },
+          {
+            "lap": 4,
+            "t": 323.236
+          },
+          {
+            "lap": 5,
+            "t": 425.109
+          },
+          {
+            "lap": 6,
+            "t": 527.347
+          },
+          {
+            "lap": 7,
+            "t": 629.77
+          },
+          {
+            "lap": 8,
+            "t": 732.068
+          },
+          {
+            "lap": 9,
+            "t": 834.631
+          },
+          {
+            "lap": 10,
+            "t": 937.431
+          },
+          {
+            "lap": 11,
+            "t": 1040.363
+          },
+          {
+            "lap": 12,
+            "t": 1143.092
+          },
+          {
+            "lap": 13,
+            "t": 1245.916
+          },
+          {
+            "lap": 14,
+            "t": 1348.852
+          },
+          {
+            "lap": 15,
+            "t": 1452.574
+          },
+          {
+            "lap": 16,
+            "t": 1555.479
+          },
+          {
+            "lap": 17,
+            "t": 1658.21
+          },
+          {
+            "lap": 18,
+            "t": 1760.869
+          },
+          {
+            "lap": 19,
+            "t": 1863.443
+          },
+          {
+            "lap": 20,
+            "t": 1966.8
+          },
+          {
+            "lap": 21,
+            "t": 2069.047
+          },
+          {
+            "lap": 22,
+            "t": 2172.767
+          },
+          {
+            "lap": 23,
+            "t": 2275.216
+          },
+          {
+            "lap": 24,
+            "t": 2377.499
+          },
+          {
+            "lap": 25,
+            "t": 2480.151
+          },
+          {
+            "lap": 26,
+            "t": 2602.452
+          },
+          {
+            "lap": 27,
+            "t": 2704.087
+          },
+          {
+            "lap": 28,
+            "t": 2805.515
+          },
+          {
+            "lap": 29,
+            "t": 2906.729
+          },
+          {
+            "lap": 30,
+            "t": 3008.146
+          },
+          {
+            "lap": 31,
+            "t": 3109.458
+          },
+          {
+            "lap": 32,
+            "t": 3210.567
+          },
+          {
+            "lap": 33,
+            "t": 3311.541
+          },
+          {
+            "lap": 34,
+            "t": 3412.544
+          },
+          {
+            "lap": 35,
+            "t": 3513.263
+          },
+          {
+            "lap": 36,
+            "t": 3614.192
+          },
+          {
+            "lap": 37,
+            "t": 3715.633
+          },
+          {
+            "lap": 38,
+            "t": 3816.624
+          },
+          {
+            "lap": 39,
+            "t": 3917.65
+          },
+          {
+            "lap": 40,
+            "t": 4018.558
+          },
+          {
+            "lap": 41,
+            "t": 4119.159
+          },
+          {
+            "lap": 42,
+            "t": 4219.929
+          },
+          {
+            "lap": 43,
+            "t": 4320.549
+          },
+          {
+            "lap": 44,
+            "t": 4421.206
+          },
+          {
+            "lap": 45,
+            "t": 4522.119
+          },
+          {
+            "lap": 46,
+            "t": 4622.929
+          },
+          {
+            "lap": 47,
+            "t": 4723.98
+          },
+          {
+            "lap": 48,
+            "t": 4824.807
+          },
+          {
+            "lap": 49,
+            "t": 4926.182
+          },
+          {
+            "lap": 50,
+            "t": 5027.18
+          },
+          {
+            "lap": 51,
+            "t": 5158.123
+          },
+          {
+            "lap": 52,
+            "t": 5294.523
+          },
+          {
+            "lap": 53,
+            "t": 5395.121
+          },
+          {
+            "lap": 54,
+            "t": 5495.304
+          },
+          {
+            "lap": 55,
+            "t": 5596.251
+          },
+          {
+            "lap": 56,
+            "t": 5695.903
+          }
+        ]
+      },
+      {
+        "code": "LEC",
+        "constructor": "Ferrari",
+        "pitLaps": [
+          15,
+          39
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 2.83
+          },
+          {
+            "lap": 2,
+            "t": 111.775
+          },
+          {
+            "lap": 3,
+            "t": 212.673
+          },
+          {
+            "lap": 4,
+            "t": 313.408
+          },
+          {
+            "lap": 5,
+            "t": 414.326
+          },
+          {
+            "lap": 6,
+            "t": 515.035
+          },
+          {
+            "lap": 7,
+            "t": 616.457
+          },
+          {
+            "lap": 8,
+            "t": 718.067
+          },
+          {
+            "lap": 9,
+            "t": 818.943
+          },
+          {
+            "lap": 10,
+            "t": 919.985
+          },
+          {
+            "lap": 11,
+            "t": 1021.292
+          },
+          {
+            "lap": 12,
+            "t": 1122.492
+          },
+          {
+            "lap": 13,
+            "t": 1223.915
+          },
+          {
+            "lap": 14,
+            "t": 1325.493
+          },
+          {
+            "lap": 15,
+            "t": 1427.25
+          },
+          {
+            "lap": 16,
+            "t": 1548.195
+          },
+          {
+            "lap": 17,
+            "t": 1648.428
+          },
+          {
+            "lap": 18,
+            "t": 1748.397
+          },
+          {
+            "lap": 19,
+            "t": 1848.005
+          },
+          {
+            "lap": 20,
+            "t": 1948.018
+          },
+          {
+            "lap": 21,
+            "t": 2048.328
+          },
+          {
+            "lap": 22,
+            "t": 2148.223
+          },
+          {
+            "lap": 23,
+            "t": 2248.466
+          },
+          {
+            "lap": 24,
+            "t": 2348.626
+          },
+          {
+            "lap": 25,
+            "t": 2449.93
+          },
+          {
+            "lap": 26,
+            "t": 2551.391
+          },
+          {
+            "lap": 27,
+            "t": 2651.753
+          },
+          {
+            "lap": 28,
+            "t": 2752.209
+          },
+          {
+            "lap": 29,
+            "t": 2852.778
+          },
+          {
+            "lap": 30,
+            "t": 2952.774
+          },
+          {
+            "lap": 31,
+            "t": 3053.234
+          },
+          {
+            "lap": 32,
+            "t": 3154.687
+          },
+          {
+            "lap": 33,
+            "t": 3254.968
+          },
+          {
+            "lap": 34,
+            "t": 3355.34
+          },
+          {
+            "lap": 35,
+            "t": 3455.794
+          },
+          {
+            "lap": 36,
+            "t": 3556.301
+          },
+          {
+            "lap": 37,
+            "t": 3656.502
+          },
+          {
+            "lap": 38,
+            "t": 3757.061
+          },
+          {
+            "lap": 39,
+            "t": 3857.772
+          },
+          {
+            "lap": 40,
+            "t": 3977.542
+          },
+          {
+            "lap": 41,
+            "t": 4075.865
+          },
+          {
+            "lap": 42,
+            "t": 4173.839
+          },
+          {
+            "lap": 43,
+            "t": 4271.99
+          },
+          {
+            "lap": 44,
+            "t": 4370.254
+          },
+          {
+            "lap": 45,
+            "t": 4468.806
+          },
+          {
+            "lap": 46,
+            "t": 4568.573
+          },
+          {
+            "lap": 47,
+            "t": 4668.909
+          },
+          {
+            "lap": 48,
+            "t": 4768.221
+          },
+          {
+            "lap": 49,
+            "t": 4867.022
+          },
+          {
+            "lap": 50,
+            "t": 4965.727
+          },
+          {
+            "lap": 51,
+            "t": 5075.424
+          },
+          {
+            "lap": 52,
+            "t": 5212.229
+          },
+          {
+            "lap": 53,
+            "t": 5333.964
+          },
+          {
+            "lap": 54,
+            "t": 5432.35
+          },
+          {
+            "lap": 55,
+            "t": 5531.556
+          },
+          {
+            "lap": 56,
+            "t": 5629.877
+          }
+        ]
+      },
+      {
+        "code": "LIN",
+        "constructor": "RB F1 Team",
+        "pitLaps": [
+          18,
+          40
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 9.203
+          },
+          {
+            "lap": 2,
+            "t": 121.931
+          },
+          {
+            "lap": 3,
+            "t": 225.286
+          },
+          {
+            "lap": 4,
+            "t": 328.19
+          },
+          {
+            "lap": 5,
+            "t": 430.893
+          },
+          {
+            "lap": 6,
+            "t": 533.535
+          },
+          {
+            "lap": 7,
+            "t": 636.677
+          },
+          {
+            "lap": 8,
+            "t": 739.833
+          },
+          {
+            "lap": 9,
+            "t": 842.85
+          },
+          {
+            "lap": 10,
+            "t": 946.048
+          },
+          {
+            "lap": 11,
+            "t": 1049.767
+          },
+          {
+            "lap": 12,
+            "t": 1153.338
+          },
+          {
+            "lap": 13,
+            "t": 1256.806
+          },
+          {
+            "lap": 14,
+            "t": 1359.919
+          },
+          {
+            "lap": 15,
+            "t": 1463.117
+          },
+          {
+            "lap": 16,
+            "t": 1567.26
+          },
+          {
+            "lap": 17,
+            "t": 1670.413
+          },
+          {
+            "lap": 18,
+            "t": 1773.892
+          },
+          {
+            "lap": 19,
+            "t": 1895.99
+          },
+          {
+            "lap": 20,
+            "t": 1997.8
+          },
+          {
+            "lap": 21,
+            "t": 2099.454
+          },
+          {
+            "lap": 22,
+            "t": 2201.059
+          },
+          {
+            "lap": 23,
+            "t": 2302.753
+          },
+          {
+            "lap": 24,
+            "t": 2405.878
+          },
+          {
+            "lap": 25,
+            "t": 2508.119
+          },
+          {
+            "lap": 26,
+            "t": 2609.844
+          },
+          {
+            "lap": 27,
+            "t": 2711.677
+          },
+          {
+            "lap": 28,
+            "t": 2813.74
+          },
+          {
+            "lap": 29,
+            "t": 2915.538
+          },
+          {
+            "lap": 30,
+            "t": 3017.541
+          },
+          {
+            "lap": 31,
+            "t": 3119.605
+          },
+          {
+            "lap": 32,
+            "t": 3221.121
+          },
+          {
+            "lap": 33,
+            "t": 3322.75
+          },
+          {
+            "lap": 34,
+            "t": 3424.183
+          },
+          {
+            "lap": 35,
+            "t": 3525.92
+          },
+          {
+            "lap": 36,
+            "t": 3627.614
+          },
+          {
+            "lap": 37,
+            "t": 3729.423
+          },
+          {
+            "lap": 38,
+            "t": 3831.015
+          },
+          {
+            "lap": 39,
+            "t": 3932.76
+          },
+          {
+            "lap": 40,
+            "t": 4035.756
+          },
+          {
+            "lap": 41,
+            "t": 4156.521
+          },
+          {
+            "lap": 42,
+            "t": 4256.318
+          },
+          {
+            "lap": 43,
+            "t": 4355.59
+          },
+          {
+            "lap": 44,
+            "t": 4455.213
+          },
+          {
+            "lap": 45,
+            "t": 4555.37
+          },
+          {
+            "lap": 46,
+            "t": 4655.392
+          },
+          {
+            "lap": 47,
+            "t": 4755.699
+          },
+          {
+            "lap": 48,
+            "t": 4856.023
+          },
+          {
+            "lap": 49,
+            "t": 4956.323
+          },
+          {
+            "lap": 50,
+            "t": 5060.853
+          },
+          {
+            "lap": 51,
+            "t": 5198.51
+          },
+          {
+            "lap": 52,
+            "t": 5324.117
+          },
+          {
+            "lap": 53,
+            "t": 5423.656
+          },
+          {
+            "lap": 54,
+            "t": 5523.302
+          },
+          {
+            "lap": 55,
+            "t": 5623.051
+          }
+        ]
+      },
+      {
+        "code": "NOR",
+        "constructor": "McLaren",
+        "pitLaps": [
+          16
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 5.89
+          },
+          {
+            "lap": 2,
+            "t": 116.15
+          },
+          {
+            "lap": 3,
+            "t": 217.874
+          },
+          {
+            "lap": 4,
+            "t": 319.221
+          },
+          {
+            "lap": 5,
+            "t": 420.616
+          },
+          {
+            "lap": 6,
+            "t": 522.36
+          },
+          {
+            "lap": 7,
+            "t": 624.457
+          },
+          {
+            "lap": 8,
+            "t": 725.614
+          },
+          {
+            "lap": 9,
+            "t": 827.334
+          },
+          {
+            "lap": 10,
+            "t": 929.3
+          },
+          {
+            "lap": 11,
+            "t": 1031.151
+          },
+          {
+            "lap": 12,
+            "t": 1132.916
+          },
+          {
+            "lap": 13,
+            "t": 1234.759
+          },
+          {
+            "lap": 14,
+            "t": 1336.751
+          },
+          {
+            "lap": 15,
+            "t": 1438.766
+          },
+          {
+            "lap": 16,
+            "t": 1541.217
+          },
+          {
+            "lap": 17,
+            "t": 1663.959
+          },
+          {
+            "lap": 18,
+            "t": 1764.42
+          },
+          {
+            "lap": 19,
+            "t": 1864.271
+          },
+          {
+            "lap": 20,
+            "t": 1964.925
+          },
+          {
+            "lap": 21,
+            "t": 2065.103
+          },
+          {
+            "lap": 22,
+            "t": 2164.893
+          },
+          {
+            "lap": 23,
+            "t": 2264.95
+          },
+          {
+            "lap": 24,
+            "t": 2365.159
+          },
+          {
+            "lap": 25,
+            "t": 2465.2
+          },
+          {
+            "lap": 26,
+            "t": 2565.314
+          },
+          {
+            "lap": 27,
+            "t": 2665.513
+          },
+          {
+            "lap": 28,
+            "t": 2765.828
+          },
+          {
+            "lap": 29,
+            "t": 2866.001
+          },
+          {
+            "lap": 30,
+            "t": 2966.164
+          },
+          {
+            "lap": 31,
+            "t": 3066.165
+          },
+          {
+            "lap": 32,
+            "t": 3166.381
+          },
+          {
+            "lap": 33,
+            "t": 3266.819
+          },
+          {
+            "lap": 34,
+            "t": 3367.107
+          },
+          {
+            "lap": 35,
+            "t": 3466.934
+          },
+          {
+            "lap": 36,
+            "t": 3567.941
+          },
+          {
+            "lap": 37,
+            "t": 3667.071
+          },
+          {
+            "lap": 38,
+            "t": 3767.374
+          },
+          {
+            "lap": 39,
+            "t": 3867.173
+          },
+          {
+            "lap": 40,
+            "t": 3967.041
+          },
+          {
+            "lap": 41,
+            "t": 4067.325
+          },
+          {
+            "lap": 42,
+            "t": 4167.225
+          },
+          {
+            "lap": 43,
+            "t": 4266.959
+          },
+          {
+            "lap": 44,
+            "t": 4366.818
+          },
+          {
+            "lap": 45,
+            "t": 4467.228
+          },
+          {
+            "lap": 46,
+            "t": 4567.791
+          },
+          {
+            "lap": 47,
+            "t": 4670.401
+          },
+          {
+            "lap": 48,
+            "t": 4771.044
+          },
+          {
+            "lap": 49,
+            "t": 4871.533
+          },
+          {
+            "lap": 50,
+            "t": 4972.571
+          },
+          {
+            "lap": 51,
+            "t": 5085.551
+          },
+          {
+            "lap": 52,
+            "t": 5223.932
+          },
+          {
+            "lap": 53,
+            "t": 5341.923
+          },
+          {
+            "lap": 54,
+            "t": 5443.621
+          },
+          {
+            "lap": 55,
+            "t": 5545.635
+          },
+          {
+            "lap": 56,
+            "t": 5647.279
+          }
+        ]
+      },
+      {
+        "code": "OCO",
+        "constructor": "Haas F1 Team",
+        "pitLaps": [
+          21
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 8.14
+          },
+          {
+            "lap": 2,
+            "t": 120.9
+          },
+          {
+            "lap": 3,
+            "t": 224.174
+          },
+          {
+            "lap": 4,
+            "t": 326.549
+          },
+          {
+            "lap": 5,
+            "t": 428.706
+          },
+          {
+            "lap": 6,
+            "t": 531.425
+          },
+          {
+            "lap": 7,
+            "t": 634.176
+          },
+          {
+            "lap": 8,
+            "t": 737.568
+          },
+          {
+            "lap": 9,
+            "t": 840.647
+          },
+          {
+            "lap": 10,
+            "t": 943.89
+          },
+          {
+            "lap": 11,
+            "t": 1047.158
+          },
+          {
+            "lap": 12,
+            "t": 1150.305
+          },
+          {
+            "lap": 13,
+            "t": 1253.666
+          },
+          {
+            "lap": 14,
+            "t": 1357.242
+          },
+          {
+            "lap": 15,
+            "t": 1460.417
+          },
+          {
+            "lap": 16,
+            "t": 1563.682
+          },
+          {
+            "lap": 17,
+            "t": 1667.209
+          },
+          {
+            "lap": 18,
+            "t": 1771.323
+          },
+          {
+            "lap": 19,
+            "t": 1874.24
+          },
+          {
+            "lap": 20,
+            "t": 1977.3
+          },
+          {
+            "lap": 21,
+            "t": 2081.127
+          },
+          {
+            "lap": 22,
+            "t": 2205.07
+          },
+          {
+            "lap": 23,
+            "t": 2306.502
+          },
+          {
+            "lap": 24,
+            "t": 2408.378
+          },
+          {
+            "lap": 25,
+            "t": 2510.962
+          },
+          {
+            "lap": 26,
+            "t": 2612.69
+          },
+          {
+            "lap": 27,
+            "t": 2714.457
+          },
+          {
+            "lap": 28,
+            "t": 2816.538
+          },
+          {
+            "lap": 29,
+            "t": 2918.265
+          },
+          {
+            "lap": 30,
+            "t": 3020.065
+          },
+          {
+            "lap": 31,
+            "t": 3122.031
+          },
+          {
+            "lap": 32,
+            "t": 3223.469
+          },
+          {
+            "lap": 33,
+            "t": 3325.143
+          },
+          {
+            "lap": 34,
+            "t": 3427.034
+          },
+          {
+            "lap": 35,
+            "t": 3528.762
+          },
+          {
+            "lap": 36,
+            "t": 3632.004
+          },
+          {
+            "lap": 37,
+            "t": 3733.862
+          },
+          {
+            "lap": 38,
+            "t": 3835.562
+          },
+          {
+            "lap": 39,
+            "t": 3937.416
+          },
+          {
+            "lap": 40,
+            "t": 4039.356
+          },
+          {
+            "lap": 41,
+            "t": 4141.04
+          },
+          {
+            "lap": 42,
+            "t": 4242.926
+          },
+          {
+            "lap": 43,
+            "t": 4344.613
+          },
+          {
+            "lap": 44,
+            "t": 4446.291
+          },
+          {
+            "lap": 45,
+            "t": 4549.041
+          },
+          {
+            "lap": 46,
+            "t": 4653.33
+          },
+          {
+            "lap": 47,
+            "t": 4755.027
+          },
+          {
+            "lap": 48,
+            "t": 4857.145
+          },
+          {
+            "lap": 49,
+            "t": 4958.592
+          },
+          {
+            "lap": 50,
+            "t": 5065.618
+          },
+          {
+            "lap": 51,
+            "t": 5203.198
+          },
+          {
+            "lap": 52,
+            "t": 5328.274
+          },
+          {
+            "lap": 53,
+            "t": 5429.787
+          },
+          {
+            "lap": 54,
+            "t": 5532.791
+          },
+          {
+            "lap": 55,
+            "t": 5637.803
+          }
+        ]
+      },
+      {
+        "code": "PER",
+        "constructor": "Cadillac F1 Team",
+        "pitLaps": [
+          23
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 11.578
+          },
+          {
+            "lap": 2,
+            "t": 126.072
+          },
+          {
+            "lap": 3,
+            "t": 229.583
+          },
+          {
+            "lap": 4,
+            "t": 334.049
+          },
+          {
+            "lap": 5,
+            "t": 438.174
+          },
+          {
+            "lap": 6,
+            "t": 542.832
+          },
+          {
+            "lap": 7,
+            "t": 647.754
+          },
+          {
+            "lap": 8,
+            "t": 752.193
+          },
+          {
+            "lap": 9,
+            "t": 856.391
+          },
+          {
+            "lap": 10,
+            "t": 961.049
+          },
+          {
+            "lap": 11,
+            "t": 1065.642
+          },
+          {
+            "lap": 12,
+            "t": 1169.774
+          },
+          {
+            "lap": 13,
+            "t": 1274.668
+          },
+          {
+            "lap": 14,
+            "t": 1379.303
+          },
+          {
+            "lap": 15,
+            "t": 1483.663
+          },
+          {
+            "lap": 16,
+            "t": 1588.041
+          },
+          {
+            "lap": 17,
+            "t": 1692.119
+          },
+          {
+            "lap": 18,
+            "t": 1796.121
+          },
+          {
+            "lap": 19,
+            "t": 1900.255
+          },
+          {
+            "lap": 20,
+            "t": 2004.113
+          },
+          {
+            "lap": 21,
+            "t": 2107.914
+          },
+          {
+            "lap": 22,
+            "t": 2211.887
+          },
+          {
+            "lap": 23,
+            "t": 2316.637
+          },
+          {
+            "lap": 24,
+            "t": 2440.413
+          },
+          {
+            "lap": 25,
+            "t": 2542.7
+          },
+          {
+            "lap": 26,
+            "t": 2645.104
+          },
+          {
+            "lap": 27,
+            "t": 2747.828
+          },
+          {
+            "lap": 28,
+            "t": 2851.875
+          },
+          {
+            "lap": 29,
+            "t": 2957.232
+          },
+          {
+            "lap": 30,
+            "t": 3061.622
+          },
+          {
+            "lap": 31,
+            "t": 3164.703
+          },
+          {
+            "lap": 32,
+            "t": 3268.732
+          },
+          {
+            "lap": 33,
+            "t": 3372.501
+          },
+          {
+            "lap": 34,
+            "t": 3475.278
+          },
+          {
+            "lap": 35,
+            "t": 3578.66
+          },
+          {
+            "lap": 36,
+            "t": 3683.036
+          },
+          {
+            "lap": 37,
+            "t": 3786.374
+          },
+          {
+            "lap": 38,
+            "t": 3891.863
+          },
+          {
+            "lap": 39,
+            "t": 3996.151
+          },
+          {
+            "lap": 40,
+            "t": 4099.185
+          },
+          {
+            "lap": 41,
+            "t": 4201.918
+          },
+          {
+            "lap": 42,
+            "t": 4304.537
+          },
+          {
+            "lap": 43,
+            "t": 4406.842
+          },
+          {
+            "lap": 44,
+            "t": 4509.9
+          },
+          {
+            "lap": 45,
+            "t": 4612.23
+          },
+          {
+            "lap": 46,
+            "t": 4714.712
+          },
+          {
+            "lap": 47,
+            "t": 4816.869
+          },
+          {
+            "lap": 48,
+            "t": 4919.483
+          },
+          {
+            "lap": 49,
+            "t": 5022.509
+          },
+          {
+            "lap": 50,
+            "t": 5154.224
+          },
+          {
+            "lap": 51,
+            "t": 5288.015
+          },
+          {
+            "lap": 52,
+            "t": 5391.465
+          },
+          {
+            "lap": 53,
+            "t": 5493.71
+          },
+          {
+            "lap": 54,
+            "t": 5598.081
+          },
+          {
+            "lap": 55,
+            "t": 5699.761
+          }
+        ]
+      },
+      {
+        "code": "PIA",
+        "constructor": "McLaren",
+        "pitLaps": [
+          15
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 5.422
+          },
+          {
+            "lap": 2,
+            "t": 115.478
+          },
+          {
+            "lap": 3,
+            "t": 216.856
+          },
+          {
+            "lap": 4,
+            "t": 318.268
+          },
+          {
+            "lap": 5,
+            "t": 419.934
+          },
+          {
+            "lap": 6,
+            "t": 521.559
+          },
+          {
+            "lap": 7,
+            "t": 623.864
+          },
+          {
+            "lap": 8,
+            "t": 727.13
+          },
+          {
+            "lap": 9,
+            "t": 829.584
+          },
+          {
+            "lap": 10,
+            "t": 931.913
+          },
+          {
+            "lap": 11,
+            "t": 1034.12
+          },
+          {
+            "lap": 12,
+            "t": 1136.426
+          },
+          {
+            "lap": 13,
+            "t": 1238.447
+          },
+          {
+            "lap": 14,
+            "t": 1340.817
+          },
+          {
+            "lap": 15,
+            "t": 1443.985
+          },
+          {
+            "lap": 16,
+            "t": 1565.776
+          },
+          {
+            "lap": 17,
+            "t": 1667.506
+          },
+          {
+            "lap": 18,
+            "t": 1767.925
+          },
+          {
+            "lap": 19,
+            "t": 1868.208
+          },
+          {
+            "lap": 20,
+            "t": 1969.378
+          },
+          {
+            "lap": 21,
+            "t": 2070.122
+          },
+          {
+            "lap": 22,
+            "t": 2171.173
+          },
+          {
+            "lap": 23,
+            "t": 2271.731
+          },
+          {
+            "lap": 24,
+            "t": 2372.066
+          },
+          {
+            "lap": 25,
+            "t": 2472.793
+          },
+          {
+            "lap": 26,
+            "t": 2575.709
+          },
+          {
+            "lap": 27,
+            "t": 2676.914
+          },
+          {
+            "lap": 28,
+            "t": 2778.006
+          },
+          {
+            "lap": 29,
+            "t": 2878.865
+          },
+          {
+            "lap": 30,
+            "t": 2979.855
+          },
+          {
+            "lap": 31,
+            "t": 3080.756
+          },
+          {
+            "lap": 32,
+            "t": 3182.312
+          },
+          {
+            "lap": 33,
+            "t": 3283.098
+          },
+          {
+            "lap": 34,
+            "t": 3384.212
+          },
+          {
+            "lap": 35,
+            "t": 3484.716
+          },
+          {
+            "lap": 36,
+            "t": 3585.52
+          },
+          {
+            "lap": 37,
+            "t": 3686.792
+          },
+          {
+            "lap": 38,
+            "t": 3787.858
+          },
+          {
+            "lap": 39,
+            "t": 3888.999
+          },
+          {
+            "lap": 40,
+            "t": 3989.698
+          },
+          {
+            "lap": 41,
+            "t": 4090.648
+          },
+          {
+            "lap": 42,
+            "t": 4191.117
+          },
+          {
+            "lap": 43,
+            "t": 4291.928
+          },
+          {
+            "lap": 44,
+            "t": 4392.441
+          },
+          {
+            "lap": 45,
+            "t": 4493.088
+          },
+          {
+            "lap": 46,
+            "t": 4593.992
+          },
+          {
+            "lap": 47,
+            "t": 4695.031
+          },
+          {
+            "lap": 48,
+            "t": 4795.616
+          },
+          {
+            "lap": 49,
+            "t": 4896.45
+          },
+          {
+            "lap": 50,
+            "t": 4996.899
+          },
+          {
+            "lap": 51,
+            "t": 5117.876
+          },
+          {
+            "lap": 52,
+            "t": 5255.746
+          },
+          {
+            "lap": 53,
+            "t": 5366.0
+          },
+          {
+            "lap": 54,
+            "t": 5467.241
+          },
+          {
+            "lap": 55,
+            "t": 5568.322
+          },
+          {
+            "lap": 56,
+            "t": 5669.516
+          }
+        ]
+      },
+      {
+        "code": "RUS",
+        "constructor": "Mercedes",
+        "pitLaps": [
+          22
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 4.859
+          },
+          {
+            "lap": 2,
+            "t": 114.791
+          },
+          {
+            "lap": 3,
+            "t": 215.928
+          },
+          {
+            "lap": 4,
+            "t": 317.096
+          },
+          {
+            "lap": 5,
+            "t": 418.629
+          },
+          {
+            "lap": 6,
+            "t": 520.312
+          },
+          {
+            "lap": 7,
+            "t": 622.239
+          },
+          {
+            "lap": 8,
+            "t": 723.989
+          },
+          {
+            "lap": 9,
+            "t": 825.865
+          },
+          {
+            "lap": 10,
+            "t": 927.652
+          },
+          {
+            "lap": 11,
+            "t": 1029.37
+          },
+          {
+            "lap": 12,
+            "t": 1130.951
+          },
+          {
+            "lap": 13,
+            "t": 1233.056
+          },
+          {
+            "lap": 14,
+            "t": 1335.265
+          },
+          {
+            "lap": 15,
+            "t": 1437.438
+          },
+          {
+            "lap": 16,
+            "t": 1539.544
+          },
+          {
+            "lap": 17,
+            "t": 1642.053
+          },
+          {
+            "lap": 18,
+            "t": 1744.745
+          },
+          {
+            "lap": 19,
+            "t": 1846.802
+          },
+          {
+            "lap": 20,
+            "t": 1949.099
+          },
+          {
+            "lap": 21,
+            "t": 2051.422
+          },
+          {
+            "lap": 22,
+            "t": 2153.609
+          },
+          {
+            "lap": 23,
+            "t": 2280.732
+          },
+          {
+            "lap": 24,
+            "t": 2380.659
+          },
+          {
+            "lap": 25,
+            "t": 2481.251
+          },
+          {
+            "lap": 26,
+            "t": 2581.304
+          },
+          {
+            "lap": 27,
+            "t": 2681.562
+          },
+          {
+            "lap": 28,
+            "t": 2781.648
+          },
+          {
+            "lap": 29,
+            "t": 2881.558
+          },
+          {
+            "lap": 30,
+            "t": 2981.69
+          },
+          {
+            "lap": 31,
+            "t": 3081.653
+          },
+          {
+            "lap": 32,
+            "t": 3182.869
+          },
+          {
+            "lap": 33,
+            "t": 3283.879
+          },
+          {
+            "lap": 34,
+            "t": 3384.933
+          },
+          {
+            "lap": 35,
+            "t": 3485.622
+          },
+          {
+            "lap": 36,
+            "t": 3586.332
+          },
+          {
+            "lap": 37,
+            "t": 3687.51
+          },
+          {
+            "lap": 38,
+            "t": 3789.031
+          },
+          {
+            "lap": 39,
+            "t": 3890.314
+          },
+          {
+            "lap": 40,
+            "t": 3990.901
+          },
+          {
+            "lap": 41,
+            "t": 4091.516
+          },
+          {
+            "lap": 42,
+            "t": 4191.826
+          },
+          {
+            "lap": 43,
+            "t": 4292.459
+          },
+          {
+            "lap": 44,
+            "t": 4393.62
+          },
+          {
+            "lap": 45,
+            "t": 4494.353
+          },
+          {
+            "lap": 46,
+            "t": 4595.129
+          },
+          {
+            "lap": 47,
+            "t": 4696.044
+          },
+          {
+            "lap": 48,
+            "t": 4797.011
+          },
+          {
+            "lap": 49,
+            "t": 4897.966
+          },
+          {
+            "lap": 50,
+            "t": 4998.493
+          },
+          {
+            "lap": 51,
+            "t": 5120.334
+          },
+          {
+            "lap": 52,
+            "t": 5259.089
+          },
+          {
+            "lap": 53,
+            "t": 5367.769
+          },
+          {
+            "lap": 54,
+            "t": 5468.819
+          },
+          {
+            "lap": 55,
+            "t": 5570.057
+          },
+          {
+            "lap": 56,
+            "t": 5671.094
+          }
+        ]
+      },
+      {
+        "code": "SAI",
+        "constructor": "Williams",
+        "pitLaps": [
+          17,
+          38
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 10.25
+          },
+          {
+            "lap": 2,
+            "t": 123.713
+          },
+          {
+            "lap": 3,
+            "t": 227.958
+          },
+          {
+            "lap": 4,
+            "t": 331.721
+          },
+          {
+            "lap": 5,
+            "t": 436.237
+          },
+          {
+            "lap": 6,
+            "t": 540.41
+          },
+          {
+            "lap": 7,
+            "t": 644.098
+          },
+          {
+            "lap": 8,
+            "t": 747.911
+          },
+          {
+            "lap": 9,
+            "t": 852.378
+          },
+          {
+            "lap": 10,
+            "t": 957.348
+          },
+          {
+            "lap": 11,
+            "t": 1061.611
+          },
+          {
+            "lap": 12,
+            "t": 1165.04
+          },
+          {
+            "lap": 13,
+            "t": 1269.134
+          },
+          {
+            "lap": 14,
+            "t": 1373.104
+          },
+          {
+            "lap": 15,
+            "t": 1477.195
+          },
+          {
+            "lap": 16,
+            "t": 1581.26
+          },
+          {
+            "lap": 17,
+            "t": 1686.491
+          },
+          {
+            "lap": 18,
+            "t": 1817.864
+          },
+          {
+            "lap": 19,
+            "t": 1919.631
+          },
+          {
+            "lap": 20,
+            "t": 2021.622
+          },
+          {
+            "lap": 21,
+            "t": 2123.564
+          },
+          {
+            "lap": 22,
+            "t": 2225.402
+          },
+          {
+            "lap": 23,
+            "t": 2327.481
+          },
+          {
+            "lap": 24,
+            "t": 2429.443
+          },
+          {
+            "lap": 25,
+            "t": 2531.967
+          },
+          {
+            "lap": 26,
+            "t": 2634.562
+          },
+          {
+            "lap": 27,
+            "t": 2736.528
+          },
+          {
+            "lap": 28,
+            "t": 2838.732
+          },
+          {
+            "lap": 29,
+            "t": 2941.121
+          },
+          {
+            "lap": 30,
+            "t": 3043.766
+          },
+          {
+            "lap": 31,
+            "t": 3146.096
+          },
+          {
+            "lap": 32,
+            "t": 3248.946
+          },
+          {
+            "lap": 33,
+            "t": 3351.355
+          },
+          {
+            "lap": 34,
+            "t": 3455.122
+          },
+          {
+            "lap": 35,
+            "t": 3559.082
+          },
+          {
+            "lap": 36,
+            "t": 3661.8
+          },
+          {
+            "lap": 37,
+            "t": 3766.311
+          },
+          {
+            "lap": 38,
+            "t": 3871.812
+          },
+          {
+            "lap": 39,
+            "t": 3994.026
+          },
+          {
+            "lap": 40,
+            "t": 4094.788
+          },
+          {
+            "lap": 41,
+            "t": 4195.217
+          },
+          {
+            "lap": 42,
+            "t": 4295.631
+          },
+          {
+            "lap": 43,
+            "t": 4396.837
+          },
+          {
+            "lap": 44,
+            "t": 4498.119
+          },
+          {
+            "lap": 45,
+            "t": 4599.278
+          },
+          {
+            "lap": 46,
+            "t": 4700.364
+          },
+          {
+            "lap": 47,
+            "t": 4801.781
+          },
+          {
+            "lap": 48,
+            "t": 4903.81
+          },
+          {
+            "lap": 49,
+            "t": 5005.462
+          },
+          {
+            "lap": 50,
+            "t": 5130.356
+          },
+          {
+            "lap": 51,
+            "t": 5268.182
+          },
+          {
+            "lap": 52,
+            "t": 5374.526
+          },
+          {
+            "lap": 53,
+            "t": 5476.288
+          },
+          {
+            "lap": 54,
+            "t": 5577.854
+          },
+          {
+            "lap": 55,
+            "t": 5679.608
+          }
+        ]
+      },
+      {
+        "code": "STR",
+        "constructor": "Aston Martin",
+        "pitLaps": [
+          15,
+          41
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 13.515
+          },
+          {
+            "lap": 2,
+            "t": 128.65
+          },
+          {
+            "lap": 3,
+            "t": 232.52
+          },
+          {
+            "lap": 4,
+            "t": 335.846
+          },
+          {
+            "lap": 5,
+            "t": 439.425
+          },
+          {
+            "lap": 6,
+            "t": 543.269
+          },
+          {
+            "lap": 7,
+            "t": 646.973
+          },
+          {
+            "lap": 8,
+            "t": 751.255
+          },
+          {
+            "lap": 9,
+            "t": 854.812
+          },
+          {
+            "lap": 10,
+            "t": 958.738
+          },
+          {
+            "lap": 11,
+            "t": 1063.048
+          },
+          {
+            "lap": 12,
+            "t": 1166.743
+          },
+          {
+            "lap": 13,
+            "t": 1270.822
+          },
+          {
+            "lap": 14,
+            "t": 1374.817
+          },
+          {
+            "lap": 15,
+            "t": 1479.317
+          },
+          {
+            "lap": 16,
+            "t": 1601.792
+          },
+          {
+            "lap": 17,
+            "t": 1704.206
+          },
+          {
+            "lap": 18,
+            "t": 1806.33
+          },
+          {
+            "lap": 19,
+            "t": 1908.552
+          },
+          {
+            "lap": 20,
+            "t": 2011.039
+          },
+          {
+            "lap": 21,
+            "t": 2113.61
+          },
+          {
+            "lap": 22,
+            "t": 2215.965
+          },
+          {
+            "lap": 23,
+            "t": 2318.418
+          },
+          {
+            "lap": 24,
+            "t": 2420.691
+          },
+          {
+            "lap": 25,
+            "t": 2523.192
+          },
+          {
+            "lap": 26,
+            "t": 2625.712
+          },
+          {
+            "lap": 27,
+            "t": 2728.566
+          },
+          {
+            "lap": 28,
+            "t": 2831.207
+          },
+          {
+            "lap": 29,
+            "t": 2934.307
+          },
+          {
+            "lap": 30,
+            "t": 3038.431
+          },
+          {
+            "lap": 31,
+            "t": 3140.779
+          },
+          {
+            "lap": 32,
+            "t": 3242.959
+          },
+          {
+            "lap": 33,
+            "t": 3345.183
+          },
+          {
+            "lap": 34,
+            "t": 3447.269
+          },
+          {
+            "lap": 35,
+            "t": 3549.369
+          },
+          {
+            "lap": 36,
+            "t": 3651.598
+          },
+          {
+            "lap": 37,
+            "t": 3755.483
+          },
+          {
+            "lap": 38,
+            "t": 3859.462
+          },
+          {
+            "lap": 39,
+            "t": 3961.37
+          },
+          {
+            "lap": 40,
+            "t": 4063.673
+          },
+          {
+            "lap": 41,
+            "t": 4166.725
+          },
+          {
+            "lap": 42,
+            "t": 4287.725
+          },
+          {
+            "lap": 43,
+            "t": 4387.728
+          },
+          {
+            "lap": 44,
+            "t": 4489.119
+          },
+          {
+            "lap": 45,
+            "t": 4591.499
+          },
+          {
+            "lap": 46,
+            "t": 4692.592
+          },
+          {
+            "lap": 47,
+            "t": 4793.321
+          },
+          {
+            "lap": 48,
+            "t": 4894.223
+          },
+          {
+            "lap": 49,
+            "t": 4995.274
+          },
+          {
+            "lap": 50,
+            "t": 5115.379
+          },
+          {
+            "lap": 51,
+            "t": 5253.557
+          },
+          {
+            "lap": 52,
+            "t": 5364.045
+          },
+          {
+            "lap": 53,
+            "t": 5464.726
+          },
+          {
+            "lap": 54,
+            "t": 5564.995
+          },
+          {
+            "lap": 55,
+            "t": 5666.149
+          }
+        ]
+      },
+      {
+        "code": "VER",
+        "constructor": "Red Bull",
+        "pitLaps": [
+          13,
+          31
+        ],
+        "laps": [
+          {
+            "lap": 1,
+            "t": 2.25
+          },
+          {
+            "lap": 2,
+            "t": 110.697
+          },
+          {
+            "lap": 3,
+            "t": 211.392
+          },
+          {
+            "lap": 4,
+            "t": 311.877
+          },
+          {
+            "lap": 5,
+            "t": 412.925
+          },
+          {
+            "lap": 6,
+            "t": 513.759
+          },
+          {
+            "lap": 7,
+            "t": 614.676
+          },
+          {
+            "lap": 8,
+            "t": 715.583
+          },
+          {
+            "lap": 9,
+            "t": 816.787
+          },
+          {
+            "lap": 10,
+            "t": 917.938
+          },
+          {
+            "lap": 11,
+            "t": 1019.182
+          },
+          {
+            "lap": 12,
+            "t": 1120.393
+          },
+          {
+            "lap": 13,
+            "t": 1222.493
+          },
+          {
+            "lap": 14,
+            "t": 1342.816
+          },
+          {
+            "lap": 15,
+            "t": 1442.735
+          },
+          {
+            "lap": 16,
+            "t": 1543.018
+          },
+          {
+            "lap": 17,
+            "t": 1643.35
+          },
+          {
+            "lap": 18,
+            "t": 1743.17
+          },
+          {
+            "lap": 19,
+            "t": 1843.489
+          },
+          {
+            "lap": 20,
+            "t": 1944.178
+          },
+          {
+            "lap": 21,
+            "t": 2044.406
+          },
+          {
+            "lap": 22,
+            "t": 2144.83
+          },
+          {
+            "lap": 23,
+            "t": 2245.294
+          },
+          {
+            "lap": 24,
+            "t": 2345.574
+          },
+          {
+            "lap": 25,
+            "t": 2446.116
+          },
+          {
+            "lap": 26,
+            "t": 2547.061
+          },
+          {
+            "lap": 27,
+            "t": 2647.962
+          },
+          {
+            "lap": 28,
+            "t": 2749.028
+          },
+          {
+            "lap": 29,
+            "t": 2850.415
+          },
+          {
+            "lap": 30,
+            "t": 2951.305
+          },
+          {
+            "lap": 31,
+            "t": 3052.732
+          },
+          {
+            "lap": 32,
+            "t": 3172.801
+          },
+          {
+            "lap": 33,
+            "t": 3272.129
+          },
+          {
+            "lap": 34,
+            "t": 3371.982
+          },
+          {
+            "lap": 35,
+            "t": 3471.419
+          },
+          {
+            "lap": 36,
+            "t": 3570.738
+          },
+          {
+            "lap": 37,
+            "t": 3670.361
+          },
+          {
+            "lap": 38,
+            "t": 3769.592
+          },
+          {
+            "lap": 39,
+            "t": 3869.214
+          },
+          {
+            "lap": 40,
+            "t": 3968.963
+          },
+          {
+            "lap": 41,
+            "t": 4068.488
+          },
+          {
+            "lap": 42,
+            "t": 4168.307
+          },
+          {
+            "lap": 43,
+            "t": 4267.943
+          },
+          {
+            "lap": 44,
+            "t": 4367.686
+          },
+          {
+            "lap": 45,
+            "t": 4467.853
+          },
+          {
+            "lap": 46,
+            "t": 4568.359
+          },
+          {
+            "lap": 47,
+            "t": 4667.86
+          },
+          {
+            "lap": 48,
+            "t": 4767.733
+          },
+          {
+            "lap": 49,
+            "t": 4867.933
+          },
+          {
+            "lap": 50,
+            "t": 4967.586
+          },
+          {
+            "lap": 51,
+            "t": 5076.959
+          },
+          {
+            "lap": 52,
+            "t": 5213.635
+          },
+          {
+            "lap": 53,
+            "t": 5335.451
+          },
+          {
+            "lap": 54,
+            "t": 5434.65
+          },
+          {
+            "lap": 55,
+            "t": 5534.275
+          },
+          {
+            "lap": 56,
+            "t": 5634.279
+          }
+        ]
+      }
+    ]
+  },
+  "rejoinStrip": {
+    "available": true,
+    "stops": [
+      {
+        "driverCode": "ALB",
+        "constructor": "Williams",
+        "inLap": 16,
+        "outLap": 17,
+        "pitLaneSeconds": 24.4,
+        "ahead": {
+          "code": "BEA",
+          "gap": 6.575
+        },
+        "behind": {
+          "code": "STR",
+          "gap": 2.221
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 6.6s up the road."
+      },
+      {
+        "driverCode": "ALB",
+        "constructor": "Williams",
+        "inLap": 31,
+        "outLap": 32,
+        "pitLaneSeconds": 23.6,
+        "ahead": {
+          "code": "HAM",
+          "gap": 1.347
+        },
+        "behind": {
+          "code": "COL",
+          "gap": 2.208
+        },
+        "flag": "Dirty air",
+        "take": "Dropped into HAM's dirty air, 1.3s behind — hard to follow, harder to pass."
+      },
+      {
+        "driverCode": "ALO",
+        "constructor": "Aston Martin",
+        "inLap": 28,
+        "outLap": 29,
+        "pitLaneSeconds": 24.2,
+        "ahead": {
+          "code": "OCO",
+          "gap": 7.791
+        },
+        "behind": {
+          "code": "BOR",
+          "gap": 2.923
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 7.8s up the road."
+      },
+      {
+        "driverCode": "ALO",
+        "constructor": "Aston Martin",
+        "inLap": 42,
+        "outLap": 43,
+        "pitLaneSeconds": 40.4,
+        "ahead": {
+          "code": "RUS",
+          "gap": 0.69
+        },
+        "behind": {
+          "code": "SAI",
+          "gap": 2.527
+        },
+        "flag": "Dirty air",
+        "take": "Dropped into RUS's dirty air, 0.7s behind — hard to follow, harder to pass."
+      },
+      {
+        "driverCode": "ANT",
+        "constructor": "Mercedes",
+        "inLap": 24,
+        "outLap": 25,
+        "pitLaneSeconds": 23.5,
+        "ahead": {
+          "code": "HAD",
+          "gap": 4.328
+        },
+        "behind": {
+          "code": "HAM",
+          "gap": 1.182
+        },
+        "flag": "Rejoin clash",
+        "take": "Rejoined only 1.2s ahead of HAM — right in the firing line."
+      },
+      {
+        "driverCode": "BEA",
+        "constructor": "Haas F1 Team",
+        "inLap": 13,
+        "outLap": 14,
+        "pitLaneSeconds": 24.2,
+        "ahead": {
+          "code": "BOT",
+          "gap": 3.068
+        },
+        "behind": {
+          "code": "ANT",
+          "gap": 38.479
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 3.1s up the road."
+      },
+      {
+        "driverCode": "BEA",
+        "constructor": "Haas F1 Team",
+        "inLap": 22,
+        "outLap": 23,
+        "pitLaneSeconds": 34.7,
+        "ahead": {
+          "code": "LEC",
+          "gap": 2.349
+        },
+        "behind": {
+          "code": "HAM",
+          "gap": 4.127
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 2.3s up the road."
+      },
+      {
+        "driverCode": "BOR",
+        "constructor": "Audi",
+        "inLap": 26,
+        "outLap": 27,
+        "pitLaneSeconds": 24.0,
+        "ahead": {
+          "code": "ALB",
+          "gap": 0.451
+        },
+        "behind": {
+          "code": "STR",
+          "gap": 2.599
+        },
+        "flag": "Dirty air",
+        "take": "Dropped into ALB's dirty air, 0.5s behind — hard to follow, harder to pass."
+      },
+      {
+        "driverCode": "BOR",
+        "constructor": "Audi",
+        "inLap": 50,
+        "outLap": 51,
+        "pitLaneSeconds": 23.9,
+        "ahead": {
+          "code": "OCO",
+          "gap": 6.812
+        },
+        "behind": {
+          "code": "LEC",
+          "gap": 2.219
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 6.8s up the road."
+      },
+      {
+        "driverCode": "BOT",
+        "constructor": "Cadillac F1 Team",
+        "inLap": 29,
+        "outLap": 30,
+        "pitLaneSeconds": 24.2,
+        "ahead": {
+          "code": "NOR",
+          "gap": 7.965
+        },
+        "behind": {
+          "code": "HAD",
+          "gap": 5.223
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 8.0s up the road."
+      },
+      {
+        "driverCode": "COL",
+        "constructor": "Alpine F1 Team",
+        "inLap": 30,
+        "outLap": 31,
+        "pitLaneSeconds": 25.3,
+        "ahead": {
+          "code": "HAM",
+          "gap": 3.141
+        },
+        "behind": {
+          "code": "PER",
+          "gap": 1.271
+        },
+        "flag": "Rejoin clash",
+        "take": "Rejoined only 1.3s ahead of PER — right in the firing line."
+      },
+      {
+        "driverCode": "GAS",
+        "constructor": "Alpine F1 Team",
+        "inLap": 24,
+        "outLap": 25,
+        "pitLaneSeconds": 26.9,
+        "ahead": {
+          "code": "BOR",
+          "gap": 7.728
+        },
+        "behind": {
+          "code": "LIN",
+          "gap": 0.646
+        },
+        "flag": "Rejoin clash",
+        "take": "Rejoined only 0.6s ahead of LIN — right in the firing line."
+      },
+      {
+        "driverCode": "HAD",
+        "constructor": "Red Bull",
+        "inLap": 25,
+        "outLap": 26,
+        "pitLaneSeconds": 24.0,
+        "ahead": {
+          "code": "NOR",
+          "gap": 9.299
+        },
+        "behind": {
+          "code": "PIA",
+          "gap": 1.096
+        },
+        "flag": "Rejoin clash",
+        "take": "Rejoined only 1.1s ahead of PIA — right in the firing line."
+      },
+      {
+        "driverCode": "HAM",
+        "constructor": "Ferrari",
+        "inLap": 14,
+        "outLap": 15,
+        "pitLaneSeconds": 24.1,
+        "ahead": {
+          "code": "PIA",
+          "gap": 6.597
+        },
+        "behind": {
+          "code": "LAW",
+          "gap": 1.992
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 6.6s up the road."
+      },
+      {
+        "driverCode": "HAM",
+        "constructor": "Ferrari",
+        "inLap": 38,
+        "outLap": 39,
+        "pitLaneSeconds": 23.9,
+        "ahead": {
+          "code": "HAD",
+          "gap": 1.782
+        },
+        "behind": {
+          "code": "PIA",
+          "gap": 4.218
+        },
+        "flag": "Dirty air",
+        "take": "Dropped into HAD's dirty air, 1.8s behind — hard to follow, harder to pass."
+      },
+      {
+        "driverCode": "HUL",
+        "constructor": "Audi",
+        "inLap": 29,
+        "outLap": 30,
+        "pitLaneSeconds": 23.9,
+        "ahead": {
+          "code": "OCO",
+          "gap": 3.838
+        },
+        "behind": {
+          "code": "ALO",
+          "gap": 3.229
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 3.8s up the road."
+      },
+      {
+        "driverCode": "LAW",
+        "constructor": "RB F1 Team",
+        "inLap": 25,
+        "outLap": 26,
+        "pitLaneSeconds": 24.2,
+        "ahead": {
+          "code": "ALO",
+          "gap": 4.337
+        },
+        "behind": {
+          "code": "BOR",
+          "gap": 1.648
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 4.3s up the road."
+      },
+      {
+        "driverCode": "LEC",
+        "constructor": "Ferrari",
+        "inLap": 15,
+        "outLap": 16,
+        "pitLaneSeconds": 24.0,
+        "ahead": {
+          "code": "VER",
+          "gap": 5.177
+        },
+        "behind": {
+          "code": "HAM",
+          "gap": 3.409
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 5.2s up the road."
+      },
+      {
+        "driverCode": "LEC",
+        "constructor": "Ferrari",
+        "inLap": 39,
+        "outLap": 40,
+        "pitLaneSeconds": 24.2,
+        "ahead": {
+          "code": "ALB",
+          "gap": 1.484
+        },
+        "behind": {
+          "code": "HAD",
+          "gap": 5.781
+        },
+        "flag": "Dirty air",
+        "take": "Dropped into ALB's dirty air, 1.5s behind — hard to follow, harder to pass."
+      },
+      {
+        "driverCode": "LIN",
+        "constructor": "RB F1 Team",
+        "inLap": 18,
+        "outLap": 19,
+        "pitLaneSeconds": 23.7,
+        "ahead": {
+          "code": "COL",
+          "gap": 4.516
+        },
+        "behind": {
+          "code": "PER",
+          "gap": 4.265
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 4.5s up the road."
+      },
+      {
+        "driverCode": "LIN",
+        "constructor": "RB F1 Team",
+        "inLap": 40,
+        "outLap": 41,
+        "pitLaneSeconds": 24.5,
+        "ahead": {
+          "code": "ANT",
+          "gap": 4.047
+        },
+        "behind": {
+          "code": "STR",
+          "gap": 10.204
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 4.0s up the road."
+      },
+      {
+        "driverCode": "NOR",
+        "constructor": "McLaren",
+        "inLap": 16,
+        "outLap": 17,
+        "pitLaneSeconds": 25.7,
+        "ahead": {
+          "code": "GAS",
+          "gap": 2.812
+        },
+        "behind": {
+          "code": "OCO",
+          "gap": 3.25
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 2.8s up the road."
+      },
+      {
+        "driverCode": "OCO",
+        "constructor": "Haas F1 Team",
+        "inLap": 21,
+        "outLap": 22,
+        "pitLaneSeconds": 24.9,
+        "ahead": {
+          "code": "LIN",
+          "gap": 4.011
+        },
+        "behind": {
+          "code": "PER",
+          "gap": 6.817
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 4.0s up the road."
+      },
+      {
+        "driverCode": "PER",
+        "constructor": "Cadillac F1 Team",
+        "inLap": 23,
+        "outLap": 24,
+        "pitLaneSeconds": 25.1,
+        "ahead": {
+          "code": "SAI",
+          "gap": 10.97
+        },
+        "behind": {
+          "code": "VER",
+          "gap": 5.703
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 11.0s up the road."
+      },
+      {
+        "driverCode": "PIA",
+        "constructor": "McLaren",
+        "inLap": 15,
+        "outLap": 16,
+        "pitLaneSeconds": 23.4,
+        "ahead": {
+          "code": "OCO",
+          "gap": 2.094
+        },
+        "behind": {
+          "code": "LIN",
+          "gap": 1.484
+        },
+        "flag": "Rejoin clash",
+        "take": "Rejoined only 1.5s ahead of LIN — right in the firing line."
+      },
+      {
+        "driverCode": "RUS",
+        "constructor": "Mercedes",
+        "inLap": 22,
+        "outLap": 23,
+        "pitLaneSeconds": 29.7,
+        "ahead": {
+          "code": "GAS",
+          "gap": 2.094
+        },
+        "behind": {
+          "code": "HUL",
+          "gap": 6.125
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 2.1s up the road."
+      },
+      {
+        "driverCode": "SAI",
+        "constructor": "Williams",
+        "inLap": 17,
+        "outLap": 18,
+        "pitLaneSeconds": 33.6,
+        "ahead": {
+          "code": "STR",
+          "gap": 11.534
+        },
+        "behind": {
+          "code": "ANT",
+          "gap": 10.125
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 11.5s up the road."
+      },
+      {
+        "driverCode": "SAI",
+        "constructor": "Williams",
+        "inLap": 38,
+        "outLap": 39,
+        "pitLaneSeconds": 24.3,
+        "ahead": {
+          "code": "RUS",
+          "gap": 3.125
+        },
+        "behind": {
+          "code": "PER",
+          "gap": 2.125
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 3.1s up the road."
+      },
+      {
+        "driverCode": "STR",
+        "constructor": "Aston Martin",
+        "inLap": 15,
+        "outLap": 16,
+        "pitLaneSeconds": 24.3,
+        "ahead": {
+          "code": "BEA",
+          "gap": 11.375
+        },
+        "behind": {
+          "code": "ANT",
+          "gap": 23.527
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 11.4s up the road."
+      },
+      {
+        "driverCode": "STR",
+        "constructor": "Aston Martin",
+        "inLap": 41,
+        "outLap": 42,
+        "pitLaneSeconds": 23.8,
+        "ahead": {
+          "code": "HAD",
+          "gap": 3.5
+        },
+        "behind": {
+          "code": "PIA",
+          "gap": 4.203
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 3.5s up the road."
+      },
+      {
+        "driverCode": "VER",
+        "constructor": "Red Bull",
+        "inLap": 13,
+        "outLap": 14,
+        "pitLaneSeconds": 23.9,
+        "ahead": {
+          "code": "PIA",
+          "gap": 1.999
+        },
+        "behind": {
+          "code": "LAW",
+          "gap": 6.036
+        },
+        "flag": "Dirty air",
+        "take": "Dropped into PIA's dirty air, 2.0s behind — hard to follow, harder to pass."
+      },
+      {
+        "driverCode": "VER",
+        "constructor": "Red Bull",
+        "inLap": 31,
+        "outLap": 32,
+        "pitLaneSeconds": 25.3,
+        "ahead": {
+          "code": "NOR",
+          "gap": 6.42
+        },
+        "behind": {
+          "code": "BOT",
+          "gap": 3.889
+        },
+        "flag": "Clean air",
+        "take": "Clean air out of the box — nearest car 6.4s up the road."
+      }
+    ]
+  },
+  "editors_take": ""
+}
